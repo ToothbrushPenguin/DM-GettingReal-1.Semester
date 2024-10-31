@@ -1,0 +1,62 @@
+@startuml
+left to right direction
+
+actor "Admin/Societate" as admin
+actor "User" as user
+
+rectangle "Societate System" {
+    package "Core Functions" {
+        usecase "Check In/Out" as UC1
+        usecase "View Building Occupants" as UC2
+        usecase "View Emergency Plans\nand Floor Plans" as UC3
+        usecase "View Meeting Room Status" as UC4
+    }
+
+    package "Admin Functions" {
+        usecase "Manage Company Settings" as UC5
+        usecase "Configure Meeting Rooms" as UC6
+        usecase "Edit Emergency Plans" as UC7
+        usecase "Manage User Access" as UC8
+        usecase "View System Logs" as UC9
+        usecase "Configure Outlook\nIntegration" as UC10
+    }
+}
+
+' Admin connections (red)
+admin -[#red]-> UC1
+admin -[#red]-> UC2
+admin -[#red]-> UC3
+admin -[#red]-> UC4
+admin -[#red]-> UC5
+admin -[#red]-> UC6
+admin -[#red]-> UC7
+admin -[#red]-> UC8
+admin -[#red]-> UC9
+admin -[#red]-> UC10
+
+' User connections (blue)
+user -[#blue]-> UC1
+user -[#blue]-> UC2
+user -[#blue]-> UC3
+user -[#blue]-> UC4
+
+' Relationship
+UC4 <.. UC2 : <<includes>>
+
+note right of UC1
+  Common check-in/out
+  functionality for all users
+end note
+
+note right of UC5
+  Enables system flexibility
+  for different companies
+end note
+
+note right of UC3
+  Includes emergency exits,
+  assembly points and
+  evacuation procedures
+end note
+
+@enduml
