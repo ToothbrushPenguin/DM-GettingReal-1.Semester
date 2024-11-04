@@ -1,0 +1,49 @@
+@startuml
+
+skinparam classAttributeIconSize 0
+skinparam style strictuml
+skinparam linetype ortho
+
+' Place Log at the top
+class Log {
+    checkin_outFilePath
+    contingencyFilePath
+}
+
+' Group the user classes
+together {
+    class User {
+        name
+        company
+    }
+
+    class Admin {
+        name
+        company
+        password
+    }
+
+    class Contingency_Responsible {
+        name
+        company
+        password
+    }
+}
+
+' Place Contingency at the bottom
+class Contingency {
+    filePath
+    image
+}
+
+' Connect to Log at top
+User "0..*" -up- "1" Log
+Admin "0..*" -up- "1" Log
+Contingency_Responsible "0..*" -up- "1" Log
+
+' Connect to Contingency at bottom
+User "0..*" -down- "1" Contingency
+Admin "0..*" -down- "1" Contingency
+Contingency_Responsible "0..*" -down- "1" Contingency
+
+@enduml
