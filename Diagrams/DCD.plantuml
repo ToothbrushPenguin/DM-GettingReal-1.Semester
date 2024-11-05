@@ -1,0 +1,102 @@
+@startuml
+
+skinparam classAttributeIconSize 0
+skinparam style strictuml
+skinparam linetype ortho
+skinparam nodesep 100
+skinparam ranksep 100
+skinparam padding 10
+skinparam class {
+    BackgroundColor white
+    BorderColor black
+    ArrowColor black
+}
+
+' Controllers
+package "User Interface" {
+    class UI{
+
+    }
+}
+
+' 
+package "Aplication" {
+    class LogController {
+        + create(log: Log): ResponseEntity<Log>
+        + read(id: Long): ResponseEntity<Log>
+        + update(id: Long, log: Log): ResponseEntity<Log>
+        + delete(id: Long): ResponseEntity<void>
+    }
+    class UserController {
+        + create(user: User): ResponseEntity<User>
+        + read(username: String): ResponseEntity<User>
+        + update(username: String, user: User): ResponseEntity<User>
+        + delete(username: String): ResponseEntity<void>
+    }
+    class ContingencyController {
+        + getContingency(): ResponseEntity<Contingency>
+        + updateContingency(contingency: Contingency): ResponseEntity<Contingency>
+    }
+
+    class LogRepository {
+        + save(log: Log): Log
+        + findById(id: Long): Optional<Log>
+        + update(log: Log): Log
+        + delete(id: Long): void
+    }
+    class UserRepository {
+        + save(user: User): User
+        + findById(username: String): Optional<User>
+        + update(user: User): User
+        + delete(username: String): void
+    }
+
+    ' Service for Contingency
+    class ContingencyService {
+    - contingency: Contingency
+    + getContingency(): Contingency
+    + updateContingency(contingency: Contingency): Contingency
+    }
+}
+
+' Domain Models
+package "Domain" {
+    class Log {
+        - id: Long
+        - checkin_outFilePath: String
+        - contingencyFilePath: String
+    }
+    class User {
+        - username: String
+        - name: String
+        - company: String
+    }
+    class Admin {
+        - username: String
+        - password: String
+    }
+    class Contingency_Responsible {
+        - username: String
+        - password: String
+    }
+    class Contingency {
+        - filePath: String
+        - image: byte[]
+    }
+}
+
+
+
+' Relationships
+LogController -down- LogRepository
+UserController -down- UserRepository
+ContingencyController -down- ContingencyService
+LogRepository -down- Log
+UserRepository -down- User
+ContingencyService -down- Contingency
+Admin -up-|> User
+Contingency_Responsible -up-|> User
+User "0..*" -right- "1" Log : logs
+User "0..*" -right- "1" Contingency : views
+
+@enduml
