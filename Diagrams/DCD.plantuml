@@ -1,102 +1,130 @@
 @startuml
-
+!theme plain
 skinparam classAttributeIconSize 0
 skinparam style strictuml
 skinparam linetype ortho
 skinparam nodesep 100
 skinparam ranksep 100
 skinparam padding 10
+
+' Custom styling
 skinparam class {
-    BackgroundColor white
-    BorderColor black
-    ArrowColor black
+    BackgroundColor White
+    BorderColor Black
+    ArrowColor Black
+    FontName Arial
+    FontSize 12
+}
+skinparam package {
+    BackgroundColor White
+    BorderColor Black
+    FontName Arial
+    FontSize 14
 }
 
-' Controllers
+class UserType <<enumeration>>{
+    User
+    Admin
+    Contingency_Responsible
+}
+    
+
+
+' User Interface Layer
 package "User Interface" {
-    class UI{
-
+    class MainWindow {
+        - AddUserButton_Click(object sender, RoutedEventArgs e): void
+        - DeleteUserButton_Click(object sender, RoutedEventArgs e): void
     }
 }
 
-' 
-package "Aplication" {
-    class LogController {
-        + create(log: Log): ResponseEntity<Log>
-        + read(id: Long): ResponseEntity<Log>
-        + update(id: Long, log: Log): ResponseEntity<Log>
-        + delete(id: Long): ResponseEntity<void>
-    }
-    class UserController {
-        + create(user: User): ResponseEntity<User>
-        + read(username: String): ResponseEntity<User>
-        + update(username: String, user: User): ResponseEntity<User>
-        + delete(username: String): ResponseEntity<void>
-    }
-    class ContingencyController {
-        + getContingency(): ResponseEntity<Contingency>
-        + updateContingency(contingency: Contingency): ResponseEntity<Contingency>
+' Application Layer
+package "Application" <<Rectangle>> {
+    together {
+
+        class Controller {
+            - userRepository: UserRepository
+
+            + GetContingencyPdf(): Image
+            + UpdateContingencyPdf(path:string): void
+            + GetContingencyMap(): Image
+            + UpdateContingencyMap(path:string): void
+
+            + CreateUser(userName:string, name:string, company:string, type:UserType): void
+            + DeleteUser(username: String): void
+            + FindIndexById(username: String):int
+            + UpdateUser(userIndex, userName:string, name:string, company:string, type:UserType): void
+            
+            
+        }
+
+        class FileHandler {
+            + Save(path: string, text: string):bool
+            + Load(path: string): text: string
+        }
+
     }
 
-    class LogRepository {
-        + save(log: Log): Log
-        + findById(id: Long): Optional<Log>
-        + update(log: Log): Log
-        + delete(id: Long): void
-    }
-    class UserRepository {
-        + save(user: User): User
-        + findById(username: String): Optional<User>
-        + update(user: User): User
-        + delete(username: String): void
-    }
+    together {
+       
+        class UserRepository {
+            - users: List<User>
+            - checkin_outFilePath: String
+            - contingencyFilePath: String
 
-    ' Service for Contingency
-    class ContingencyService {
-    - contingency: Contingency
-    + getContingency(): Contingency
-    + updateContingency(contingency: Contingency): Contingency
+            + CreateUser(userName:string, name:string, company:string, type:UserType): void
+            + FindIndexById(username: String): int
+            + UpdateUser(userIndex, userName:string, name:string, company:string, type:UserType): void
+            + DeleteUser(username: String): void
+        }
     }
 }
 
-' Domain Models
-package "Domain" {
-    class Log {
-        - id: Long
-        - checkin_outFilePath: String
-        - contingencyFilePath: String
+' Domain Layer
+package "Domain" <<Rectangle>> {
+    together {
+        class User {
+            - userName: String
+            - name: String
+            - company: String
+        }
+       
+        class Admin {
+            - password: String
+        }
+       
+        class Contingency_Responsible {
+            - password: String
+        }
     }
-    class User {
-        - username: String
-        - name: String
-        - company: String
-    }
-    class Admin {
-        - username: String
-        - password: String
-    }
-    class Contingency_Responsible {
-        - username: String
-        - password: String
-    }
+   
     class Contingency {
-        - filePath: String
-        - image: byte[]
+        - mapPath: String
+        - pdfPath: String
+        - map: Image
+        - pdf: Image
     }
 }
 
+' UI to Contoller
+MainWindow "1" -down- "1" Controller
+
+' Controller to x
+Controller "1" -down- "1" UserRepository
+Controller "1" -right- "1" FileHandler
+Controller "1" -down- "1" Contingency
+
+' Repository to Domain
+UserRepository "1" -down- "0..*" User
+
+' Inheritance
+Admin -up-|> User : inherents <
+Contingency_Responsible -up-|> User : inherents <
+
+' Domain Relations
+User "0..*" -right- "1" Contingency : views >
 
 
-' Relationships
-LogController -down- LogRepository
-UserController -down- UserRepository
-ContingencyController -down- ContingencyService
-LogRepository -down- Log
-UserRepository -down- User
-ContingencyService -down- Contingency
-Admin -up-|> User
-Contingency_Responsible -up-|> User
-User "0..*" -right- "1" Log : logs
-User "0..*" -right- "1" Contingency : views
-
+'enum
+UserRepository .left.> UserType : using >
 @enduml
