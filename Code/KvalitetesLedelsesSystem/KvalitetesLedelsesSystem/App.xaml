@@ -1,7 +1,7 @@
-﻿<Application x:Class="KvalitetsLedelsesSystem.App"
+﻿<Application x:Class="KvalitetesLedelsesSystem.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:KvalitetsLedelsesSystem"
+             xmlns:local="clr-namespace:KvalitetesLedelsesSystem"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
          
