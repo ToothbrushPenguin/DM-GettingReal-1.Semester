@@ -10,10 +10,12 @@
 
   <ItemGroup>
     <None Remove="Societate transparent.png" />
+    <None Remove="Views\Societate transparent.png" />
   </ItemGroup>
 
   <ItemGroup>
     <Resource Include="Societate transparent.png" />
+    <Resource Include="Views\Societate transparent.png" />
   </ItemGroup>
 
   <ItemGroup>
