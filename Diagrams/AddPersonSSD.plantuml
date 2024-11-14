@@ -1,0 +1,33 @@
+@startuml test
+skinparam style strictuml
+skinparam sequenceMessageAlign center
+title Tilføj ny Bruger
+
+
+Actor Actor as user
+
+participant ":Mainwindow" as MW
+participant ":MainViewModel" as MVM
+participant ":UserRepository" as UR
+participant ":UserCollection_ViewModel" as UC_VM
+
+user -> MW ++: AddUser_Clicked()
+    
+    MW -> MVM ++: CreateUser(userName:string, \n name:string, \n company:string, \n type:UserType)
+        
+        MVM -> UR ++: CreateUser(userName:string, \n name:string, \n company:string, \n type:UserType)
+            
+        return user
+
+        MVM -> UC_VM ++: Add(user:User)
+
+        return "updates userlist"
+
+
+    return "updates userlist"
+    
+return Displays updated userlist
+
+
+
+

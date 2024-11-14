@@ -16,4 +16,9 @@
     <Resource Include="Societate transparent.png" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Models\" />
+    <Folder Include="NewFolder\" />
+  </ItemGroup>
+
 </Project>

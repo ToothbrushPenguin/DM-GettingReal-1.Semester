@@ -42,7 +42,7 @@ package "User Interface" {
 package "Application" <<Rectangle>> {
     together {
 
-        class Controller {
+        class MainViewModel {
             - userRepository: UserRepository
 
             + GetContingencyPdf(): Image
@@ -107,12 +107,12 @@ package "Domain" <<Rectangle>> {
 }
 
 ' UI to Contoller
-MainWindow "1" -down- "1" Controller
+MainWindow "1" -down- "1" MainViewModel
 
-' Controller to x
-Controller "1" -down- "1" UserRepository
-Controller "1" -right- "1" FileHandler
-Controller "1" -down- "1" Contingency
+' MainViewModel to x
+MainViewModel "1" -down- "1" UserRepository
+MainViewModel "1" -right- "1" FileHandler
+MainViewModel "1" -down- "1" Contingency
 
 ' Repository to Domain
 UserRepository "1" -down- "0..*" User

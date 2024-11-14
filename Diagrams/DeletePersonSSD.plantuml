@@ -1,0 +1,33 @@
+@startuml test
+skinparam style strictuml
+skinparam sequenceMessageAlign center
+title Slet bruger
+
+
+Actor Actor as user
+
+participant ":Mainwindow" as MW
+participant ":MainViewModel" as MVM
+participant ":UserRepository" as UR
+participant ":UserCollection_ViewModel" as UC_VM
+
+user -> MW ++: DeleteUser_Clicked()
+    
+    MW -> MVM ++: DeleteUser(userName:string)
+        
+        MVM -> UR ++: DeleteUser(userName:string)
+            
+        return
+
+        MVM -> UC_VM ++: Delete(userName:string)
+
+        return "updates userlist"
+
+
+    return "updates userlist"
+    
+return Displays updated userlist
+
+
+
+
