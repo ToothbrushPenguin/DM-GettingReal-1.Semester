@@ -36,7 +36,7 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="2*"/>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="2*"/>
+                <!--<ColumnDefinition Width="2*"/>-->
             </Grid.ColumnDefinitions>
 
             <ListBox  FontSize="17"  Background="#FF373232" Foreground="#FFFFFFFF" BorderBrush="#FF373232" Grid.Column="0">
