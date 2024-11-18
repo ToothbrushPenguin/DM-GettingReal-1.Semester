@@ -6,7 +6,88 @@
         xmlns:local="clr-namespace:KvalitetesLedelsesSystem.Views"
         mc:Ignorable="d"
         Title="AdminDeleteUser" Height="450" Width="800">
-    <Grid>
-        
+    <Grid Background="#3F3F3F">
+        <Grid.RowDefinitions >
+
+            <RowDefinition Height="12*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+
+
+        <Grid Background="#FF1E1E1E" Grid.Row="0">
+
+            <Grid.ColumnDefinitions>
+
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="*"/>
+                <!--<ColumnDefinition Width="2*"/>-->
+            </Grid.ColumnDefinitions>
+
+
+
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+
+                </Grid.RowDefinitions>
+
+                <Label Grid.Column="1" Grid.Row="1" FontWeight="Bold" Foreground="#FFFFFFFF" Content="Username:" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+                <TextBox Grid.Row="2"></TextBox>
+                <Label Grid.Column="1" Grid.Row="3" FontWeight="Bold" Foreground="#FFFFFFFF" Content="Name:" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+                <TextBox Grid.Row="4"></TextBox>
+                <Label Grid.Column="1" Grid.Row="5" FontWeight="Bold" Foreground="#FFFFFFFF" Content="Company:" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+                <TextBox Grid.Row="6"></TextBox>
+                <Label Grid.Column="1" Grid.Row="7" FontWeight="Bold" Foreground="#FFFFFFFF" Content="Password:" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+                <TextBox Grid.Row="8"  IsEnabled="False"></TextBox>
+                <Grid Grid.Row ="10" >
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="*"/>
+
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <Label Grid.Column="0" Grid.Row="0" FontWeight="Bold" Foreground="#FFFFFFFF" Content="User" HorizontalAlignment="Center"/>
+                    <Label Grid.Column="1" Grid.Row="0" FontWeight="Bold" Foreground="#FFFFFFFF" Content="Contingency Responsible" HorizontalAlignment="Center"/>
+                    <Label Grid.Column="2" Grid.Row="0" FontWeight="Bold" Foreground="#FFFFFFFF" Content="Admin" HorizontalAlignment="Center"/>
+
+                    <RadioButton Grid.Column="0" Grid.Row="1" IsChecked="True" HorizontalAlignment="Center" GroupName="userType" VerticalAlignment="Center" ></RadioButton>
+                    <RadioButton Grid.Column="1" Grid.Row="1" IsChecked="False" HorizontalAlignment="Center" GroupName="userType" VerticalAlignment="Center" ></RadioButton>
+                    <RadioButton Grid.Column="2" Grid.Row="1" IsChecked="False" HorizontalAlignment="Center" GroupName="userType" VerticalAlignment="Center" ></RadioButton>
+                </Grid>
+
+
+
+                <Grid Grid.Row="12">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="10*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button FontSize="13" Content="Save User" Grid.Column="0"/>
+                    <Button FontSize="13" Content="Delete User" Grid.Column="2"/>
+                </Grid>
+            </Grid>
+        </Grid>
     </Grid>
 </Window>

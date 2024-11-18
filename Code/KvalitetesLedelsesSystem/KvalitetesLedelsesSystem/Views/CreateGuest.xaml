@@ -6,7 +6,58 @@
         xmlns:local="clr-namespace:KvalitetesLedelsesSystem.Views"
         mc:Ignorable="d"
         Title="CreateGuest" Height="450" Width="800">
-    <Grid>
-        
+    <Grid Background="#3F3F3F">
+        <Grid.RowDefinitions >
+
+            <RowDefinition Height="12*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+
+
+        <Grid Background="#FF1E1E1E" Grid.Row="0">
+
+            <Grid.ColumnDefinitions>
+
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="*"/>
+                <!--<ColumnDefinition Width="2*"/>-->
+            </Grid.ColumnDefinitions>
+
+
+
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+
+                </Grid.RowDefinitions>
+
+                <Label Grid.Column="1" Grid.Row="1" FontWeight="Bold" Foreground="#FFFFFFFF" Content="Username:" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+                <TextBox Grid.Row="2"></TextBox>
+                <Label Grid.Column="1" Grid.Row="3" FontWeight="Bold" Foreground="#FFFFFFFF" Content="Name:" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+                <TextBox Grid.Row="4"></TextBox>
+                <Label Grid.Column="1" Grid.Row="5" FontWeight="Bold" Foreground="#FFFFFFFF" Content="Company:" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+                <TextBox Grid.Row="6"></TextBox>
+                
+
+                <Button FontSize="13" Content="Create Guest" Grid.Row="12"/>
+                    
+                
+            </Grid>
+        </Grid>
     </Grid>
 </Window>
