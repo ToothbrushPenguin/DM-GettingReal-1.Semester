@@ -18,6 +18,8 @@ namespace KvalitetesLedelsesSystem.ViewModels
     {
 
         private List<User> users = new List<User>();
+        private List<Admin> admins = new List<Admin>();
+        private List<Contingency_Responsible> cons = new List<Contingency_Responsible>();
 
         public User Get(string userName)
         {
@@ -75,133 +77,6 @@ namespace KvalitetesLedelsesSystem.ViewModels
             else
                 throw (new ArgumentException("Person with userName = " + userName + " not found"));
         }
-
-
-
-        public void Update(string userName, string name, string company, UserType userType, string password)
-        {
-            // Find the person in the internal persons list with same userName as the 'userName'-parameter
-            User foundUser = Get(userName);
-
-            if (foundUser != null)
-            {
-                if (!string.IsNullOrEmpty(userName) &&
-                    !string.IsNullOrEmpty(name) &&
-                    !string.IsNullOrEmpty(company))
-                {
-
-                     
-                    switch (foundUser)
-                    {
-                        case Admin:
-                            if (userType == UserType.User)
-                            {
-                                User newUser = new User(userName, name, company);
-                                Remove(userName);
-                                users.Add(newUser);
-
-                                foundUser = newUser;
-                            }
-                            else if(userType == UserType.Contingency_Responsible)
-                            {
-                                Contingency_Responsible newConingencyResponsible = new Contingency_Responsible(userName, name, company, password);
-                                Remove(userName);
-                                users.Add(newConingencyResponsible);
-
-                                foundUser = newConingencyResponsible;
-
-                            }
-                            else
-                            {
-
-                            }
-
-                            break;
-                        case Contingency_Responsible:
-                            if (userType == UserType.Admin)
-                            {
-                                Admin newAdmin = new Admin(userName, name, company, password);
-                                Remove(userName);
-                                users.Add(newAdmin);
-
-                                foundUser = newAdmin;
-                            }
-                            else if (userType == UserType.User)
-                            {
-                                User newUser = new User(userName, name, company);
-                                Remove(userName);
-                                users.Add(newUser);
-
-                                foundUser = newUser;
-
-                            }
-                            else
-                            {
-                                if(foundUser.UserName != userName)
-                                {
-                                    foundUser.UserName = userName;
-                                }
-                                if(foundUser.Name != name)
-                                {
-                                    foundUser.Name = name;
-                                }
-                                if(foundUser.Company != company)
-                                {
-                                    foundUser.Company = company;
-                                }
-                                Admin foundAdmin = foundUser;
-                                if(foundUser.password
-                            }
-                            break;
-                        default:
-                            if (userType == UserType.Admin)
-                            {
-                                Admin newAdmin = new Admin(userName, name, company,password);
-                                Remove(userName);
-                                users.Add(newAdmin);
-
-                                foundUser = newAdmin;
-                            }
-                            else if (userType == UserType.Contingency_Responsible)
-                            {
-                                Contingency_Responsible newConingencyResponsible = new Contingency_Responsible(userName, name, company, password);
-                                Remove(userName);
-                                users.Add(newConingencyResponsible);
-
-                                foundUser = newConingencyResponsible;
-
-                            }
-                            else
-                            {
-
-                            }
-
-                            break;
-                    }
-
-                    // Update only changed properties for this person
-                    if (foundPerson.FirstName != firstName)
-                        foundPerson.FirstName = firstName;
-                    if (foundPerson.LastName != lastName)
-                        foundPerson.LastName = lastName;
-                    if (foundPerson.Age != age)
-                        foundPerson.Age = age;
-                    if (foundPerson.Phone != phone)
-                        foundPerson.Phone = phone;
-                }
-                else
-                {
-                    throw (new ArgumentException("Not all arguments for user are valid"));
-                }
-                    
-            }
-            else
-            {
-                throw (new ArgumentException("Person with userName = " + userName + " not found"));
-            }
-                
-        }
-
 
 
         public List<User> GetAll()
