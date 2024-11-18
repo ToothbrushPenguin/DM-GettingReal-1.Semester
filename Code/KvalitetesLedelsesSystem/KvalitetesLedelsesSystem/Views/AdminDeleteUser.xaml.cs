@@ -10,18 +10,16 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace KvalitetesLedelsesSystem.Views
 {
     /// <summary>
-    /// Interaction logic for AdminLogin.xaml
+    /// Interaction logic for AdminDeleteUser.xaml
     /// </summary>
-    public partial class AdminLogin : Page
+    public partial class AdminDeleteUser : Window
     {
-        
-        public AdminLogin()
+        public AdminDeleteUser()
         {
             InitializeComponent();
         }

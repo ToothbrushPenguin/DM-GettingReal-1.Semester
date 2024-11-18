@@ -16,12 +16,11 @@ using System.Windows.Shapes;
 namespace KvalitetesLedelsesSystem.Views
 {
     /// <summary>
-    /// Interaction logic for AdminLogin.xaml
+    /// Interaction logic for Plan.xaml
     /// </summary>
-    public partial class AdminLogin : Page
+    public partial class Plan : Page
     {
-        
-        public AdminLogin()
+        public Plan()
         {
             InitializeComponent();
         }
