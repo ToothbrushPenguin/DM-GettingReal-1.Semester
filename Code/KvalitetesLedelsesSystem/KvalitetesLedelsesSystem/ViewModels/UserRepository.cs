@@ -19,6 +19,10 @@ namespace KvalitetesLedelsesSystem.ViewModels
 
         private List<User> users = new List<User>();
 
+
+        //HUSK - implement constructor to load from file and methoth to save to file
+
+
         public User Get(string userName)
         {
 
@@ -38,31 +42,43 @@ namespace KvalitetesLedelsesSystem.ViewModels
 
         public User Add(string userName, string name, string company, UserType userType = UserType.User, string password = "1234")
         {
+            
             User result = null;
 
-            if (!string.IsNullOrEmpty(userName) &&
+            if(Get(userName)==null)
+            {
+                if (!string.IsNullOrEmpty(userName) &&
                 !string.IsNullOrEmpty(name) &&
                 !string.IsNullOrEmpty(company))
-            {
-                
-                switch (userType)
                 {
-                    case UserType.User:
-                        result = new User(userName,name,company);
-                        break;
-                    case UserType.Admin:
-                        result = new Admin(userName, name, company, password);
-                        break;
-                    case UserType.Contingency_Responsible:
-                        result = new Contingency_Responsible(userName, name, company, password);
-                        break;
+
+                    switch (userType)
+                    {
+                        case UserType.User:
+                            result = new User(userName, name, company);
+                            break;
+                        case UserType.Admin:
+                            result = new Admin(userName, name, company, password);
+                            break;
+                        case UserType.Contingency_Responsible:
+                            result = new Contingency_Responsible(userName, name, company, password);
+                            break;
+                    }
+
+                    users.Add(result);
+
                 }
-                
-                users.Add(result);
-                
+                else
+                {
+                    throw (new ArgumentException("Not all arguments are valid"));
+                }
+                    
             }
             else
-                throw (new ArgumentException("Not all arguments are valid"));
+            {
+                throw (new ArgumentException("userName allready exists"));
+            }
+            
 
             return result;
         }

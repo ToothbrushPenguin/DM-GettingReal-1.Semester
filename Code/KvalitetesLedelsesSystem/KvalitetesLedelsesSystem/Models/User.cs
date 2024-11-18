@@ -20,17 +20,6 @@ namespace KvalitetesLedelsesSystem.Models
             Company = company;
         }
 
-        public static User CreateUser(UserType type, string username, string name, string company, string password = null)
-        {
-            switch (type)
-            {
-                case UserType.Admin:
-                    return new Admin(username, name, company, password);
-                case UserType.Contingency_Responsible:
-                    return new Contingency_Responsible(username, name, company, password);
-                default:
-                    return new User(username, name, company);
-            }
-        }
+        
     }
 }
