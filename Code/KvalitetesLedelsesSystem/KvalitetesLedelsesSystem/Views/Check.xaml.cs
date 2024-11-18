@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KvalitetesLedelsesSystem.Views;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,11 @@ namespace KvalitetesLedelsesSystem
         public Check()
         {
             InitializeComponent();
+        }
+
+        private void ContingencyPlan(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Plan());
         }
     }
 }

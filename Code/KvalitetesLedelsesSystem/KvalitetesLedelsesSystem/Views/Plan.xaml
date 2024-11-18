@@ -8,7 +8,20 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Plan">
 
-    <Grid>
-        
+    <Grid Background="#3F3F3F">
+        <Grid.RowDefinitions >
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="12*"/>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="12*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Image Grid.Row="1" Grid.Column="1"  Source="/Views/Societate transparent.png"/>
+        <Button x:Name="GoBackButton" Grid.Row="0" Grid.Column="0" FontSize="20" FontWeight="Bold" Content="⮐" Background= "#FF1E1E1E" Foreground="#FFFFFFFF" Click="GoBack_click" />
+        <Border Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Background= "#FF1E1E1E" />
+        <Border Grid.Row="2" Grid.ColumnSpan ="3" Background="#FF1E1E1E" />
     </Grid>
 </Page>

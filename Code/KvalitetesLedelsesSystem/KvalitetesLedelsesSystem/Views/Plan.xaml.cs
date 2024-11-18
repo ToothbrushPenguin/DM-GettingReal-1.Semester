@@ -24,5 +24,10 @@ namespace KvalitetesLedelsesSystem.Views
         {
             InitializeComponent();
         }
+
+        private void GoBack_click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
+        }
     }
 }
