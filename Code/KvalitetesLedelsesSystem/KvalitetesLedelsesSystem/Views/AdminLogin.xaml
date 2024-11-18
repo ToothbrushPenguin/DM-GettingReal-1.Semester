@@ -9,72 +9,76 @@
       Title="AdminLogin" d:DesignHeight="720" d:DesignWidth="1280" >
 
     <Grid Background="#3F3F3F">
-     <Grid.RowDefinitions >
-         <RowDefinition Height="*"/>
-         <RowDefinition Height="12*"/>
-         <RowDefinition Height="*"/>
-     </Grid.RowDefinitions>
+        <Grid.RowDefinitions >
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="12*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
 
-     <Grid Grid.Row="0">
-         <Grid.ColumnDefinitions>
-             <ColumnDefinition Width="*"/>
-             <ColumnDefinition Width="10*"/>
-             <ColumnDefinition Width="10*"/>
-         </Grid.ColumnDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="10*"/>
+                <ColumnDefinition Width="10*"/>
+            </Grid.ColumnDefinitions>
 
-          <Button FontSize="20" FontWeight="Bold" Content="⮐" Background="#3F3F3F" Foreground="#FFFFFFFF" Grid.Column="0"/>
-          <Button FontSize="16" FontWeight="Bold" Content="Check In/Ud" Background="#3F3F3F" Foreground="#FFFFFFFF" Grid.Column="1"/>
-          <Button FontSize="16" FontWeight="Bold" Content="Contingency Plan" Background="#3F3F3F" Foreground="#FFFFFFFF" Grid.Column="2"/>
-            
-     </Grid>
-     
-     <Grid Background="#FF1E1E1E" Grid.Row="1">
+            <Button FontSize="20" FontWeight="Bold" Content="⮐" Background="#3F3F3F" Foreground="#FFFFFFFF" Grid.Column="0"/>
+            <Button FontSize="16" FontWeight="Bold" Content="Check In/Ud" Background="#3F3F3F" Foreground="#FFFFFFFF" Grid.Column="1"/>
+            <Button FontSize="16" FontWeight="Bold" Content="Contingency Plan" Background="#3F3F3F" Foreground="#FFFFFFFF" Grid.Column="2"/>
 
-         <Grid.ColumnDefinitions>
-             <ColumnDefinition Width="2*"/>
-             <ColumnDefinition Width="*"/>
-             <ColumnDefinition Width="2*"/>
-             <ColumnDefinition Width="*"/>
-             <!--<ColumnDefinition Width="2*"/>-->
-         </Grid.ColumnDefinitions>
+        </Grid>
 
-         <ListBox  FontSize="17"  Background="#FF373232" Foreground="#FFFFFFFF" BorderBrush="#FF373232" Grid.Column="0">
-             <ListBoxItem Content="Item1" IsSelected="True" />
-             <ListBoxItem Content="Item2" />
-         </ListBox>
+        <Grid Background="#FF1E1E1E" Grid.Row="1">
 
-         <Grid Grid.Column="2">
-             <Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="*"/>
+                <!--<ColumnDefinition Width="2*"/>-->
+            </Grid.ColumnDefinitions>
 
-                 <RowDefinition Height="*"/>
-                 <RowDefinition Height="2*"/>
-                 <RowDefinition Height="*"/>
-             </Grid.RowDefinitions>
-             <Grid Grid.Row="1">
-                 <Grid.RowDefinitions>
-                     <RowDefinition Height="4*"/>
-                     <RowDefinition Height="*"/>
-                     <RowDefinition Height="2*"/>
-                     <RowDefinition Height="*"/>
-                     <RowDefinition Height="*"/>
-                     <RowDefinition Height="*"/>
-                 </Grid.RowDefinitions>
+            <ListBox  FontSize="17"  Background="#FF373232" Foreground="#FFFFFFFF" BorderBrush="#FF373232" Grid.Column="0">
+                <ListBoxItem Content="Item1" IsSelected="True" />
+                <ListBoxItem Content="Item2" />
+            </ListBox>
 
-                 <Image Grid.Row="0" Source="/Views/Societate transparent.png"/>
-                 <TextBlock FontSize="29"  Text="Societate ApS" Foreground="#FFFFFFFF" FontWeight="Bold" TextAlignment="Center" Grid.Row="2"/>
-                 <PasswordBox Password="" FontSize="13" BorderBrush="#FF333131" Grid.Row="3"/>
-                 <Grid Grid.Row="5">
-                     <Grid.ColumnDefinitions>
-                         <ColumnDefinition Width="10*"/>
-                         <ColumnDefinition Width="*"/>
-                         <ColumnDefinition Width="10*"/>
-                     </Grid.ColumnDefinitions>
-                     <Button FontSize="13" Content="Check In/Out" Grid.Column="0"/>
-                     <Button FontSize="13" Content="Register" Grid.Column="2"/>
-                 </Grid>
-             </Grid>
-         </Grid>
-     </Grid>
-   </Grid>
+            <Grid Grid.Column="2">
+                <Grid.RowDefinitions>
+
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="4*"/>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <Image Grid.Row="0" Source="/Views/Societate transparent.png"/>
+                    <TextBlock FontSize="29"  Text="Societate ApS" Foreground="#FFFFFFFF" FontWeight="Bold" TextAlignment="Center" Grid.Row="1"/>
+                    <PasswordBox Password="Password" FontSize="13" BorderBrush="#FF333131" Grid.Row="5"/>
+                    <TextBox Grid.Row="3" FontSize="13" TextWrapping="Wrap" Text="Username" BorderBrush="#FF333131"/>
+
+                    <Grid Grid.Row="7">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="10*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="10*"/>
+                        </Grid.ColumnDefinitions>
+                        <Button FontSize="13" Content="Check In/Out" Grid.Column="0"/>
+                        <Button FontSize="13" Content="Register" Grid.Column="2"/>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
 
 </Page>
