@@ -18,11 +18,10 @@ namespace KvalitetesLedelsesSystem.ViewModels
     {
 
         private List<User> users = new List<User>();
-        private List<Admin> admins = new List<Admin>();
-        private List<Contingency_Responsible> cons = new List<Contingency_Responsible>();
 
         public User Get(string userName)
         {
+
             User result = null;
 
             foreach (User u in users)
@@ -70,7 +69,7 @@ namespace KvalitetesLedelsesSystem.ViewModels
 
         public void Remove(string userName)
         {
-            User foundPerson = this.Get(userName);
+            User foundPerson = Get(userName);
 
             if (foundPerson != null)
                 users.Remove(foundPerson);

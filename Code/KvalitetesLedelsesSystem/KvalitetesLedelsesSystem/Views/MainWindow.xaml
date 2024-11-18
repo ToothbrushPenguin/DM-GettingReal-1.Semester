@@ -7,6 +7,8 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="720" Width="1280">
     <Grid Background="#FF1E1E1E" >
+        
 
+        <Frame Name="MainFrame" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Window>
