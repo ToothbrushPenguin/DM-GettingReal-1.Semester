@@ -18,14 +18,13 @@
         <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="10*"/>
-                <ColumnDefinition Width="10*"/>
+                <ColumnDefinition Width="16*"/>
+                <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
             <Button FontSize="20" FontWeight="Bold" Content="⮐" Background="#3F3F3F" Foreground="#FFFFFFFF" Grid.Column="0"/>
-            <Button FontSize="16" FontWeight="Bold" Content="Check In/Ud" Background="#3F3F3F" Foreground="#FFFFFFFF" Grid.Column="1"/>
-            <Button FontSize="16" FontWeight="Bold" Content="Contingency Plan" Background="#3F3F3F" Foreground="#FFFFFFFF" Grid.Column="2"/>
-            
+            <TextBlock Text="List Of All Users" TextDecorations="Underline"  Foreground="#FFFFFFFF" FontSize="24" FontWeight="Bold"  Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <Image Source="/Views/Societate transparent.png"  Grid.Column="2"/>
 
         </Grid>
 
