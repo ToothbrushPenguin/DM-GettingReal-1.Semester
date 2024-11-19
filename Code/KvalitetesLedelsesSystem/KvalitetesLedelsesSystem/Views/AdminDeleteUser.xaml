@@ -85,7 +85,7 @@
                         <ColumnDefinition Width="10*"/>
                     </Grid.ColumnDefinitions>
                     <Button FontSize="13" Content="Save User" Grid.Column="0"/>
-                    <Button FontSize="13" Content="Delete User" Grid.Column="2"/>
+                    <Button FontSize="13" Content="Delete User" Grid.Column="2" Click="Button_Click"/>
                 </Grid>
             </Grid>
         </Grid>

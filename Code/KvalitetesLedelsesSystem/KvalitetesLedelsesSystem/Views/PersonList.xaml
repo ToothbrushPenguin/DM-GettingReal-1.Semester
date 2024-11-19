@@ -28,7 +28,21 @@
 
         </Grid>
 
-        <Grid Background="#FF1E1E1E" Grid.Row="1">
+        <Grid Grid.Row="1">
+            <Grid.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <LinearGradientBrush.RelativeTransform>
+                        <TransformGroup>
+                            <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                            <SkewTransform CenterX="0.5" CenterY="0.5"/>
+                            <RotateTransform Angle="90" CenterX="0.5" CenterY="0.5"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </LinearGradientBrush.RelativeTransform>
+                    <GradientStop Color="#FF1E1E1E" Offset="1"/>
+                    <GradientStop Color="#FF797979"/>
+                </LinearGradientBrush>
+            </Grid.Background>
 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
@@ -51,7 +65,7 @@
 
                 <TextBox FontSize="17" TextWrapping="Wrap" Text="" Grid.Row="1"/>
 
-                <ListBox  FontSize="12"  Background="#FF373232" Foreground="#FFFFFFFF" BorderBrush="#FF373232" Grid.Row="3">
+                <ListBox  FontSize="12" Foreground="#FFFFFFFF" Grid.Row="3" Background="Transparent" BorderBrush="#7FABADB3">
                     <ListBoxItem Content="Item1" IsSelected="True" />
                     <ListBoxItem Content="Item2" />
                 </ListBox>
@@ -65,12 +79,12 @@
                     <Button FontSize="13" Content="Add User" Grid.Column="0"/>
                     <Button FontSize="13" Content="Edit User" Grid.Column="2"/>
                 </Grid>
-                
+
             </Grid>
 
-            
 
-            
+
+
         </Grid>
     </Grid>
 </Page>
