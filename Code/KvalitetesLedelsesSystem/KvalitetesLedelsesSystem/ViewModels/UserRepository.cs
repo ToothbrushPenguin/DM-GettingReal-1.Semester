@@ -1,6 +1,7 @@
 ﻿using KvalitetesLedelsesSystem.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,7 +22,31 @@ namespace KvalitetesLedelsesSystem.ViewModels
 
 
         //HUSK - implement constructor to load from file and methoth to save to file
+        public UserRepository() 
+        { 
+            using(StreamReader reader = new StreamReader("Users.txt"))
+            {
+                
+                string? line;
+                //Line struktur  Password;Username;Name;Company
+                string[] lineSplit;
+                line = reader.ReadLine();
+                while(line == null)
+                {
+                    lineSplit = line.Split(';');
+                    if (lineSplit[0] == null)
+                    {
+                        users.Add(new User(lineSplit[1], lineSplit[2], lineSplit[3]));
+                    }
+                    else if (lineSplit[0] != null)
+                    {
+                        users.Add(new Admin(lineSplit[0], lineSplit[1], lineSplit[2], lineSplit[3]));
+                    }    
 
+                    
+                }
+            }
+        }
 
         public User Get(string userName)
         {
