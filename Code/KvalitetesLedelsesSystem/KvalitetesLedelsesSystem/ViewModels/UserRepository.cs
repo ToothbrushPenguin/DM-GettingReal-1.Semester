@@ -26,14 +26,24 @@ namespace KvalitetesLedelsesSystem.ViewModels
         { 
             using(StreamReader reader = new StreamReader("Users.txt"))
             {
+                
                 string? line;
                 //Line struktur  Password;Username;Name;Company
                 string[] lineSplit;
                 line = reader.ReadLine();
-                while(line != null)
+                while(line == null)
                 {
                     lineSplit = line.Split(';');
+                    if (lineSplit[0] == null)
+                    {
+                        users.Add(new User(lineSplit[1], lineSplit[2], lineSplit[3]));
+                    }
+                    else if (lineSplit[0] != null)
+                    {
+                        users.Add(new Admin(lineSplit[0], lineSplit[1], lineSplit[2], lineSplit[3]));
+                    }    
 
+                    
                 }
             }
         }
