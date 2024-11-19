@@ -28,7 +28,8 @@ namespace KvalitetesLedelsesSystem
 
         private void ContingencyPlan(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Plan());
+            var mainWindow = Application.Current.MainWindow as MainWindow;
+            mainWindow?.NavigateTo_Plan();
         }
     }
 }
