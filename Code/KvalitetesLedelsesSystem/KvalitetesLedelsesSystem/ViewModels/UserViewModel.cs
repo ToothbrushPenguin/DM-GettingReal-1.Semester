@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace KvalitetesLedelsesSystem.ViewModels
 {
-    class UserViewModel
+    class UserViewModel : BaseViewModel
     {
         private User user;
         public string UserName { get; set; }

@@ -21,7 +21,10 @@ namespace KvalitetesLedelsesSystem.ViewModels
 
 
         //HUSK - implement constructor to load from file and methoth to save to file
-
+        public UserRepository() 
+        { 
+         
+        }
 
         public User Get(string userName)
         {

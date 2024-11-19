@@ -32,8 +32,8 @@ namespace KvalitetesLedelsesSystem.Views
 
         private void CheckinUd_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigating()
-            NavigationService.GoBack();
+
+            NavigationService.GoBack();  
             
         }
     }
