@@ -8,7 +8,7 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Plan">
 
-    <Grid Background="#3F3F3F">
+    <Grid Background="#FF1E1E1E">
         <Grid.RowDefinitions >
             <RowDefinition Height="*"/>
             <RowDefinition Height="12*"/>
@@ -16,12 +16,13 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="12*"/>
+            <ColumnDefinition Width="5*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Image Grid.Row="1" Grid.Column="1"  Source="/Views/Societate transparent.png"/>
-        <Button x:Name="GoBackButton" Grid.Row="0" Grid.Column="0" FontSize="20" FontWeight="Bold" Content="⮐" Background= "#FF1E1E1E" Foreground="#FFFFFFFF" Click="GoBack_click" />
-        <Border Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Background= "#FF1E1E1E" />
-        <Border Grid.Row="2" Grid.ColumnSpan ="3" Background="#FF1E1E1E" />
+        <Button x:Name="CheckIn_ud_Button" FontSize="16" FontWeight="Bold" Content="Check In/Ud" Background="#3F3F3F" Foreground="#FFFFFFFF" Grid.Column="0" Click="CheckinUd_Click"/>
+        <Button x:Name="ContingencyPlan_Button" FontSize="16" FontWeight="Bold" Content="Contingency Plan" Background="#3F3F3F" Foreground="#FFFFFFFF" Grid.Column="1"/>
+        <Button FontSize="20"  Content="⚙" Background="#3F3F3F" Foreground="#FFFFFFFF" Grid.Column="2"/>
+        <Border Grid.Row="2" Grid.ColumnSpan ="3" Background="#3F3F3F" />
     </Grid>
 </Page>
