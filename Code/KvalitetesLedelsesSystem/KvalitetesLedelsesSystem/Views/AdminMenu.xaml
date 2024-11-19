@@ -8,7 +8,116 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="AdminMenu">
 
-    <Grid>
-        
+    <Grid Background="#3F3F3F">
+        <Grid.RowDefinitions >
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="12*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="16*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Button FontSize="20" FontWeight="Bold" Content="⮐" Background="#3F3F3F" Foreground="#FFFFFFFF" Grid.Column="0"/>
+            <TextBlock Text="Admin Menu" Foreground="#FFFFFFFF" FontSize="24" FontWeight="Bold"  Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <Image Source="/Views/Societate transparent.png"  Grid.Column="2"/>
+
+        </Grid>
+
+        <Grid Background="#FF1E1E1E" Grid.Row="1">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="5*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Separator Grid.Row="0"/>
+                <Separator Grid.Row="2"/>
+                <Separator Grid.Row="4"/>
+                <Separator Grid.Row="6"/>
+
+                <Grid Grid.Row="5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="10*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Content="Change Logo" FontSize="13" FontWeight="Bold" Foreground="White" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+                    <Label Content="Change Foreground Color" FontSize="13" FontWeight="Bold" Foreground="White" Grid.Column="2" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+                    <Label Content="Change Background Color" FontSize="13" FontWeight="Bold" Foreground="White" Grid.Column="0" Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+                    <Label Content="Change Accent Color" FontSize="13" FontWeight="Bold" Foreground="White" Grid.Column="2" Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+                    <Button Content="Open File" FontSize="13" Grid.Column="0" Grid.Row="1"/>
+                    <Button Content="Select Foreground Color" FontSize="13" Grid.Column="2" Grid.Row="1"/>
+                    <Button Content="Select Background Color" FontSize="13" Grid.Column="0" Grid.Row="4"/>
+                    <Button Content="Select Accent Color" FontSize="13" Grid.Column="2" Grid.Row="4"/>
+
+                </Grid>
+
+                <Grid Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="10*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Content="User Settings" FontSize="13" FontWeight="Bold" Foreground="White" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+                    <Button Content="Open User Settings" FontSize="13" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3"/>
+                </Grid>
+
+
+                <Grid Grid.Row="3">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="10*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Content="Contingency Plan" FontSize="13" FontWeight="Bold" Foreground="White" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+                    <Label Content="Contingency Drawing" FontSize="13" FontWeight="Bold" Foreground="White" Grid.Column="2" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+                    <Button FontSize="13" Content="Open File" Grid.Column="0" Grid.Row="1"/>
+                    <Button FontSize="13" Content="Open File" Grid.Column="2" Grid.Row="1"/>
+                </Grid>
+
+            </Grid>
+
+
+
+
+        </Grid>
     </Grid>
 </Page>
