@@ -26,7 +26,7 @@ namespace KvalitetesLedelsesSystem.Views
             pdfWebViewer.Navigate(new Uri("about:blank"));
         
 
-            string relativePath = @"Test.pdf"; // Adjust this to the location relative to your output folder
+            string relativePath = @"..\..\..\Test.pdf"; // Adjust this to the location relative to your output folder
             string absolutePath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, relativePath);
 
             // Navigate to the PDF file
