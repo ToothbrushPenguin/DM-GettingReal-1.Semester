@@ -19,10 +19,26 @@
             <ColumnDefinition Width="5*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <Image Grid.Row="1" Grid.Column="1"  Source="/Views/Societate transparent.png"/>
+        
         <Button x:Name="CheckIn_ud_Button" FontSize="16" FontWeight="Bold" Content="Check In/Ud" Background="#3F3F3F" Foreground="#FFFFFFFF" Grid.Column="0" Click="CheckinUd_Click"/>
         <Button x:Name="ContingencyPlan_Button" FontSize="16" FontWeight="Bold" Content="Contingency Plan" Background="#3F3F3F" Foreground="#FFFFFFFF" Grid.Column="1"/>
         <Button FontSize="20"  Content="⚙" Background="#3F3F3F" Foreground="#FFFFFFFF" Grid.Column="2"/>
         <Border Grid.Row="2" Grid.ColumnSpan ="3" Background="#3F3F3F" />
+       
+        <Grid Grid.Row="1" Grid.ColumnSpan="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>   
+
+            <WebBrowser x:Name="pdfWebViewer" Grid.Column="3"></WebBrowser>
+
+            <Image Grid.Row="1" Grid.Column="1"  Source="/Views/Societate transparent.png"/>
+        </Grid>
+
     </Grid>
+   
 </Page>
