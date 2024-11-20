@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KvalitetesLedelsesSystem.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,11 @@ namespace KvalitetesLedelsesSystem.Views
     /// </summary>
     public partial class PersonList : Page
     {
+        private MainViewModel mvm = new MainViewModel();
         public PersonList()
         {
             InitializeComponent();
+            DataContext = mvm;
         }
     }
 }

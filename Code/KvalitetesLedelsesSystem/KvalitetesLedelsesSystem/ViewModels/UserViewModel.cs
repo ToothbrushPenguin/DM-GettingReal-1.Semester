@@ -13,6 +13,7 @@ namespace KvalitetesLedelsesSystem.ViewModels
         public string UserName { get; set; }
         public string Name { get; set; }
         public string Company { get; set; }
+        public string Password { get; set; }
 
         public UserViewModel(User user) 
         {
@@ -20,6 +21,21 @@ namespace KvalitetesLedelsesSystem.ViewModels
             UserName = user.UserName;
             Name = user.Name;
             Company = user.Company;
+
+
+
+            if (user is Admin a)
+            {
+                Password = a.Password;
+            }
+            else if (user is Contingency_Responsible c)
+            {
+                Password = c.Password;
+            }
+            else
+            {
+                Password = "";
+            }
         }
 
         public void Delete(UserRepository userRepository)

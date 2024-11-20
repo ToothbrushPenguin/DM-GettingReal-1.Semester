@@ -33,5 +33,12 @@ namespace KvalitetesLedelsesSystem
             var mainWindow = Application.Current.MainWindow as MainWindow;
             mainWindow?.NavigateTo_Plan();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var mainWindow = Application.Current.MainWindow as MainWindow;
+            mainWindow?.NavigateTo_PersonList();
+
+        }
     }
 }

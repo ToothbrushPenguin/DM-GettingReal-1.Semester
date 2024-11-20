@@ -1,4 +1,5 @@
-﻿using KvalitetesLedelsesSystem.Views;
+﻿using KvalitetesLedelsesSystem.ViewModels;
+using KvalitetesLedelsesSystem.Views;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -9,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+
 
 namespace KvalitetesLedelsesSystem
 {
@@ -23,15 +25,23 @@ namespace KvalitetesLedelsesSystem
 
         private AdminLogin _adminLogin;
 
+        private PersonList _personList;
 
+        
+
+        
+        private MainViewModel mvm = new MainViewModel();
 
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = mvm;
 
             _check = new Check();
             _plan = new Plan();
             _adminLogin = new AdminLogin();
+            _personList = new PersonList();
+            
 
             MainFrame.NavigationService.Navigate(_check);
         }
@@ -50,5 +60,16 @@ namespace KvalitetesLedelsesSystem
         {
             MainFrame.Navigate(_check);
         }
+
+        public void NavigateTo_PersonList()
+        {
+            MainFrame.Navigate(_personList);
+        }
+        public void NavigateTo_AdminCRUD() 
+        {
+            AdminCRUD _adminCRUD = new AdminCRUD();
+            _adminCRUD.ShowDialog();
+        }
+
     }
 }

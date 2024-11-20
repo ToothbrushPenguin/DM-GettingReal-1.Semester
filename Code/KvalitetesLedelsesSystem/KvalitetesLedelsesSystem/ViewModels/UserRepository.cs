@@ -24,28 +24,28 @@ namespace KvalitetesLedelsesSystem.ViewModels
         //HUSK - implement constructor to load from file and methoth to save to file
         public UserRepository() 
         { 
-            using(StreamReader reader = new StreamReader("Users.txt"))
-            {
+            //using(StreamReader reader = new StreamReader("Users.txt"))
+            //{
                 
-                string? line;
-                //Line struktur  Password;Username;Name;Company
-                string[] lineSplit;
-                line = reader.ReadLine();
-                while(line == null)
-                {
-                    lineSplit = line.Split(';');
-                    if (lineSplit[0] == null)
-                    {
-                        users.Add(new User(lineSplit[1], lineSplit[2], lineSplit[3]));
-                    }
-                    else if (lineSplit[0] != null)
-                    {
-                        users.Add(new Admin(lineSplit[0], lineSplit[1], lineSplit[2], lineSplit[3]));
-                    }    
+            //    string? line;
+            //    //Line struktur  Password;Username;Name;Company
+            //    string[] lineSplit;
+            //    line = reader.ReadLine();
+            //    while(line == null)
+            //    {
+            //        lineSplit = line.Split(';');
+            //        if (lineSplit[0] == null)
+            //        {
+            //            users.Add(new User(lineSplit[1], lineSplit[2], lineSplit[3]));
+            //        }
+            //        else if (lineSplit[0] != null)
+            //        {
+            //            users.Add(new Admin(lineSplit[0], lineSplit[1], lineSplit[2], lineSplit[3]));
+            //        }    
 
                     
-                }
-            }
+            //    }
+            //}
         }
 
         public User Get(string userName)
@@ -65,16 +65,14 @@ namespace KvalitetesLedelsesSystem.ViewModels
             return result;
         }
 
-        public User Add(string userName, string name, string company, UserType userType = UserType.User, string password = "1234")
+        public User Add(string userName, string name, string company, UserType userType, string password)
         {
             
             User result = null;
 
             if(Get(userName)==null)
             {
-                if (!string.IsNullOrEmpty(userName) &&
-                !string.IsNullOrEmpty(name) &&
-                !string.IsNullOrEmpty(company))
+                if (userName != null && name != null && company != null)
                 {
 
                     switch (userType)

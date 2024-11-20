@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KvalitetesLedelsesSystem.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,15 +16,18 @@ using System.Windows.Shapes;
 namespace KvalitetesLedelsesSystem.Views
 {
     /// <summary>
-    /// Interaction logic for AdminDeleteUser.xaml
+    /// Interaction logic for AdminCRUD.xaml
     /// </summary>
-    public partial class AdminDeleteUser : Window
+    public partial class AdminCRUD : Window
     {
-        public AdminDeleteUser()
+        private MainViewModel mvm = new MainViewModel();
+        public AdminCRUD()
         {
             InitializeComponent();
-        }
 
+            DataContext = mvm;
+        
+        }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             string personName = "temp"; // neeeds to be replased
@@ -38,5 +42,6 @@ namespace KvalitetesLedelsesSystem.Views
                 // Do something here
             }
         }
+
     }
 }

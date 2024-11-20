@@ -65,9 +65,15 @@
 
                 <TextBox FontSize="17" TextWrapping="Wrap" Text="" Grid.Row="1"/>
 
-                <ListBox  FontSize="12" Foreground="#FFFFFFFF" Grid.Row="3" Background="Transparent" BorderBrush="#7FABADB3">
-                    <ListBoxItem Content="Item1" IsSelected="True" />
-                    <ListBoxItem Content="Item2" />
+                <ListBox ItemsSource="{Binding userVMs}" SelectedItem="{Binding SelectedUserVM}"  FontSize="12" Foreground="#FFFFFFFF" Grid.Row="3" Background="Transparent" BorderBrush="#7FABADB3">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content="{Binding UserName}"/>
+                               
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
                 </ListBox>
 
                 <Grid Grid.Row="5">
@@ -76,7 +82,7 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="10*"/>
                     </Grid.ColumnDefinitions>
-                    <Button FontSize="13" Content="Add User" Grid.Column="0"/>
+                    <Button Command="{Binding AddUserCommand}" CommandParameter="{Binding}" FontSize="13" Content="Add User" Grid.Column="0"/>
                     <Button FontSize="13" Content="Edit User" Grid.Column="2"/>
                 </Grid>
 
