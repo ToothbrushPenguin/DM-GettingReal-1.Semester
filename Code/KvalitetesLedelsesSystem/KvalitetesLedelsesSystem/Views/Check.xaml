@@ -75,7 +75,7 @@
                     </Grid>
                 </Grid>
             </Grid>
-            <Button Grid.Column="3" Content="Button" HorizontalAlignment="Left" Margin="67,79,0,0" VerticalAlignment="Top" Click="Button_Click"/>
+            <Button Grid.Column="2" Content="Temp button DON'T remove" HorizontalAlignment="Left" Margin="230,33,0,0" VerticalAlignment="Top" Click="Button_Click" Height="56" Width="352" Grid.ColumnSpan="2"/>
         </Grid>
     </Grid>
 
