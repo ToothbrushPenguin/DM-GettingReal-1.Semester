@@ -23,6 +23,14 @@ namespace KvalitetesLedelsesSystem.Views
         public Plan()
         {
             InitializeComponent();
+            pdfWebViewer.Navigate(new Uri("about:blank"));
+        
+
+            string relativePath = @"..\..\..\Test.pdf"; //Hopper 3 steps ud af bin
+            string absolutePath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, relativePath);//combiner path til bin med relative path
+
+            // Navigate to the PDF file
+            pdfWebViewer.Navigate(absolutePath);
         }
 
         private void GoBack_click(object sender, RoutedEventArgs e)
