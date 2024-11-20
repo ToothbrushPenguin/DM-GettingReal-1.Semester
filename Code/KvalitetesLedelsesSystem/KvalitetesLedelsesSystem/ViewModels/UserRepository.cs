@@ -8,14 +8,14 @@ using System.Threading.Tasks;
 
 namespace KvalitetesLedelsesSystem.ViewModels
 {
-    enum UserType
+    public enum UserType
     {
         User,
         Admin,
         Contingency_Responsible
     }
 
-    class UserRepository
+    public class UserRepository
     {
 
         private List<User> users = new List<User>();

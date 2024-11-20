@@ -11,15 +11,28 @@ using KvalitetesLedelsesSystem.ViewModels.Commands;
 
 namespace KvalitetesLedelsesSystem.ViewModels
 {
-    class MainViewModel : BaseViewModel
+    public class MainViewModel : INotifyPropertyChanged
     {
         private UserRepository userRepository = new UserRepository();
         public ObservableCollection<UserViewModel> userVMs { get; set; } = new ObservableCollection<UserViewModel>();
 
+
+
         public ICommand AddUserCommand {  get; } = new AddUserCommand();
+        public ICommand DeleteUserCommand { get; } = new DeleteUserCommand();
+
+
 
         private UserViewModel _selectedUserVM;
-        public UserViewModel SelectedUserVM { get; set; }
+        public UserViewModel SelectedUserVM
+        {
+            get => _selectedUserVM;
+            set
+            {
+                _selectedUserVM = value; 
+                //OnPropertyChanged(nameof(SelectedUserVM));
+            }
+        }
 
 
         public MainViewModel() 
@@ -40,9 +53,25 @@ namespace KvalitetesLedelsesSystem.ViewModels
 
         }
 
-       
-      
-        
+        public void RemoveUser() 
+        {
+            if (SelectedUserVM != null)
+            {
+                SelectedUserVM.Delete(userRepository);
+                userVMs.Remove(SelectedUserVM);
+            }
+        }
+
+
+
+        public event PropertyChangedEventHandler? PropertyChanged;
+        public void OnPropertyChanged(string propertyName)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
 
     }
 }

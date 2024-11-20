@@ -67,7 +67,7 @@ namespace KvalitetesLedelsesSystem
         }
         public void NavigateTo_AdminCRUD() 
         {
-            AdminCRUD _adminCRUD = new AdminCRUD();
+            AdminCRUD _adminCRUD = new AdminCRUD(mvm);
             _adminCRUD.ShowDialog();
         }
 

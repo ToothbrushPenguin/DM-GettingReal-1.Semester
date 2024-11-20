@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace KvalitetesLedelsesSystem.Models
 {
-    class User
+    public class User
     {
         private static int idCount = 0;
 
