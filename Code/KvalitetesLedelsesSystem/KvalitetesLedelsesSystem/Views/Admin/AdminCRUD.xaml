@@ -85,7 +85,9 @@
                         <ColumnDefinition Width="10*"/>
                     </Grid.ColumnDefinitions>
                     <Button FontSize="13" Content="Save User" Grid.Column="0"/>
-                    <Button FontSize="13" Content="Delete User" Grid.Column="2" Command="{Binding DeleteUserCommand}" CommandParameter="{Binding}"/>
+                    <Button FontSize="13" Content="Delete User" Grid.Column="2" 
+                        Command="{Binding DeleteUserCommand}" 
+                        CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"/>
                 </Grid>
             </Grid>
         </Grid>

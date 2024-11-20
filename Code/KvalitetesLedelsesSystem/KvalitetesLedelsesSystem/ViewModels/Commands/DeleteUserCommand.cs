@@ -8,7 +8,7 @@ using System.Windows.Input;
 
 namespace KvalitetesLedelsesSystem.ViewModels.Commands
 {
-    internal class DeleteUserCommand : ICommand
+    public class DeleteUserCommand : ICommand
     {
         public event EventHandler? CanExecuteChanged
         {
@@ -20,7 +20,8 @@ namespace KvalitetesLedelsesSystem.ViewModels.Commands
         {
             bool result = true;
 
-            if (parameter is MainViewModel mvm)
+            if (parameter is Window window &&
+                window.DataContext is MainViewModel mvm)
             {
                 if (mvm.SelectedUserVM == null)
                 {
@@ -32,21 +33,21 @@ namespace KvalitetesLedelsesSystem.ViewModels.Commands
 
         public void Execute(object? parameter)
         {
-            if (parameter is MainViewModel mvm)
+            if (parameter is Window window &&
+                window.DataContext is MainViewModel mvm)
             {
                 string personName = mvm.SelectedUserVM.Name;
                 string userName = mvm.SelectedUserVM.UserName;
                 if (MessageBox.Show(
-                        messageBoxText: $"Are you shure you want to delete {userName} : {personName}?",
+                        messageBoxText: $"Are you sure you want to delete {userName} : {personName}?",
                         caption: "Delete User?",
                         button: MessageBoxButton.YesNo,
                         icon: MessageBoxImage.Warning,
                         defaultResult: MessageBoxResult.No) == MessageBoxResult.Yes)
                 {
                     mvm.RemoveUser();
-                    
+                    window.Close();
                 }
-                
             }
         }
     }
