@@ -44,6 +44,7 @@ namespace KvalitetesLedelsesSystem.ViewModels.Commands
                         defaultResult: MessageBoxResult.No) == MessageBoxResult.Yes)
                 {
                     mvm.RemoveUser();
+                    
                 }
                 
             }

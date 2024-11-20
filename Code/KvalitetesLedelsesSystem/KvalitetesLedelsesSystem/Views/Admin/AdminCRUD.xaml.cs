@@ -21,11 +21,11 @@ namespace KvalitetesLedelsesSystem.Views
     public partial class AdminCRUD : Window
     {
         
-        public AdminCRUD(MainViewModel mainViewModel)
+        public AdminCRUD()
         {
             InitializeComponent();
 
-            DataContext = mainViewModel;
+            
         
         }
         

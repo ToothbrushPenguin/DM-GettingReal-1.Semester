@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KvalitetesLedelsesSystem.Views;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,8 +25,9 @@ namespace KvalitetesLedelsesSystem.ViewModels.Commands
             {
                 mvm.AddUser();
 
-                var mainWindow = Application.Current.MainWindow as MainWindow;
-                mainWindow?.NavigateTo_AdminCRUD();
+                AdminCRUD dialog = new AdminCRUD() { DataContext = mvm};
+                dialog.ShowDialog();
+                
             }
         }
     }

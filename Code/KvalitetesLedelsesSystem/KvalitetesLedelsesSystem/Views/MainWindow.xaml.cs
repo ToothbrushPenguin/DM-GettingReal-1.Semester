@@ -65,11 +65,6 @@ namespace KvalitetesLedelsesSystem
         {
             MainFrame.Navigate(_personList);
         }
-        public void NavigateTo_AdminCRUD() 
-        {
-            AdminCRUD _adminCRUD = new AdminCRUD(mvm);
-            _adminCRUD.ShowDialog();
-        }
 
     }
 }
