@@ -15,18 +15,22 @@ user -> CIC ++: Execute()
     
     CIC -> MVM ++: UserCheckIn(UserName)      
 
-        MVM -> UVM ++: UserCheckIn(UserName)
+        MVM -> UVM ++: CheckUser(UserName)
 
-            UVM -> UR ++: UserCheckIn(UserName)
+            UVM -> UR ++: CheckUser(UserName)
 
-                UR ->  FH ++: WriteToFile(User:User)
+            return "User:User"
+
+        return "User:User"
+
+        MVM ->  UVM ++: UserCheckIn(User:User)
+            UVM -> UR ++: UserCheckIn(User:User)
+                UR -> FH ++: WriteToFile(User:User)
 
                 return "log file updated"
 
             return "user checked in"
-    
-        return "user checked in"
 
+         return "user checked in"
     return "user checked in"
-
-return "You have now checked in"
+return "you have been checked in"
