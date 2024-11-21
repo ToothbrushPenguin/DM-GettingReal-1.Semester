@@ -1,0 +1,32 @@
+@startuml test
+skinparam style strictuml
+skinparam sequenceMessageAlign center
+title Check In
+
+Actor "User/Check" as user
+
+participant ":CheckInCommand" as CIC
+participant ":MainViewModel" as MVM
+participant ":UserViewModel" as UVM
+participant ":UserRepository" as UR
+participant ":FileHandler" as FH
+
+user -> CIC ++: Execute()
+    
+    CIC -> MVM ++: UserCheckIn(UserName)      
+
+        MVM -> UVM ++: UserCheckIn(UserName)
+
+            UVM -> UR ++: UserCheckIn(UserName)
+
+                UR ->  FH ++: WriteToFile(User:User)
+
+                return "log file updated"
+
+            return "user checked in"
+    
+        return "user checked in"
+
+    return "user checked in"
+
+return "You have now checked in"
