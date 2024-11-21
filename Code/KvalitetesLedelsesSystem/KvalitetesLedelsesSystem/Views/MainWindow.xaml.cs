@@ -27,6 +27,8 @@ namespace KvalitetesLedelsesSystem
 
         private PersonList _personList;
 
+        private AdminMenu _adminMenu;
+
         
 
         
@@ -41,6 +43,7 @@ namespace KvalitetesLedelsesSystem
             _plan = new Plan();
             _adminLogin = new AdminLogin();
             _personList = new PersonList();
+            _adminMenu = new AdminMenu();
             
 
             MainFrame.NavigationService.Navigate(_check);
@@ -64,6 +67,11 @@ namespace KvalitetesLedelsesSystem
         public void NavigateTo_PersonList()
         {
             MainFrame.Navigate(_personList);
+        }
+
+        public void NavigateTo_AdminMenu()
+        {
+            MainFrame.Navigate(_adminMenu);
         }
 
     }
