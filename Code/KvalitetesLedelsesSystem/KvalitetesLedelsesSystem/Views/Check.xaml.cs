@@ -1,4 +1,5 @@
-﻿using KvalitetesLedelsesSystem.Views;
+﻿using KvalitetesLedelsesSystem.ViewModels;
+using KvalitetesLedelsesSystem.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,10 +22,11 @@ namespace KvalitetesLedelsesSystem
     /// </summary>
     public partial class Check : Page
     {
+        MainViewModel mvm = new MainViewModel();
         public Check()
         {
             InitializeComponent();
-
+            DataContext = mvm;
           
         }
 
@@ -40,5 +42,7 @@ namespace KvalitetesLedelsesSystem
             mainWindow?.NavigateTo_PersonList();
 
         }
+
+       
     }
 }
