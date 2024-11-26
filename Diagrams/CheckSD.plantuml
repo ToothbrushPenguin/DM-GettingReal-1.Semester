@@ -1,7 +1,7 @@
 @startuml test
 skinparam style strictuml
 skinparam sequenceMessageAlign center
-title Check In
+title Check
 
 Actor "User/Check" as user
 
@@ -9,28 +9,21 @@ participant ":CheckInCommand" as CIC
 participant ":MainViewModel" as MVM
 participant ":UserViewModel" as UVM
 participant ":UserRepository" as UR
-participant ":FileHandler" as FH
 
 user -> CIC ++: Execute()
     
-    CIC -> MVM ++: UserCheckIn(UserName)      
+    CIC -> MVM ++: UserCheck(UserName)      
 
-        MVM -> UVM ++: CheckUser(UserName)
+        MVM -> UVM ++: UserName == UserviewModel.UserName
 
-            UVM -> UR ++: CheckUser(UserName)
 
-            return "User:User"
+           
+        return Return True
 
-        return "User:User"
-
-        MVM ->  UVM ++: UserCheckIn(User:User)
-            UVM -> UR ++: UserCheckIn(User:User)
-                UR -> FH ++: WriteToFile(User:User)
-
-                return "log file updated"
-
-            return "user checked in"
-
-         return "user checked in"
-    return "user checked in"
-return "you have been checked in"
+    MVM -> UVM ++: ChangeCheck(userRepository:UserRepository)
+    UVM -> UR ++: ChangeCheck(userRepository:UserRepository)
+    UR -> UR : UpdateFile()
+    return
+return
+return
+return
