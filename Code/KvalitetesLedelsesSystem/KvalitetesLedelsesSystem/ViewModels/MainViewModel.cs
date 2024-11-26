@@ -62,6 +62,13 @@ namespace KvalitetesLedelsesSystem.ViewModels
             }
         }
 
+        public void UpdateUser()
+        {
+            if (SelectedUserVM != null)
+            {
+                SelectedUserVM.Update();
+            }
+        }
 
 
         public event PropertyChangedEventHandler? PropertyChanged;

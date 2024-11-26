@@ -1,0 +1,30 @@
+@startuml test
+skinparam style strictuml
+skinparam sequenceMessageAlign center
+title Check Out
+
+Actor "User/AdminCRUD" as user
+
+participant ":UpdateUserCommand" as COC
+participant ":MainViewModel" as MVM
+participant ":UserViewModel" as UVM
+participant ":UserRepository" as UR
+participant ":FileHandler" as FH
+
+user -> COC ++: Execute()
+    
+    COC -> MVM ++: UpdateUser(name, userName, company, usertype)     
+
+        MVM -> UVM ++: Update(name, userName, company, usertype)
+
+            UVM -> UR ++: Update(name, userName, company, usertype)
+                
+                    UR -> FH ++: WriteToFile(users:List<User>, path:string)
+
+                    return 
+                
+            return "UserVMUser:User"
+
+        return "SelectedUser = UserVM:UserViewModel"
+    return 
+return 

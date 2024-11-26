@@ -43,6 +43,8 @@ namespace KvalitetesLedelsesSystem.ViewModels
             userRepository.Remove(user.UserName);
         }
 
+        public void Update();
+
 
     }
 }
