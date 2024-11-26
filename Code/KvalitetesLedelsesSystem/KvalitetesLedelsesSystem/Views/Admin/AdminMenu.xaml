@@ -6,9 +6,11 @@
       xmlns:local="clr-namespace:KvalitetesLedelsesSystem.Views"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
+      xmlns:hw ="http://schemas.hpod9.com/haley/wpf"
+      xmlns:hm="http://schemas.hpod9.com/haley/mvvm"
       Title="AdminMenu">
 
-    <Grid Background="#3F3F3F">
+    <Grid Background="{Binding Path=colourVMs[0].SelectedColour}">
         <Grid.RowDefinitions >
             <RowDefinition Height="*"/>
             <RowDefinition Height="12*"/>
@@ -22,13 +24,13 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <Button FontSize="20" FontWeight="Bold" Content="⮐" Background="#3F3F3F" Foreground="#FFFFFFFF" Grid.Column="0"/>
+            <Button FontSize="20" FontWeight="Bold" Content="⮐" Background="{Binding Path=colourVMs[0].SelectedColour}" Foreground="#FFFFFFFF" Grid.Column="0"/>
             <TextBlock Text="Admin Menu" Foreground="#FFFFFFFF" FontSize="24" FontWeight="Bold"  Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
             <Image Source="/Views/Societate transparent.png"  Grid.Column="2"/>
 
         </Grid>
 
-        <Grid Background="#FF1E1E1E" Grid.Row="1">
+        <Grid Background="{Binding Path=colourVMs[0].SelectedColour}" Grid.Row="1">
 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
@@ -71,10 +73,10 @@
                     <Label Content="Change Foreground Color" FontSize="13" FontWeight="Bold" Foreground="White" Grid.Column="2" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
                     <Label Content="Change Background Color" FontSize="13" FontWeight="Bold" Foreground="White" Grid.Column="0" Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
                     <Label Content="Change Accent Color" FontSize="13" FontWeight="Bold" Foreground="White" Grid.Column="2" Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
-                    <Button Content="Open File" FontSize="13" Grid.Column="0" Grid.Row="1" Click="Button_Click"/>
-                    <Button Content="Select Foreground Color" FontSize="13" Grid.Column="2" Grid.Row="1"/>
-                    <Button Content="Select Background Color" FontSize="13" Grid.Column="0" Grid.Row="4"/>
-                    <Button Content="Select Accent Color" FontSize="13" Grid.Column="2" Grid.Row="4"/>
+                    <Button Command="{Binding Path=UpdatePath}" CommandParameter="Logo" Content="Open File" FontSize="13" Grid.Column="0" Grid.Row="1"/>
+                    <Button x:Name="Foreground" Content="Select Foreground Color" FontSize="13" Grid.Column="2" Grid.Row="1" HorizontalAlignment="Left" Width="190" Command="{Binding Path=UpdateColor}" CommandParameter="Foreground"/>
+                    <Button x:Name="BackgroundColour" Content="Select Background Color" FontSize="13" Grid.Column="0" Grid.Row="4" Command="{Binding Path=UpdateColor}" CommandParameter="Background" />
+                    <Button x:Name="Accent" Content="Select Accent Color" FontSize="13" Grid.Column="2" Grid.Row="4" Command="{Binding Path=UpdateColor}" CommandParameter="Accent"/>
 
                 </Grid>
 
@@ -109,8 +111,8 @@
 
                     <Label Content="Contingency Plan" FontSize="13" FontWeight="Bold" Foreground="White" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
                     <Label Content="Contingency Drawing" FontSize="13" FontWeight="Bold" Foreground="White" Grid.Column="2" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
-                    <Button FontSize="13" Content="Open File" Grid.Column="0" Grid.Row="1"/>
-                    <Button FontSize="13" Content="Open File" Grid.Column="2" Grid.Row="1"/>
+                    <Button Command="{Binding Path=UpdatePath}" CommandParameter="ContingencyPlan" x:Name ="ContingencyPlanBtn" FontSize="13" Content="Open File" Grid.Column="0" Grid.Row="1"/>
+                    <Button Command="{Binding Path=UpdatePath}" CommandParameter="ContingencyDrawing" x:Name="ContingencyDrawingbtn" FontSize="13" Content="Open File" Grid.Column="2" Grid.Row="1" />
                 </Grid>
 
             </Grid>

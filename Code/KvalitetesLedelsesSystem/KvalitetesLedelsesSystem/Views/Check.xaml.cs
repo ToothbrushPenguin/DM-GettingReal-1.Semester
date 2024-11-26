@@ -13,6 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using KvalitetesLedelsesSystem.ViewModels;
+using KvalitetesLedelsesSystem.Models;
 
 namespace KvalitetesLedelsesSystem
 {
@@ -21,11 +23,26 @@ namespace KvalitetesLedelsesSystem
     /// </summary>
     public partial class Check : Page
     {
+        
+       public  MainViewModel mvm = new MainViewModel();
+        
         public Check()
         {
+            
             InitializeComponent();
+            DataContext = mvm;
 
-          
+           /* Logo.DataContext = mvm.imageVMs[1];
+            Logo.SetBinding(Image.SourceProperty, new Binding());
+
+            Binding bindingLabel = new Binding("imageVMs[1].selectedImage;");
+            {
+                bindingLabel.Source = mvm;
+                bindingLabel.UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged;
+            }
+         
+            Label1.SetBinding(Label.ContentProperty, bindingLabel);
+           */
         }
 
         private void ContingencyPlan(object sender, RoutedEventArgs e)

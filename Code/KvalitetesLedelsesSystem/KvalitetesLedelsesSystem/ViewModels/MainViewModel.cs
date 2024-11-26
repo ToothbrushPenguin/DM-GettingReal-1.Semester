@@ -16,11 +16,15 @@ namespace KvalitetesLedelsesSystem.ViewModels
         private UserRepository userRepository = new UserRepository();
         public ObservableCollection<UserViewModel> userVMs { get; set; } = new ObservableCollection<UserViewModel>();
 
+        public static ObservableCollection<ColourViewModel> colourVMs { get; set; } = new ObservableCollection<ColourViewModel>();
+        public static ObservableCollection<ImageViewModel> imageVMs { get; set; } = new ObservableCollection<ImageViewModel>();
+       
 
 
         public ICommand AddUserCommand {  get; } = new AddUserCommand();
         public ICommand DeleteUserCommand { get; } = new DeleteUserCommand();
-
+        public ICommand UpdatePath { get; } = new UpdatePath();
+        public ICommand UpdateColor {  get; } = new UpdateColor();
 
 
         private UserViewModel _selectedUserVM;
@@ -30,7 +34,7 @@ namespace KvalitetesLedelsesSystem.ViewModels
             set
             {
                 _selectedUserVM = value; 
-                //OnPropertyChanged(nameof(SelectedUserVM));
+               // OnPropertyChanged(nameof(SelectedUserVM));
             }
         }
 
@@ -42,6 +46,22 @@ namespace KvalitetesLedelsesSystem.ViewModels
             {
                 userVMs.Add(new UserViewModel(user));
             }
+
+            //First add is Background Color
+            //Second add is Foreground Color
+            //Thrid add is Accent Color
+            colourVMs.Add(new ColourViewModel(new Colour("#3F3F3F")));
+            colourVMs.Add(new ColourViewModel(new Colour("#FFFFFFFF")));
+            colourVMs.Add(new ColourViewModel(new Colour("#FF373232")));
+
+
+            //First add is LogoDrawing
+            //Second add is ContingencyDrawing
+            //Third add is ContingencyPlan
+            imageVMs.Add(new ImageViewModel(new ImageTod("/Views/Societate transparent.png")));
+            imageVMs.Add(new ImageViewModel(new ImageTod("/Views/Societate transparent.png")));
+            imageVMs.Add(new ImageViewModel(new ImageTod(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\Test.pdf"//combiner path til bin med relative path
+            ))));      // Adding Colours and Images
         }
 
         public void AddUser()
