@@ -63,14 +63,14 @@
 
                     <Image Grid.Row="0" Source="/Views/Societate transparent.png"/>
                     <TextBlock FontSize="29"  Text="Societate ApS" Foreground="#FFFFFFFF" FontWeight="Bold" TextAlignment="Center" Grid.Row="2"/>
-                    <PasswordBox Password="passw0rd" FontSize="13" BorderBrush="#FF333131" Grid.Row="3"/>
+                    <TextBox x:Name="UserNameBox" Text="{Binding MainviewModel.UserName}" FontSize="13" Background="White" TextChanged="UserNameTextBox_TextChanged" GotFocus="UserNameTextBox_GotFocus" LostFocus="UserNameTextBox_LostFocus" Grid.Row="3"/>
                     <Grid Grid.Row="5">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="10*"/>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="10*"/>
                         </Grid.ColumnDefinitions>
-                        <Button FontSize="13" Content="Check In/Out" Grid.Column="0"/>
+                        <Button FontSize="13" Content="Check In/Out" Grid.Column="0" Command="{Binding CheckInOutCommand}" CommandParameter="{Binding}"/>
                         <Button FontSize="13" Content="Register" Grid.Column="2"/>
                     </Grid>
                 </Grid>

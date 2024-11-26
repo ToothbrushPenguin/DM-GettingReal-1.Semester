@@ -21,7 +21,17 @@ namespace KvalitetesLedelsesSystem.ViewModels
         public ICommand AddUserCommand {  get; } = new AddUserCommand();
         public ICommand DeleteUserCommand { get; } = new DeleteUserCommand();
 
-        string UserName { get; set; }
+        public ICommand CheckInOutCommand { get; } = new CheckInOutCommand();
+
+        private static string username = "Username";
+        public string UserName { 
+            get => username;
+            set
+            {
+                username = value;
+                OnPropertyChanged(nameof(UserName));
+            }
+        }
 
 
 
