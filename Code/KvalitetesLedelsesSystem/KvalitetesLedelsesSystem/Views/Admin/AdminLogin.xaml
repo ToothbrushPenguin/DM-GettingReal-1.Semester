@@ -50,7 +50,7 @@
                     <RowDefinition Height="2*"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <Grid Grid.Row="1">
+                <Grid Height="309" Margin="0,154,0,0" Grid.RowSpan="3" VerticalAlignment="Top">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="4*"/>
                         <RowDefinition Height="2*"/>
@@ -69,12 +69,13 @@
 
                     <Grid Grid.Row="7">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="10*"/>
                             <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="10*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="*"/>
+                            
+                            
                         </Grid.ColumnDefinitions>
-                        <Button FontSize="13" Content="Check In/Out" Grid.Column="0" Click="Button_Click_1"/>
-                        <Button FontSize="13" Content="Register" Grid.Column="2"/>
+                        <Button FontSize="13" Content="Login" Grid.Column="1" Click="Button_Click_1"/>
                     </Grid>
                 </Grid>
             </Grid>
