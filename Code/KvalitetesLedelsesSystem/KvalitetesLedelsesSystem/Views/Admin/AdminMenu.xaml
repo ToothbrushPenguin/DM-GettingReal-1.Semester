@@ -26,7 +26,7 @@
 
             <Button FontSize="20" FontWeight="Bold" Content="⮐" Background="{Binding Path=colourVMs[0].SelectedColour}" Foreground="#FFFFFFFF" Grid.Column="0"/>
             <TextBlock Text="Admin Menu" Foreground="#FFFFFFFF" FontSize="24" FontWeight="Bold"  Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-            <Image Source="/Views/Societate transparent.png"  Grid.Column="2"/>
+            <Image Source="{Binding imageVMs[0].SelectedImage}"  Grid.Column="2"/>
 
         </Grid>
 

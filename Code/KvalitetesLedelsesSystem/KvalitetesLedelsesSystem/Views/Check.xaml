@@ -62,7 +62,7 @@
                     </Grid.RowDefinitions>
 
                     <Image x:Name="Logo"  Grid.Row="0" Source= "{Binding imageVMs[0].SelectedImage}"/>
-                    <TextBlock FontSize="29"  Text="Societate ApS" Foreground="#FFFFFFFF" FontWeight="Bold" TextAlignment="Center" Grid.Row="2"/>
+                    <TextBlock FontSize="29"  Text="Societate ApS" Foreground="#FFFFFF" FontWeight="Bold" TextAlignment="Center" Grid.Row="2"/>
                     <PasswordBox Password="passw0rd" FontSize="13" BorderBrush="#FF333131" Grid.Row="3"/>
                     <Grid Grid.Row="5">
                         <Grid.ColumnDefinitions>

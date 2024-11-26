@@ -28,9 +28,6 @@ namespace KvalitetesLedelsesSystem.Views
             InitializeComponent();
             DataContext = mvm;
             pdfWebViewer.Navigate(new Uri("about:blank"));
-        
-
-            
             // Navigate to the PDF file
             pdfWebViewer.Navigate(MainViewModel.imageVMs[2].SelectedImage);
 

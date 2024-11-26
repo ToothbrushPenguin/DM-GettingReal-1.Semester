@@ -9,6 +9,7 @@ using Haley.MVVM;
 using Haley.WPF;
 using System.Windows.Input;
 using Haley.WPF.Controls;
+using System.IO;
 
 
 namespace KvalitetesLedelsesSystem.ViewModels.Commands
@@ -50,6 +51,12 @@ namespace KvalitetesLedelsesSystem.ViewModels.Commands
                         MainViewModel.colourVMs[2].SelectedColour = newColor;
                     }
                 }
+            }
+            using(StreamWriter writer = new StreamWriter("Colors.txt",false))
+            {
+                writer.WriteLine(MainViewModel.colourVMs[0].SelectedColour);
+                writer.WriteLine(MainViewModel.colourVMs[1].SelectedColour);
+                writer.WriteLine(MainViewModel.colourVMs[2].SelectedColour);
             }
         }
     }

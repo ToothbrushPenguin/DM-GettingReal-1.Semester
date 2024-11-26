@@ -1,6 +1,7 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -51,10 +52,24 @@ namespace KvalitetesLedelsesSystem.ViewModels.Commands
                     else if (ID =="ContingencyPlan")
                     {
                         newpath = openFileDialog.FileName;
-                        //newpath.Replace(@"\", "/"); 
-                        MainViewModel.imageVMs[2].SelectedImage = newpath;
+                        string[] check = newpath.Split('.');
+                        if (check[1] !="pdf")
+                        {
+                          MessageBox.Show("Please only select pdf files","Error: Wrong file type",MessageBoxButton.OK, MessageBoxImage.Error);  
+                        }
+                        else if(check[1] == "pdf") 
+                        {
+                            //newpath.Replace(@"\", "/"); 
+                            MainViewModel.imageVMs[2].SelectedImage = newpath;
+                        }
                     }
-
+                    
+                    using(StreamWriter writer = new StreamWriter("Images.txt",false))
+                    {
+                        writer.WriteLine(MainViewModel.imageVMs[0].SelectedImage);
+                        writer.WriteLine(MainViewModel.imageVMs[1].SelectedImage);
+                        writer.WriteLine(MainViewModel.imageVMs[2].SelectedImage);
+                    }
 
 
 

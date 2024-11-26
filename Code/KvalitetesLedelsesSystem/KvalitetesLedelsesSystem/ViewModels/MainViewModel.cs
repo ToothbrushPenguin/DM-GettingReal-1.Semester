@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -47,21 +48,67 @@ namespace KvalitetesLedelsesSystem.ViewModels
                 userVMs.Add(new UserViewModel(user));
             }
 
-            //First add is Background Color
-            //Second add is Foreground Color
-            //Thrid add is Accent Color
-            colourVMs.Add(new ColourViewModel(new Colour("#3F3F3F")));
-            colourVMs.Add(new ColourViewModel(new Colour("#FFFFFFFF")));
-            colourVMs.Add(new ColourViewModel(new Colour("#FF373232")));
 
+            if (!File.Exists("Colors.txt")|| !File.Exists("Images.txt"))
+            {
+                if(!File.Exists("Colors.txt"))
+                {
+                    //File.Create("Colors.txt");
+                    using(StreamWriter writer = new StreamWriter("Colors.txt"))
+                    {
+                        //First add is Background Color
+                        //Second add is Foreground Color
+                        //Thrid add is Accent Color
+                        writer.WriteLine("#3F3F3F");
+                        writer.WriteLine("#FFFFFFFF");
+                        writer.WriteLine("#FF373232");
+                    }
+                }
+                if(!File.Exists("Images.txt"))
+                {
+                    //File.Create("Images.txt");
+                    using (StreamWriter writer = new StreamWriter("Images.txt"))
+                    {
+                        //First add is LogoDrawing
+                        //Second add is ContingencyDrawing
+                        //Third add is ContingencyPlan
+                        writer.WriteLine("/Views/Societate transparent.png");
+                        writer.WriteLine("/Views/Societate transparent.png");
+                        writer.WriteLine(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\Test.pdf"));
+                    }
+                }
 
-            //First add is LogoDrawing
-            //Second add is ContingencyDrawing
-            //Third add is ContingencyPlan
-            imageVMs.Add(new ImageViewModel(new ImageTod("/Views/Societate transparent.png")));
-            imageVMs.Add(new ImageViewModel(new ImageTod("/Views/Societate transparent.png")));
-            imageVMs.Add(new ImageViewModel(new ImageTod(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\Test.pdf"//combiner path til bin med relative path
-            ))));      // Adding Colours and Images
+            }
+            if(File.Exists("Colors.txt") && File.Exists("Images.txt"))
+            {
+                string line;
+                int i = 0;
+
+                using (StreamReader reader = new StreamReader("Images.txt"))
+                {
+                    line = reader.ReadLine();
+                    while (line != null)
+                    {
+                        imageVMs.Add(new ImageViewModel(new ImageTod(line)));
+                        i++;
+                        line = reader.ReadLine();
+                    }
+                   
+                }
+                i = 0; // reset index for new txt file
+                using (StreamReader reader = new StreamReader("Colors.txt"))
+                {
+                    line = reader.ReadLine();
+                    while (line != null)
+                    {
+                        colourVMs.Add(new ColourViewModel(new Colour(line)));
+                        i++;
+                        line = reader.ReadLine();
+                    }
+                }
+
+            }
+
         }
 
         public void AddUser()
