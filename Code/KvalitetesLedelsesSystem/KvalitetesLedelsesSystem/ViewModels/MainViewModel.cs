@@ -21,6 +21,8 @@ namespace KvalitetesLedelsesSystem.ViewModels
         public ICommand AddUserCommand {  get; } = new AddUserCommand();
         public ICommand DeleteUserCommand { get; } = new DeleteUserCommand();
 
+        string UserName { get; set; }
+
 
 
         private UserViewModel _selectedUserVM;
@@ -62,6 +64,19 @@ namespace KvalitetesLedelsesSystem.ViewModels
             }
         }
 
+        public void Check()
+        {
+           
+
+            foreach (UserViewModel uvm in userVMs)
+            {
+                if (uvm.UserName == UserName)
+                {
+                    uvm.ChangeCheck(userRepository, uvm.UserName);
+                }
+            }
+           
+        }
 
 
         public event PropertyChangedEventHandler? PropertyChanged;

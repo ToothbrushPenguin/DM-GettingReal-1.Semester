@@ -117,9 +117,16 @@ namespace KvalitetesLedelsesSystem.ViewModels
         }
 
 
+        private bool CheckStatus = false;
+
         public List<User> GetAll()
         {
             return users;
+        }
+
+        public void ChangeCheck(string username)
+        {
+            CheckStatus = !CheckStatus;
         }
     }
 
