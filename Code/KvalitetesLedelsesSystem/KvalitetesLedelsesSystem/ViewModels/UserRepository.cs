@@ -1,6 +1,7 @@
 ﻿using KvalitetesLedelsesSystem.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -116,6 +117,48 @@ namespace KvalitetesLedelsesSystem.ViewModels
                 throw (new ArgumentException("Person with userName = " + userName + " not found"));
         }
 
+        public void Update(string oldUserName, string name, string newUserName, string company, string password, UserType userType)
+        {
+            User foundPerson = Get(oldUserName);
+            switch (foundPerson)
+            {
+                case Admin:
+                    
+                    break;
+
+                case Contingency_Responsible:
+
+                    break;
+
+                case User:
+
+                    break;
+
+            }
+        }
+
+        private User ConvertUserType(User user, UserType userType)
+        {
+            User output = user;
+            switch (userType)
+            {
+                case UserType.Admin:
+                    if (!(user is Admin))
+                    {
+                        output = new Admin(user.Name,user.UserName,user.Company,"1234");
+                        
+                    }
+                    
+                    break;
+                case UserType.Contingency_Responsible:
+                    break;
+                case UserType.User:
+                    break;
+                default:
+                    break;
+            }
+            return output;
+        }
 
         public List<User> GetAll()
         {

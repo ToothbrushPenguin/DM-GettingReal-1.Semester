@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace KvalitetesLedelsesSystem.ViewModels
 {
@@ -14,6 +15,8 @@ namespace KvalitetesLedelsesSystem.ViewModels
         public string Name { get; set; }
         public string Company { get; set; }
         public string Password { get; set; }
+
+        public UserType UsersType { get; set; }
 
         public UserViewModel(User user) 
         {
@@ -43,7 +46,10 @@ namespace KvalitetesLedelsesSystem.ViewModels
             userRepository.Remove(user.UserName);
         }
 
-        public void Update();
+        public void Update(UserRepository userRepository, string name, string newUserName, string company, string password, UserType userType)
+        {
+            userRepository.Update(user.UserName,Name,UserName,Company,Password,UsersType);
+        }
 
 
     }

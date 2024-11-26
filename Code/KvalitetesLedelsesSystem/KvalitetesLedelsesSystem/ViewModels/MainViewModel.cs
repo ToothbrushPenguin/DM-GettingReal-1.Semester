@@ -22,6 +22,12 @@ namespace KvalitetesLedelsesSystem.ViewModels
         public ICommand DeleteUserCommand { get; } = new DeleteUserCommand();
 
 
+        public static string EName;
+        public static string EUserName;
+        public static string ECompany;
+        public static string EPassword;
+        public static UserType EUserType;
+
 
         private UserViewModel _selectedUserVM;
         public UserViewModel SelectedUserVM
@@ -66,7 +72,7 @@ namespace KvalitetesLedelsesSystem.ViewModels
         {
             if (SelectedUserVM != null)
             {
-                SelectedUserVM.Update();
+                SelectedUserVM.Update(userRepository,EName,EUserName,ECompany,EPassword,EUserType);
             }
         }
 
