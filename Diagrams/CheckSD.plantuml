@@ -21,7 +21,7 @@ user -> CIC ++: Execute()
         return Return True
 
     MVM -> UVM ++: ChangeCheck(userRepository:UserRepository)
-    UVM -> UR ++: ChangeCheck(userRepository:UserRepository)
+    UVM -> UR ++: ChangeCheck()
     UR -> UR : UpdateFile()
     return
 return
