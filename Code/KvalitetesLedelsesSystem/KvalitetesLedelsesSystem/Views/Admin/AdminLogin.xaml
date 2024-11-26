@@ -22,7 +22,7 @@
                 <ColumnDefinition Width="10*"/>
             </Grid.ColumnDefinitions>
 
-            <Button FontSize="20" FontWeight="Bold" Content="⮐" Background="#3F3F3F" Foreground="#FFFFFFFF" Grid.Column="0"/>
+            <Button FontSize="20" FontWeight="Bold" Content="⮐" Background="#3F3F3F" Foreground="#FFFFFFFF" Grid.Column="0" Click="Button_Click"/>
             <Button FontSize="16" FontWeight="Bold" Content="Check In/Ud" Background="#3F3F3F" Foreground="#FFFFFFFF" Grid.Column="1"/>
             <Button FontSize="16" FontWeight="Bold" Content="Contingency Plan" Background="#3F3F3F" Foreground="#FFFFFFFF" Grid.Column="2"/>
 
@@ -73,7 +73,7 @@
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="10*"/>
                         </Grid.ColumnDefinitions>
-                        <Button FontSize="13" Content="Check In/Out" Grid.Column="0"/>
+                        <Button FontSize="13" Content="Check In/Out" Grid.Column="0" Click="Button_Click_1"/>
                         <Button FontSize="13" Content="Register" Grid.Column="2"/>
                     </Grid>
                 </Grid>

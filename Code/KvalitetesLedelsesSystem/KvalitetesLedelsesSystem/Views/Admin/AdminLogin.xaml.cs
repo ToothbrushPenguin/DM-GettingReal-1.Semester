@@ -25,5 +25,20 @@ namespace KvalitetesLedelsesSystem.Views
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            
+            {
+                NavigationService.GoBack();
+            }
+
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            var mainWindow = Application.Current.MainWindow as MainWindow;
+            mainWindow?.NavigateTo_AdminMenu();
+        }
     }
 }

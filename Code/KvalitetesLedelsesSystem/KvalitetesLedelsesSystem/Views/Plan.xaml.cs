@@ -44,5 +44,11 @@ namespace KvalitetesLedelsesSystem.Views
             NavigationService.GoBack();  
             
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var mainWindow = Application.Current.MainWindow as MainWindow;
+            mainWindow?.NavigateTo_Admin();
+        }
     }
 }

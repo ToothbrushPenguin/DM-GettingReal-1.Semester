@@ -20,10 +20,12 @@ namespace KvalitetesLedelsesSystem.ViewModels.Commands
 
         public void Execute(object? parameter)
         {
-            var mainWindow = Application.Current.MainWindow as MainWindow;
-            //mainWindow?.NavigateTo_CreateGuest();
-            CreateGuest createGuest = new CreateGuest();
-            createGuest.Show();
+            if (parameter is MainViewModel mvm)
+            {
+                CreateGuest dialog = new CreateGuest() { DataContext = mvm };
+                dialog.ShowDialog();
+
+            }
         }
     }
 }

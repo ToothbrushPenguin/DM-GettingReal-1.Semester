@@ -22,7 +22,7 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <Button FontSize="20" FontWeight="Bold" Content="⮐" Background="#3F3F3F" Foreground="#FFFFFFFF" Grid.Column="0"/>
+            <Button FontSize="20" FontWeight="Bold" Content="⮐" Background="#3F3F3F" Foreground="#FFFFFFFF" Grid.Column="0" Click="Button_Click"/>
             <TextBlock Text="List Of All Users" TextDecorations="Underline"  Foreground="#FFFFFFFF" FontSize="24" FontWeight="Bold"  Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
             <Image Source="/Views/Societate transparent.png"  Grid.Column="2"/>
 

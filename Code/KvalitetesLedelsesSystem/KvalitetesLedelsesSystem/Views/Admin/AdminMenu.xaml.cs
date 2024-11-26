@@ -40,5 +40,17 @@ namespace KvalitetesLedelsesSystem.Views
                 filePath = openFileDialog.FileName;
             }
         }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            var mainWindow = Application.Current.MainWindow as MainWindow;
+            mainWindow?.NavigateTo_Check();
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            var mainWindow = Application.Current.MainWindow as MainWindow;
+            mainWindow?.NavigateTo_PersonList();
+        }
     }
 }

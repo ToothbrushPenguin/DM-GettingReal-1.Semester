@@ -90,5 +90,6 @@ namespace KvalitetesLedelsesSystem
         {
             MainFrame.Navigate(_createGuest);
         }
+
     }
 }
