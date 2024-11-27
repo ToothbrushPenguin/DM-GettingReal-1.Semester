@@ -91,7 +91,7 @@
                     </Grid.ColumnDefinitions>
 
                     <Label Content="User Settings" FontSize="13" FontWeight="Bold" Foreground="White" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
-                    <Button Content="Open User Settings" FontSize="13" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3" Click="Button_Click_2"/>
+                    <Button Content="Open User Settings" Command="{Binding Path=PersonListCommand}" CommandParameter="{Binding}" FontSize="13" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3"/>
                 </Grid>
 
 

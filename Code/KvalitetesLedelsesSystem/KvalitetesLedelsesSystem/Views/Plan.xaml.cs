@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KvalitetesLedelsesSystem.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,11 +21,13 @@ namespace KvalitetesLedelsesSystem.Views
     /// </summary>
     public partial class Plan : Page
     {
+        MainViewModel mvm = new MainViewModel();
         public Plan()
         {
             InitializeComponent();
+            DataContext = mvm;
             pdfWebViewer.Navigate(new Uri("about:blank"));
-        
+            
 
             string relativePath = @"..\..\..\Test.pdf"; //Hopper 3 steps ud af bin
             string absolutePath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, relativePath);//combiner path til bin med relative path
@@ -36,19 +39,6 @@ namespace KvalitetesLedelsesSystem.Views
         private void GoBack_click(object sender, RoutedEventArgs e)
         {
             NavigationService.GoBack();
-        }
-
-        private void CheckinUd_Click(object sender, RoutedEventArgs e)
-        {
-
-            NavigationService.GoBack();  
-            
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            var mainWindow = Application.Current.MainWindow as MainWindow;
-            mainWindow?.NavigateTo_Admin();
         }
     }
 }

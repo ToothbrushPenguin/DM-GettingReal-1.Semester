@@ -15,14 +15,14 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition Width="4*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         
-        <Button x:Name="CheckIn_ud_Button" FontSize="16" FontWeight="Bold" Content="Check In/Ud" Background="#3F3F3F" Foreground="#FFFFFFFF" Grid.Column="0" Click="CheckinUd_Click"/>
+        <Button x:Name="CheckIn_ud_Button" Command="{Binding CheckCommand}" CommandParameter="{Binding}" FontSize="16" FontWeight="Bold" Content="Check In/Ud" Background="#3F3F3F" Foreground="#FFFFFFFF" Grid.Column="0"/>
         <Button x:Name="ContingencyPlan_Button" FontSize="16" FontWeight="Bold" Content="Contingency Plan" Background="#3F3F3F" Foreground="#FFFFFFFF" Grid.Column="1"/>
-        <Button FontSize="20"  Content="⚙" Background="#3F3F3F" Foreground="#FFFFFFFF" Grid.Column="2" Click="Button_Click"/>
+        <Button FontSize="20"  Content="⚙" Command="{Binding Path = AdminLogInCommand}" CommandParameter="{Binding}" Background="#3F3F3F" Foreground="#FFFFFFFF" Grid.Column="2"/>
         <Border Grid.Row="2" Grid.ColumnSpan ="3" Background="#3F3F3F" />
        
         <Grid Grid.Row="1" Grid.ColumnSpan="3">

@@ -42,11 +42,5 @@ namespace KvalitetesLedelsesSystem
             mainWindow?.NavigateTo_PersonList();
 
         }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            var mainWindow = Application.Current.MainWindow as MainWindow;
-            mainWindow?.NavigateTo_Admin();
-        }
     }
 }
