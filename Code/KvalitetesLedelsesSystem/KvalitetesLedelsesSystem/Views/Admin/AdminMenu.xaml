@@ -47,15 +47,18 @@
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="5*"/>
                     <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    
                 </Grid.RowDefinitions>
-
+                <Button Name="Default" Grid.Row="6" Grid.Column="0" Content="Default Settings" Command="{Binding Path=DefautSettingsCommand }" CommandParameter="Default"/>
                 <Separator Grid.Row="0"/>
                 <Separator Grid.Row="2"/>
                 <Separator Grid.Row="4"/>
-                <Separator Grid.Row="6"/>
+                <Separator Grid.Row="7" Margin="0,1,0,3"/>
 
                 <Grid Grid.Row="5">
                     <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="*"/>
@@ -77,7 +80,7 @@
                     <Button x:Name="Foreground" Content="Select Foreground Color" FontSize="13" Grid.Column="2" Grid.Row="1" HorizontalAlignment="Left" Width="190" Command="{Binding Path=UpdateColor}" CommandParameter="Foreground"/>
                     <Button x:Name="BackgroundColour" Content="Select Background Color" FontSize="13" Grid.Column="0" Grid.Row="4" Command="{Binding Path=UpdateColor}" CommandParameter="Background" />
                     <Button x:Name="Accent" Content="Select Accent Color" FontSize="13" Grid.Column="2" Grid.Row="4" Command="{Binding Path=UpdateColor}" CommandParameter="Accent"/>
-
+                    
                 </Grid>
 
                 <Grid Grid.Row="1">

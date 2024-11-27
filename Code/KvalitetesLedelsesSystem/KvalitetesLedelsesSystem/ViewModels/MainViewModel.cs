@@ -27,6 +27,7 @@ namespace KvalitetesLedelsesSystem.ViewModels
         public ICommand UpdatePath { get; } = new UpdatePath();
         public ICommand UpdateColor {  get; } = new UpdateColor();
 
+        public ICommand DefautSettingsCommand { get; }  = new DefaultSettingsCommand();
 
         private UserViewModel _selectedUserVM;
         public UserViewModel SelectedUserVM
