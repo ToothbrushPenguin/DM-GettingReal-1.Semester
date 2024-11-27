@@ -62,7 +62,7 @@
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
 
-                    <Image Grid.Row="0" Source="/Views/Societate transparent.png"/>
+                    <Image Grid.Row="0" Source="{Binding imageVMs[0].SelectedImage}"/>
                     <TextBlock FontSize="29"  Text="Societate ApS" Foreground="#FFFFFFFF" FontWeight="Bold" TextAlignment="Center" Grid.Row="1"/>
                     <PasswordBox Password="Password" FontSize="13" BorderBrush="#FF333131" Grid.Row="5"/>
                     <TextBox Grid.Row="3" FontSize="13" TextWrapping="Wrap" Text="Username" BorderBrush="#FF333131"/>
