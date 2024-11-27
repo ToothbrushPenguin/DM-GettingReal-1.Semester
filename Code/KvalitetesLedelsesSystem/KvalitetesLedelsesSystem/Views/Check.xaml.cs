@@ -39,13 +39,6 @@ namespace KvalitetesLedelsesSystem
             mainWindow?.NavigateTo_Plan();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            var mainWindow = Application.Current.MainWindow as MainWindow;
-            mainWindow?.NavigateTo_PersonList();
-
-        }
-
         private void UserNameTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
 
