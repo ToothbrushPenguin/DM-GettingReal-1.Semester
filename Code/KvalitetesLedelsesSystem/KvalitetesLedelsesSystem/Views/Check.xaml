@@ -23,9 +23,9 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <Button FontSize="16" FontWeight="Bold" Content="Check In/Ud" Background="#3F3F3F" Foreground="#FFFFFFFF" Grid.Column="0"/>
-            <Button x:Name="ContingencyPlan_Button" FontSize="16" FontWeight="Bold" Content="Contingency Plan" Background="#3F3F3F" Foreground="#FFFFFFFF" Grid.Column="1" Click="ContingencyPlan"/>
-            <Button FontSize="20" Command="{Binding Path = AdminLogInCommand}" CommandParameter="{Binding}" Content="⚙" Background="#3F3F3F" Foreground="#FFFFFFFF" Grid.Column="2" />
+            <Button FontSize="16" FontWeight="Bold" Content="Check In/Ud" Background="{Binding Path=colourVMs[1].SelectedColour}" Foreground="#FFFFFFFF" Grid.Column="0"/>
+            <Button x:Name="ContingencyPlan_Button" FontSize="16" FontWeight="Bold" Content="Contingency Plan" Background="{Binding Path=colourVMs[1].SelectedColour}" Foreground="#FFFFFFFF" Grid.Column="1" Click="ContingencyPlan"/>
+            <Button FontSize="20" Command="{Binding Path = AdminLogInCommand}" CommandParameter="{Binding}" Content="⚙" Background="{Binding Path=colourVMs[1].SelectedColour}" Foreground="#FFFFFFFF" Grid.Column="2" />
 
         </Grid>
 

@@ -24,7 +24,7 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <Button FontSize="20" FontWeight="Bold" Content="⮐" Background="#3F3F3F" Foreground="#FFFFFFFF" Grid.Column="0" Click="Button_Click_1"/>
+            <Button FontSize="20" FontWeight="Bold" Content="⮐" Background="{Binding Path=colourVMs[1].SelectedColour}" Foreground="#FFFFFFFF" Grid.Column="0" Click="Button_Click_1"/>
             <TextBlock Text="Admin Menu" Foreground="#FFFFFFFF" FontSize="24" FontWeight="Bold"  Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
             <Image Source="{Binding imageVMs[0].SelectedImage}"  Grid.Column="2"/>
 
