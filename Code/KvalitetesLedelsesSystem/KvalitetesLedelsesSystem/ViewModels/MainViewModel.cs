@@ -34,7 +34,20 @@ namespace KvalitetesLedelsesSystem.ViewModels
         public ICommand UpdatePath { get; } = new UpdatePath();
         public ICommand UpdateColor {  get; } = new UpdateColor();
 
+        public ICommand CheckInOutCommand { get; } = new CheckInOutCommand();
+
         public ICommand DefautSettingsCommand { get; }  = new DefaultSettingsCommand();
+        private static string username = "Username";
+        public string UserName { 
+            get => username;
+            set
+            {
+                username = value;
+                OnPropertyChanged(nameof(UserName));
+            }
+        }
+
+
 
         private UserViewModel _selectedUserVM;
         public UserViewModel SelectedUserVM
@@ -137,6 +150,19 @@ namespace KvalitetesLedelsesSystem.ViewModels
             }
         }
 
+        public void Check()
+        {
+           
+
+            foreach (UserViewModel uvm in userVMs)
+            {
+                if (uvm.UserName == UserName)
+                {
+                    uvm.ChangeCheck(userRepository, uvm.UserName);
+                }
+            }
+           
+        }
 
 
         public event PropertyChangedEventHandler? PropertyChanged;
