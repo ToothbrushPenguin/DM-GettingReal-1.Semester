@@ -9,7 +9,7 @@
 
 
 
-    <Grid Background="#3F3F3F">
+    <Grid Background="{Binding Path=colourVMs[1].SelectedColour}">
         <Grid.RowDefinitions >
             <RowDefinition Height="*"/>
             <RowDefinition Height="12*"/>
@@ -23,13 +23,13 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <Button FontSize="16" FontWeight="Bold" Content="Check In/Ud" Background="#3F3F3F" Foreground="#FFFFFFFF" Grid.Column="0"/>
-            <Button x:Name="ContingencyPlan_Button" FontSize="16" FontWeight="Bold" Content="Contingency Plan" Background="#3F3F3F" Foreground="#FFFFFFFF" Grid.Column="1" Click="ContingencyPlan"/>
-            <Button FontSize="20"  Content="⚙" Background="{Binding Path=colourVMs[0].SelectedColour}" Foreground="#FFFFFFFF" Grid.Column="2"/>
+            <Button FontSize="16" FontWeight="Bold" Content="Check In/Ud" Background="{Binding Path=colourVMs[1].SelectedColour}" Foreground="#FFFFFFFF" Grid.Column="0"/>
+            <Button x:Name="ContingencyPlan_Button" FontSize="16" FontWeight="Bold" Content="Contingency Plan" Background="{Binding Path=colourVMs[1].SelectedColour}" Foreground="#FFFFFFFF" Grid.Column="1" Click="ContingencyPlan"/>
+            <Button FontSize="20"  Content="⚙" Background="{Binding Path=colourVMs[1].SelectedColour}" Foreground="#FFFFFFFF" Grid.Column="2"/>
 
         </Grid>
 
-        <Grid Background="#FF1E1E1E" Grid.Row="1">
+        <Grid Background="{Binding Path=colourVMs[0].SelectedColour}" Grid.Row="1">
 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="2*"/>

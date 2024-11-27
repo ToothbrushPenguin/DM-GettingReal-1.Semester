@@ -61,7 +61,7 @@ namespace KvalitetesLedelsesSystem.ViewModels
                         //Second add is Foreground Color
                         //Thrid add is Accent Color
                         writer.WriteLine("#3F3F3F");
-                        writer.WriteLine("#FFFFFFFF");
+                        writer.WriteLine("#FF1E1E1E");
                         writer.WriteLine("#FF373232");
                     }
                 }

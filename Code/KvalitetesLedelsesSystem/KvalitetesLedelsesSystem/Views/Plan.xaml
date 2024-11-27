@@ -8,7 +8,7 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Plan">
 
-    <Grid Background="#FF1E1E1E">
+    <Grid Background="{Binding Path=colourVMs[0].SelectedColour}">
         <Grid.RowDefinitions >
             <RowDefinition Height="*"/>
             <RowDefinition Height="12*"/>
@@ -19,11 +19,11 @@
             <ColumnDefinition Width="5*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        
-        <Button x:Name="CheckIn_ud_Button" FontSize="16" FontWeight="Bold" Content="Check In/Ud" Background="#3F3F3F" Foreground="#FFFFFFFF" Grid.Column="0" Click="CheckinUd_Click"/>
-        <Button x:Name="ContingencyPlan_Button" FontSize="16" FontWeight="Bold" Content="Contingency Plan" Background="#3F3F3F" Foreground="#FFFFFFFF" Grid.Column="1"/>
-        <Button FontSize="20"  Content="⚙" Background="#3F3F3F" Foreground="#FFFFFFFF" Grid.Column="2"/>
-        <Border Grid.Row="2" Grid.ColumnSpan ="3" Background="#3F3F3F" />
+
+        <Button x:Name="CheckIn_ud_Button" FontSize="16" FontWeight="Bold" Content="Check In/Ud" Background="{Binding Path=colourVMs[1].SelectedColour}" Foreground="#FFFFFFFF" Grid.Column="0" Click="CheckinUd_Click"/>
+        <Button x:Name="ContingencyPlan_Button" FontSize="16" FontWeight="Bold" Content="Contingency Plan" Background="{Binding Path=colourVMs[1].SelectedColour}" Foreground="#FFFFFFFF" Grid.Column="1"/>
+        <Button FontSize="20"  Content="⚙" Background="{Binding Path=colourVMs[1].SelectedColour}" Foreground="#FFFFFFFF" Grid.Column="2"/>
+        <Border Grid.Row="2" Grid.ColumnSpan ="3" Background="{Binding Path=colourVMs[1].SelectedColour}" />
        
         <Grid Grid.Row="1" Grid.ColumnSpan="3">
             <Grid.ColumnDefinitions>

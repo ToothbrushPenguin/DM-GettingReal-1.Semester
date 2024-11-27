@@ -42,7 +42,7 @@ namespace KvalitetesLedelsesSystem.ViewModels.Commands
                     {
                         MainViewModel.colourVMs[0].SelectedColour = newColor;
                     }
-                    else if (ID == "Foreround")
+                    else if (ID == "Foreground")
                     {
                         MainViewModel.colourVMs[1].SelectedColour = newColor;
                     }
