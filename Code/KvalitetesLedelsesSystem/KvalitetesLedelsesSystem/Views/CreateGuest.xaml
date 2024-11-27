@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:KvalitetesLedelsesSystem.Views"
         mc:Ignorable="d"
         Title="CreateGuest" Height="450" Width="800">
-    <Grid Background="#3F3F3F">
+    <Grid Background="{Binding Path=colourVMs[1].SelectedColour}">
         <Grid.RowDefinitions >
 
             <RowDefinition Height="12*"/>
@@ -15,7 +15,7 @@
 
 
 
-        <Grid Background="#FF1E1E1E" Grid.Row="0">
+        <Grid Background="{Binding Path=colourVMs[0].SelectedColour}" Grid.Row="0">
 
             <Grid.ColumnDefinitions>
 

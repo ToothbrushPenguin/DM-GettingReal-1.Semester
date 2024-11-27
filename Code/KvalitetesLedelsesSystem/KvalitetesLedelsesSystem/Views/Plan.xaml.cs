@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using KvalitetesLedelsesSystem.Views;
 
 namespace KvalitetesLedelsesSystem.Views
 {
@@ -34,6 +35,11 @@ namespace KvalitetesLedelsesSystem.Views
 
             // Navigate to the PDF file
             pdfWebViewer.Navigate(absolutePath);
+            // Navigate to the PDF file
+            pdfWebViewer.Navigate(MainViewModel.imageVMs[2].SelectedImage);
+
+           
+           
         }
 
         private void GoBack_click(object sender, RoutedEventArgs e)

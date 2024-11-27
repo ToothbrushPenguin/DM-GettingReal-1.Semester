@@ -8,7 +8,7 @@
       
       Title="AdminLogin" d:DesignHeight="720" d:DesignWidth="1280" >
 
-    <Grid Background="#3F3F3F">
+    <Grid Background="{Binding Path=colourVMs[1].SelectedColour}">
         <Grid.RowDefinitions >
             <RowDefinition Height="*"/>
             <RowDefinition Height="12*"/>
@@ -28,7 +28,7 @@
 
         </Grid>
 
-        <Grid Background="#FF1E1E1E" Grid.Row="1">
+        <Grid Background="{Binding Path=colourVMs[0].SelectedColour}" Grid.Row="1">
 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="2*"/>
@@ -62,7 +62,7 @@
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
 
-                    <Image Grid.Row="0" Source="/Views/Societate transparent.png"/>
+                    <Image Grid.Row="0" Source="{Binding imageVMs[0].SelectedImage}"/>
                     <TextBlock FontSize="29"  Text="Societate ApS" Foreground="#FFFFFFFF" FontWeight="Bold" TextAlignment="Center" Grid.Row="1"/>
                     <PasswordBox Password="Password" FontSize="13" BorderBrush="#FF333131" Grid.Row="5"/>
                     <TextBox Grid.Row="3" FontSize="13" TextWrapping="Wrap" Text="Username" BorderBrush="#FF333131"/>
