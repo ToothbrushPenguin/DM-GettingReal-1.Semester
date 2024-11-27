@@ -17,9 +17,10 @@ namespace KvalitetesLedelsesSystem.ViewModels
 
     public class UserRepository
     {
-
         private List<User> users = new List<User>();
 
+
+        private static string LogPath = Path.GetFullPath(@"Log.txt");
 
         //HUSK - implement constructor to load from file and methoth to save to file
         public UserRepository() 
@@ -127,6 +128,24 @@ namespace KvalitetesLedelsesSystem.ViewModels
         public void ChangeCheck(string username)
         {
             CheckStatus = !CheckStatus;
+        }
+
+        public void UpdateLog(string userName)
+        {
+            User foundPerson = Get(userName);
+
+            if (foundPerson != null)
+            {
+                using (StreamWriter SR = new StreamWriter(LogPath))
+                {
+                    SR.WriteLine(foundPerson);
+                }
+            }
+            else
+            {
+                throw (new ArgumentException("No person with this username was found"));
+            }
+            
         }
     }
 
