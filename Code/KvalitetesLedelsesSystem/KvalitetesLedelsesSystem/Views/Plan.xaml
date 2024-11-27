@@ -36,7 +36,7 @@
 
             <WebBrowser x:Name="pdfWebViewer" Grid.Column="3" ></WebBrowser>
 
-            <Image x:Name="ContingencyDrawing" Source="{Binding imageVMs[0].SelectedImage}" Grid.Row="1" Grid.Column="1" />
+            <Image x:Name="ContingencyDrawing" Source="{Binding imageVMs[1].SelectedImage}" Grid.Row="1" Grid.Column="1" />
         </Grid>
 
     </Grid>
