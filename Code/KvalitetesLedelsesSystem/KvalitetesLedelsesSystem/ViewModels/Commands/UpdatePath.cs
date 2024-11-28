@@ -57,7 +57,7 @@ namespace KvalitetesLedelsesSystem.ViewModels.Commands
                         {
                           MessageBox.Show("Please only select pdf files","Error: Wrong file type",MessageBoxButton.OK, MessageBoxImage.Error);  
                         }
-                        else if(check[1] == "pdf") 
+                        if(check[1] == "pdf") 
                         {
                             //newpath.Replace(@"\", "/"); 
                             MainViewModel.imageVMs[2].SelectedImage = newpath;
