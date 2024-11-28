@@ -32,7 +32,7 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="20*"/>
                 <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>   
+            </Grid.ColumnDefinitions>      
 
             <WebBrowser x:Name="pdfWebViewer" Grid.Column="3" ></WebBrowser>
 

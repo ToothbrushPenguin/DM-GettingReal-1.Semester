@@ -30,11 +30,6 @@ namespace KvalitetesLedelsesSystem.Views
             pdfWebViewer.Navigate(new Uri("about:blank"));
             
 
-            string relativePath = @"..\..\..\Test.pdf"; //Hopper 3 steps ud af bin
-            string absolutePath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, relativePath);//combiner path til bin med relative path
-
-            // Navigate to the PDF file
-            pdfWebViewer.Navigate(absolutePath);
             // Navigate to the PDF file
             pdfWebViewer.Navigate(MainViewModel.imageVMs[2].SelectedImage);
 
