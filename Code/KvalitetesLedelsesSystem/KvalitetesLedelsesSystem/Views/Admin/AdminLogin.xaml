@@ -23,7 +23,7 @@
             </Grid.ColumnDefinitions>
 
             <Button FontSize="20" FontWeight="Bold" Content="⮐" Background="{Binding Path=colourVMs[1].SelectedColour}" Foreground="#FFFFFFFF" Grid.Column="0" Click="Button_Click"/>
-            <Button FontSize="16" FontWeight="Bold" Content="Check In/Ud" Background="{Binding Path=colourVMs[1].SelectedColour}" Foreground="#FFFFFFFF" Grid.Column="1"/>
+            <Button FontSize="16" FontWeight="Bold" Content="Check In/Ud" Command="{Binding Path= CheckCommand}" CommandParameter="{Binding}" Background="{Binding Path=colourVMs[1].SelectedColour}" Foreground="#FFFFFFFF" Grid.Column="1"/>
             <Button FontSize="16" FontWeight="Bold" Command="{Binding PlanCommand}" CommandParameter="{Binding}" Content="Contingency Plan" Background="{Binding Path=colourVMs[1].SelectedColour}" Foreground="#FFFFFFFF" Grid.Column="2"/>
 
         </Grid>
