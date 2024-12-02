@@ -1,0 +1,169 @@
+@startuml
+!theme plain
+skinparam classAttributeIconSize 0
+skinparam style strictuml
+skinparam linetype ortho
+skinparam nodesep 100
+skinparam ranksep 100
+skinparam padding 10
+
+' Custom styling
+skinparam class {
+    BackgroundColor White
+    BorderColor Black
+    ArrowColor Black
+    FontName Arial
+    FontSize 12
+}
+skinparam package {
+    BackgroundColor White
+    BorderColor Black
+    FontName Arial
+    FontSize 14
+}
+
+class UserType <<enumeration>>{
+    User
+    Admin
+    Contingency_Responsible
+}
+    
+
+
+' User Interface Layer
+package "User Interface" {
+    class MainWindow {
+        - AddUserButton_Click(object sender, RoutedEventArgs e): void
+        - DeleteUserButton_Click(object sender, RoutedEventArgs e): void
+    }
+}
+
+' Application Layer
+package "Application" <<Rectangle>> {
+    together {
+
+        class MainViewModel{
+            - userRepository: UserRepository
+            + userVMs : ObservableCollection<UserviewModel>
+            -_selectedUserVM : UserViewModel
+            +<<static>> colourVMs : ObservableCollection<ColourViewModel>
+            +<<static>> imageVMs : ObservableCollection<ImageViewModel>
+
+            + NavigationCommand {get;}: ICommand
+            + UpdateColourCommand {get;}: ICommand
+            + UpdatePathCommand {get;}: ICommand
+            + DefaultSettingsCommand {get;}: ICommand
+            + CheckInCheckoutCommand {get;}: ICommand
+            + DeleteUserCommand {get;} : ICommand
+            + AddUserCommand {get;} : ICommand
+            
+            +MainViewModel()
+            + GetContingencyPdf(): Image
+            + UpdateContingencyPdf(path:string): void
+            + GetContingencyMap(): Image
+            + UpdateContingencyMap(path:string): void
+
+            + CreateUser(userName:string, name:string, company:string, type:UserType): void
+            + DeleteUser(username: String): void
+            + FindIndexById(username: String):int
+            + UpdateUser(userIndex, userName:string, name:string, company:string, type:UserType): void
+            
+            
+        }
+        Class ImageViewModel{
+        +SelectedImage : string
+
+        +ImageViewModel(imageTod:image)
+        }
+       
+        Class ColourViewModel{
+        +SelectedColour : string
+
+        +ColourViewModel(colour : Colour)
+        }
+
+       
+
+    }
+
+    together {
+       
+        class UserRepository {
+            - users: List<User>
+            - checkin_outFilePath: String
+            - contingencyFilePath: String
+
+            + CreateUser(userName:string, name:string, company:string, type:UserType): void
+            + FindIndexById(username: String): int
+            + UpdateUser(userIndex, userName:string, name:string, company:string, type:UserType): void
+            + DeleteUser(username: String): void
+        }
+    }
+}
+
+' Domain Layer
+package "Domain" <<Rectangle>> {
+    together {
+        class ImageTod{
+         + SelectedPath : string
+
+         + ImageTod(selectedPath : string)
+        }
+
+        class Colour{
+         + SelectedColour : string
+        }
+
+        class User {
+            - userName: String
+            - name: String
+            - company: String
+        }
+       
+        class Admin {
+            - password: String
+        }
+       
+        class Contingency_Responsible {
+            - password: String
+        }
+    }
+   
+    class Contingency {
+        - mapPath: String
+        - pdfPath: String
+        - map: Image
+        - pdf: Image
+    }
+}
+
+' UI to Contoller
+MainWindow "1" -down- "1" MainViewModel
+
+' MainViewModel to x
+MainViewModel "1" -down- "1" UserRepository
+MainViewModel "1" -right- "1" FileHandler
+MainViewModel "1" -down- "1" Contingency
+MainViewModel "1" -down- "3" ColourViewModel
+MainViewModel "1" -down- "3" ImageViewModel
+
+'ColorViewModel to Colour
+ColourViewModel "1"-down-"1" Colour
+
+'ImageViewModel to ImageTod
+ImageViewModel"1" -down-"1" ImageTod
+
+' Repository to Domain
+UserRepository "1" -down- "0..*" User
+
+' Inheritance
+Admin -up-|> User : inherents <
+Contingency_Responsible -up-|> User : inherents <
+
+' Domain Relations
+User "0..*" -right- "1" Contingency : views >
+
+
+'enum
+UserRepository .left.> UserType : using >
+@enduml

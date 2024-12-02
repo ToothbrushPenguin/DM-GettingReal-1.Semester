@@ -1,0 +1,23 @@
+@startuml test
+skinparam style strictuml
+skinparam sequenceMessageAlign center
+title Check
+
+Actor "User/AdminMenu" as user
+
+participant ":UpdateColourCommand" as UCC
+participant ":MainViewModel" as MVM
+participant ":ColorViewModel" as CVM
+
+
+user -> UCC ++: Execute(string : ID)
+return ColorPicker
+
+user -> UCC ++: SelectedColour : string
+UCC -> UCC : Check(ID)
+UCC -> MVM ++: Update Colour from ID
+MVM -> CVM ++: Update Colour
+return 
+return
+UCC -> UCC : Update Colour Files
+return Display Selected colour
