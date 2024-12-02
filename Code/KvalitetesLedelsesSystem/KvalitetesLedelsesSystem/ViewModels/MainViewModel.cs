@@ -14,8 +14,8 @@ namespace KvalitetesLedelsesSystem.ViewModels
 {
     public class MainViewModel : INotifyPropertyChanged
     {
-        private UserRepository userRepository = new UserRepository();
-        public ObservableCollection<UserViewModel> userVMs { get; set; } = new ObservableCollection<UserViewModel>();
+        private static UserRepository userRepository = new UserRepository();
+        public static ObservableCollection<UserViewModel> userVMs { get; set; } = new ObservableCollection<UserViewModel>();
 
         public static ObservableCollection<ColourViewModel> colourVMs { get; set; } = new ObservableCollection<ColourViewModel>();
         public static ObservableCollection<ImageViewModel> imageVMs { get; set; } = new ObservableCollection<ImageViewModel>();
@@ -37,6 +37,7 @@ namespace KvalitetesLedelsesSystem.ViewModels
         public ICommand CheckInOutCommand { get; } = new CheckInOutCommand();
 
         public ICommand DefautSettingsCommand { get; }  = new DefaultSettingsCommand();
+
         private static string username = "Username";
         public string UserName { 
             get => username;
