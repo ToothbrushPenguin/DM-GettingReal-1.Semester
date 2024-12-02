@@ -117,24 +117,36 @@ namespace KvalitetesLedelsesSystem.ViewModels
                 throw (new ArgumentException("Person with userName = " + userName + " not found"));
         }
 
-        public void Update(string oldUserName, string name, string newUserName, string company, string password, UserType userType)
+        public User Update(string oldUserName, string newName, string newUserName, string newCompany, string newPassword, UserType userType)
         {
             User foundPerson = Get(oldUserName);
-            switch (foundPerson)
+            User updatedUser = null;
+
+            if (foundPerson != null)
             {
-                case Admin:
-                    
-                    break;
+                users.Remove(foundPerson);
 
-                case Contingency_Responsible:
+                switch (userType)
+                {
+                    case UserType.Admin:
+                        updatedUser = new Admin(newUserName, newName, newCompany, newPassword);
+                        break;
+                    case UserType.Contingency_Responsible:
+                        updatedUser = new Contingency_Responsible(newUserName, newName, newCompany, newPassword);
+                        break;
+                    case UserType.User:
+                        updatedUser = new User(newUserName, newName, newCompany);
+                        break;
+                }
 
-                    break;
-
-                case User:
-
-                    break;
-
+                users.Add(updatedUser);
             }
+            else
+            {
+                throw new ArgumentException($"User with username {oldUserName} not found");
+            }
+
+            return updatedUser;
         }
 
         private User ConvertUserType(User user, UserType userType)

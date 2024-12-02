@@ -7,25 +7,17 @@
         mc:Ignorable="d"
         Title="AdminCRUD" Height="450" Width="800">
     <Grid Background="#3F3F3F">
-        <Grid.RowDefinitions >
-
+        <Grid.RowDefinitions>
             <RowDefinition Height="12*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-
-
         <Grid Background="#FF1E1E1E" Grid.Row="0">
-
             <Grid.ColumnDefinitions>
-
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="2*"/>
                 <ColumnDefinition Width="*"/>
-                <!--<ColumnDefinition Width="2*"/>-->
             </Grid.ColumnDefinitions>
-
-
 
             <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
@@ -43,24 +35,25 @@
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
-
                 </Grid.RowDefinitions>
 
-                <Label Grid.Column="1" Grid.Row="1" FontWeight="Bold" Foreground="#FFFFFFFF" Content="Username:" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
-                <TextBox Grid.Row="2" Text="{Binding SelectedUserVM.UserName}" ></TextBox>
-                <Label Grid.Column="1" Grid.Row="3" FontWeight="Bold" Foreground="#FFFFFFFF" Content="Name:" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
-                <TextBox Grid.Row="4"></TextBox>
-                <Label Grid.Column="1" Grid.Row="5" FontWeight="Bold" Foreground="#FFFFFFFF" Content="Company:" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
-                <TextBox Grid.Row="6"></TextBox>
-                <Label Grid.Column="1" Grid.Row="7" FontWeight="Bold" Foreground="#FFFFFFFF" Content="Password:" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
-                <TextBox Grid.Row="8"  IsEnabled="False"></TextBox>
-                <Grid Grid.Row ="10" >
+                <Label Grid.Row="1" FontWeight="Bold" Foreground="#FFFFFFFF" Content="Username:" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+                <TextBox Grid.Row="2" Text="{Binding SelectedUserVM.UserName, UpdateSourceTrigger=PropertyChanged}" />
 
+                <Label Grid.Row="3" FontWeight="Bold" Foreground="#FFFFFFFF" Content="Name:" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+                <TextBox Grid.Row="4" Text="{Binding SelectedUserVM.Name, UpdateSourceTrigger=PropertyChanged}" />
+
+                <Label Grid.Row="5" FontWeight="Bold" Foreground="#FFFFFFFF" Content="Company:" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+                <TextBox Grid.Row="6" Text="{Binding SelectedUserVM.Company, UpdateSourceTrigger=PropertyChanged}" />
+
+                <Label Grid.Row="7" FontWeight="Bold" Foreground="#FFFFFFFF" Content="Password:" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+                <TextBox Grid.Row="8" Text="{Binding SelectedUserVM.Password, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding IsPasswordEnabled}" />
+
+                <Grid Grid.Row="10">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="2*"/>
                         <ColumnDefinition Width="*"/>
-
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"/>
@@ -71,12 +64,10 @@
                     <Label Grid.Column="1" Grid.Row="0" FontWeight="Bold" Foreground="#FFFFFFFF" Content="Contingency Responsible" HorizontalAlignment="Center"/>
                     <Label Grid.Column="2" Grid.Row="0" FontWeight="Bold" Foreground="#FFFFFFFF" Content="Admin" HorizontalAlignment="Center"/>
 
-                    <RadioButton Grid.Column="0" Grid.Row="1" IsChecked="True" HorizontalAlignment="Center" GroupName="userType" VerticalAlignment="Center" ></RadioButton>
-                    <RadioButton Grid.Column="1" Grid.Row="1" IsChecked="False" HorizontalAlignment="Center" GroupName="userType" VerticalAlignment="Center" ></RadioButton>
-                    <RadioButton Grid.Column="2" Grid.Row="1" IsChecked="False" HorizontalAlignment="Center" GroupName="userType" VerticalAlignment="Center" ></RadioButton>
+                    <RadioButton Grid.Column="0" Grid.Row="1" IsChecked="{Binding IsUserType}" GroupName="userType" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    <RadioButton Grid.Column="1" Grid.Row="1" IsChecked="{Binding IsContingencyType}" GroupName="userType" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    <RadioButton Grid.Column="2" Grid.Row="1" IsChecked="{Binding IsAdminType}" GroupName="userType" HorizontalAlignment="Center" VerticalAlignment="Center" />
                 </Grid>
-
-
 
                 <Grid Grid.Row="12">
                     <Grid.ColumnDefinitions>
@@ -84,10 +75,8 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="10*"/>
                     </Grid.ColumnDefinitions>
-                    <Button FontSize="13" Content="Save User" Grid.Column="0"/>
-                    <Button FontSize="13" Content="Delete User" Grid.Column="2" 
-                        Command="{Binding DeleteUserCommand}" 
-                        CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"/>
+                    <Button FontSize="13" Content="Save User" Grid.Column="0" Command="{Binding UpdateUserCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"/>
+                    <Button FontSize="13" Content="Delete User" Grid.Column="2" Command="{Binding DeleteUserCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"/>
                 </Grid>
             </Grid>
         </Grid>

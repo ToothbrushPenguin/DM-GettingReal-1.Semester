@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 using KvalitetesLedelsesSystem.Models;
 using KvalitetesLedelsesSystem.ViewModels.Commands;
@@ -13,21 +9,12 @@ namespace KvalitetesLedelsesSystem.ViewModels
 {
     public class MainViewModel : INotifyPropertyChanged
     {
-        private UserRepository userRepository = new UserRepository();
-        public ObservableCollection<UserViewModel> userVMs { get; set; } = new ObservableCollection<UserViewModel>();
+        private static UserRepository userRepository = new UserRepository();
+        public static ObservableCollection<UserViewModel> userVMs { get; set; } = new ObservableCollection<UserViewModel>();
 
-
-
-        public ICommand AddUserCommand {  get; } = new AddUserCommand();
+        public ICommand AddUserCommand { get; } = new AddUserCommand();
         public ICommand DeleteUserCommand { get; } = new DeleteUserCommand();
-
-
-        public static string EName;
-        public static string EUserName;
-        public static string ECompany;
-        public static string EPassword;
-        public static UserType EUserType;
-
+        public ICommand UpdateUserCommand { get; } = new UpdateUserCommand();
 
         private UserViewModel _selectedUserVM;
         public UserViewModel SelectedUserVM
@@ -35,15 +22,13 @@ namespace KvalitetesLedelsesSystem.ViewModels
             get => _selectedUserVM;
             set
             {
-                _selectedUserVM = value; 
-                //OnPropertyChanged(nameof(SelectedUserVM));
+                _selectedUserVM = value;
+                OnPropertyChanged(nameof(SelectedUserVM));
             }
         }
 
-
-        public MainViewModel() 
+        public MainViewModel()
         {
-            
             foreach (User user in userRepository.GetAll())
             {
                 userVMs.Add(new UserViewModel(user));
@@ -56,10 +41,9 @@ namespace KvalitetesLedelsesSystem.ViewModels
             UserViewModel vm = new UserViewModel(user);
             userVMs.Add(vm);
             SelectedUserVM = vm;
-
         }
 
-        public void RemoveUser() 
+        public void RemoveUser()
         {
             if (SelectedUserVM != null)
             {
@@ -72,19 +56,19 @@ namespace KvalitetesLedelsesSystem.ViewModels
         {
             if (SelectedUserVM != null)
             {
-                SelectedUserVM.Update(userRepository,EName,EUserName,ECompany,EPassword,EUserType);
+                // The Update method in UserViewModel now handles getting all the values
+                // from its own properties
+                SelectedUserVM.Update(userRepository);
+
+                // Notify UI that the selected user might have changed
+                OnPropertyChanged(nameof(SelectedUserVM));
             }
         }
-
 
         public event PropertyChangedEventHandler? PropertyChanged;
         public void OnPropertyChanged(string propertyName)
         {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-            }
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-
     }
 }

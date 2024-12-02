@@ -1,9 +1,4 @@
-﻿using KvalitetesLedelsesSystem.Views;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 using System.Windows;
 using System.Windows.Input;
 
@@ -11,19 +6,46 @@ namespace KvalitetesLedelsesSystem.ViewModels.Commands
 {
     public class UpdateUserCommand : ICommand
     {
-        public event EventHandler? CanExecuteChanged;
-
-        public bool CanExecute(object? parameter)
+        public event EventHandler CanExecuteChanged
         {
-            return true;
+            add { CommandManager.RequerySuggested += value; }
+            remove { CommandManager.RequerySuggested -= value; }
         }
 
-        public void Execute(object? parameter)
+        public bool CanExecute(object parameter)
         {
-            if (parameter is Window window && parameter is MainViewModel mvm)
+            bool result = true;
+
+            if (parameter is Window window &&
+                window.DataContext is MainViewModel mvm)
             {
-                mvm.UpdateUser();
-                window.Close();
+                if (mvm.SelectedUserVM == null ||
+                    string.IsNullOrWhiteSpace(mvm.SelectedUserVM.UserName) ||
+                    string.IsNullOrWhiteSpace(mvm.SelectedUserVM.Name) ||
+                    string.IsNullOrWhiteSpace(mvm.SelectedUserVM.Company))
+                {
+                    result = false;
+                }
+            }
+
+            return result;
+        }
+
+        public void Execute(object parameter)
+        {
+            if (parameter is Window window &&
+                window.DataContext is MainViewModel mvm)
+            {
+                try
+                {
+                    mvm.UpdateUser();
+                    MessageBox.Show("User updated successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                    window.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error updating user: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
         }
     }
