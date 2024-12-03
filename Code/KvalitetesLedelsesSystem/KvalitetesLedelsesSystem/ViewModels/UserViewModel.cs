@@ -13,6 +13,8 @@ namespace KvalitetesLedelsesSystem.ViewModels
         public string UserName { get; set; }
         public string Name { get; set; }
         public string Company { get; set; }
+
+        public bool CheckInStatus { get; set; }
         public string Password { get; set; }
 
         public UserViewModel(User user) 
@@ -21,6 +23,8 @@ namespace KvalitetesLedelsesSystem.ViewModels
             UserName = user.UserName;
             Name = user.Name;
             Company = user.Company;
+            CheckInStatus = user.CheckInStatus;
+
 
 
 
