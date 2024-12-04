@@ -3,13 +3,13 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:KvalitetesLedelsesSystem"
+      xmlns:local="clr-namespace:KvalitetesLedelsesSystem" xmlns:viewmodels="clr-namespace:KvalitetesLedelsesSystem.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:MainViewModel}"
       mc:Ignorable="d"
       Title="Check" d:DesignHeight="720" d:DesignWidth="1280" >
 
 
 
-    <Grid Background="#3F3F3F">
+    <Grid Background="{Binding Path=colourVMs[1].SelectedColour}">
         <Grid.RowDefinitions >
             <RowDefinition Height="*"/>
             <RowDefinition Height="12*"/>
@@ -23,13 +23,13 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <Button FontSize="16" FontWeight="Bold" Content="Check In/Ud" Background="#3F3F3F" Foreground="#FFFFFFFF" Grid.Column="0"/>
-            <Button x:Name="ContingencyPlan_Button" FontSize="16" FontWeight="Bold" Content="Contingency Plan" Background="#3F3F3F" Foreground="#FFFFFFFF" Grid.Column="1" Click="ContingencyPlan"/>
-            <Button FontSize="20"  Content="⚙" Background="#3F3F3F" Foreground="#FFFFFFFF" Grid.Column="2"/>
+            <Button FontSize="16" FontWeight="Bold" Content="Check In/Ud" Background="{Binding Path=colourVMs[1].SelectedColour}" Foreground="#FFFFFFFF" Grid.Column="0"/>
+            <Button x:Name="ContingencyPlan_Button" FontSize="16" FontWeight="Bold" Content="Contingency Plan" Background="{Binding Path=colourVMs[1].SelectedColour}" Foreground="#FFFFFFFF" Grid.Column="1" Click="ContingencyPlan"/>
+            <Button FontSize="20" Command="{Binding Path = AdminLogInCommand}" CommandParameter="{Binding}" Content="⚙" Background="{Binding Path=colourVMs[1].SelectedColour}" Foreground="#FFFFFFFF" Grid.Column="2" />
 
         </Grid>
 
-        <Grid Background="#FF1E1E1E" Grid.Row="1">
+        <Grid Background="{Binding Path=colourVMs[0].SelectedColour}" Grid.Row="1">
 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="2*"/>
@@ -61,21 +61,21 @@
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
 
-                    <Image Grid.Row="0" Source="/Views/Societate transparent.png"/>
+
                     <TextBlock FontSize="29"  Text="Societate ApS" Foreground="#FFFFFFFF" FontWeight="Bold" TextAlignment="Center" Grid.Row="2"/>
-                    <PasswordBox Password="passw0rd" FontSize="13" BorderBrush="#FF333131" Grid.Row="3"/>
+                    <TextBox x:Name="UserNameBox" Text="{Binding UserName, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" FontSize="13" Background="White" TextChanged="UserNameTextBox_TextChanged" GotFocus="UserNameTextBox_GotFocus" LostFocus="UserNameTextBox_LostFocus" Grid.Row="3"/>
+                    <Image x:Name="Logo"  Grid.Row="0" Source= "{Binding imageVMs[0].SelectedImage}"/>
                     <Grid Grid.Row="5">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="10*"/>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="10*"/>
                         </Grid.ColumnDefinitions>
-                        <Button FontSize="13" Content="Check In/Out" Grid.Column="0"/>
-                        <Button FontSize="13" Content="Register" Grid.Column="2"/>
+                        <Button FontSize="13" Command="{Binding Path=CreateGuestCommand}" CommandParameter="{Binding}" Content="Register" Grid.Column="2"/>
+                        <Button FontSize="13" Content="Check In/Out" Grid.Column="0" Command="{Binding Path=CheckInOutCommand}" CommandParameter="{Binding}"/>
                     </Grid>
                 </Grid>
             </Grid>
-            <Button Grid.Column="2" Content="Temp button DON'T remove" HorizontalAlignment="Left" Margin="230,33,0,0" VerticalAlignment="Top" Click="Button_Click" Height="56" Width="352" Grid.ColumnSpan="2"/>
         </Grid>
     </Grid>
 

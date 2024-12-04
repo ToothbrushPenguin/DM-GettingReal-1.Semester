@@ -13,6 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using KvalitetesLedelsesSystem.ViewModels;
+using KvalitetesLedelsesSystem.Models;
 
 namespace KvalitetesLedelsesSystem
 {
@@ -21,11 +23,14 @@ namespace KvalitetesLedelsesSystem
     /// </summary>
     public partial class Check : Page
     {
+        private MainViewModel mvm = new MainViewModel();
         public Check()
         {
+            
             InitializeComponent();
+            DataContext = mvm;
+            UserNameBox.Text = mvm.UserName;
 
-          
         }
 
         private void ContingencyPlan(object sender, RoutedEventArgs e)
@@ -34,11 +39,29 @@ namespace KvalitetesLedelsesSystem
             mainWindow?.NavigateTo_Plan();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void UserNameTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            var mainWindow = Application.Current.MainWindow as MainWindow;
-            mainWindow?.NavigateTo_PersonList();
 
+        }
+
+        private void UserNameTextBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+            if (textBox != null && textBox.Text == "UserName")
+            {
+                textBox.Text = string.Empty; 
+                textBox.Foreground = Brushes.Black; 
+            }
+        }
+
+        private void UserNameTextBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+            if (textBox != null && string.IsNullOrWhiteSpace(textBox.Text))
+            {
+                textBox.Text = "UserName";
+                textBox.Foreground = Brushes.Gray; 
+            }
         }
     }
 }
