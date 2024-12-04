@@ -127,7 +127,7 @@ namespace KvalitetesLedelsesSystem.ViewModels
         public void Deafault()
         {
             imageRepository.Default();
-            colourRepository.Default();
+            colourRepository.Default(); 
         }
         public void UpdateImage(string ID )
         {

@@ -44,12 +44,38 @@ package "Application" <<Rectangle>> {
 
         class MainViewModel {
             - userRepository: UserRepository
+            - imageRepository : ImageRepository
+            - colourRepository : ColourRepository
+            + usersVMs : ObservableCollection<UserviewModel>
+            + colourVMs : ObservableCollection<ColourViewModel>
+            + imageVMs : ObservableCollection<ImageViewModel>
+           
+            + DefaultSettingsCommand : Icommand
+            + AddUserCommand : Icommand
+            + DeleteUser : Icommand
+            + AdminCrudCommand : Icommand
+            + AdminLogInCommand : Icommand
+            + AdminMenuCommand : Icommand
+            + CheckCommand : Icommand
+            + CreateGuestCommand : Icommand
+            + PersonListCommand : Icommand
+            + PlanCommand : Icommand
+            + UdatePath : Icommand
+            + updateColour : Icommand
+            + CheckInOut : Icommand
 
-            + GetContingencyPdf(): Image
-            + UpdateContingencyPdf(path:string): void
-            + GetContingencyMap(): Image
-            + UpdateContingencyMap(path:string): void
+            + Username <get> : string
 
+            + SelectedUserVM <get> : UserVievModel
+
+           
+           
+            + MainViewModel() 
+            + AddColours() 
+            + UpdateColour() 
+            + AddImages() 
+            + Default()
+            + UpdateImage(ID : string)
             + CreateUser(userName:string, name:string, company:string, type:UserType): void
             + DeleteUser(username: String): void
             + FindIndexById(username: String):int
@@ -58,10 +84,6 @@ package "Application" <<Rectangle>> {
             
         }
 
-        class FileHandler {
-            + Save(path: string, text: string):bool
-            + Load(path: string): text: string
-        }
 
     }
 
@@ -77,6 +99,35 @@ package "Application" <<Rectangle>> {
             + UpdateUser(userIndex, userName:string, name:string, company:string, type:UserType): void
             + DeleteUser(username: String): void
         }
+        class ImageRepository{
+        - images : List<ImageTod>
+
+        +ImageRepository()
+        +Update(ID:string)
+        +GetAll() : List<ImageTod>
+        +Default()
+
+        }
+        class ColourRepository{
+           
+            - Colours : List<Colours>
+
+            + ColourRepository()
+            + Default()
+            + Update(ID : string)
+            + GetAll() : List<Colour>
+        }
+        class ColourViewModel{
+        + SelectedColour <get> : string
+        
+        + ColourViewModel(colour : Colour) 
+        }
+        class ImageViewModel{
+        + selectedPath <get> : string
+        
+        +ImageViewModel(image : ImageTod)
+
+        }
     }
 }
 
@@ -91,7 +142,7 @@ package "Domain" <<Rectangle>> {
        
         class Admin {
             - password: String
-        }
+        } 
        
         class Contingency_Responsible {
             - password: String
@@ -104,6 +155,17 @@ package "Domain" <<Rectangle>> {
         - map: Image
         - pdf: Image
     }
+    class ImageTod{
+        +selectedPath: string
+
+        + ImageTod()
+    }
+    class Colour{
+        +selectedColour
+
+        +Colour()
+    }
+
 }
 
 ' UI to Contoller
@@ -111,11 +173,17 @@ MainWindow "1" -down- "1" MainViewModel
 
 ' MainViewModel to x
 MainViewModel "1" -down- "1" UserRepository
-MainViewModel "1" -right- "1" FileHandler
 MainViewModel "1" -down- "1" Contingency
+MainViewModel "1" -down- "1" ColourRepository
+MainViewModel "1" -down- "1" ImageRepository
+MainViewModel "1" -down- "3" ImageViewModel
+MainViewModel "1" -down- "3" ColourViewModel
+
 
 ' Repository to Domain
 UserRepository "1" -down- "0..*" User
+ColourRepository "1" -down- "0..*"Colour
+ImageRepository "1" -down- "0..*"ImageTod
 
 ' Inheritance
 Admin -up-|> User : inherents <

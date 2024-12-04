@@ -1,27 +1,20 @@
 @startuml test
 skinparam style strictuml
 skinparam sequenceMessageAlign center
-title Check
+title DefaultSetting
 
 Actor "User/AdminMenu" as user
 
 participant ":UpdateColourCommand" as UCC
 participant ":MainViewModel" as MVM
-participant ":ColorViewModel" as CVM
-participant ":ImageViewModel" as IVM
+participant ":ColourRepository" as CRP
+participant ":ImageRepository" as IRP
 
-
-user -> UCC ++: Execute(string : ID)
-return Display MessageBox Confirm action
-
-user -> UCC ++: Confirm
-UCC -> UCC : Check(ID)
-UCC -> MVM ++: Update Colour and Image
-MVM -> CVM ++: Update Colour
-return 
-MVM -> IVM ++: Update Image
+user -> UCC ++: Execute()
+UCC -> MVM ++: Default()
+MVM -> CRP ++: Default()
+return Revert to default ColourViewModel
+MVM -> IRP ++: Default()
+return Revert to default ImageViewModel
+return Display default colours and ImageRepository
 return
-return
-UCC -> UCC : Update ColourFiles
-UCC -> UCC : update ImageFiles
-return Display Default Colors and Images
