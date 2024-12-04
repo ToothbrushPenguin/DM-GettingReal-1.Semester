@@ -16,12 +16,15 @@ namespace KvalitetesLedelsesSystem.Models
         public string Name { get; set; }
         public string Company { get; set; }
 
-        public User(string username, string name, string company)
+        public bool CheckInStatus { get; set; }
+
+        public User(string username, string name, string company, bool checkInStatus)
         {
 
             UserName = $"{username}";
             Name = name;
             Company = company;
+            CheckInStatus = checkInStatus;
         }
 
         public virtual string ToString() 

@@ -72,7 +72,7 @@ namespace KvalitetesLedelsesSystem.ViewModels
             return result;
         }
 
-        public User Add(string userName, string name, string company, UserType userType, string password)
+        public User Add(string userName, string name, string company, UserType userType, bool checkInStatus, string password)
         {
             
             User result = null;
@@ -85,13 +85,13 @@ namespace KvalitetesLedelsesSystem.ViewModels
                     switch (userType)
                     {
                         case UserType.User:
-                            result = new User(userName, name, company);
+                            result = new User(userName, name, company, checkInStatus);
                             break;
                         case UserType.Admin:
-                            result = new Admin(userName, name, company, password);
+                            result = new Admin(userName, name, company, checkInStatus, password);
                             break;
                         case UserType.Contingency_Responsible:
-                            result = new Contingency_Responsible(userName, name, company, password);
+                            result = new Contingency_Responsible(userName, name, company, checkInStatus, password);
                             break;
                     }
 
@@ -244,7 +244,8 @@ namespace KvalitetesLedelsesSystem.ViewModels
 
          public void ChangeCheck(string username)
         {
-            CheckStatus = !CheckStatus;
+            User FoundPerson = Get(username);
+            FoundPerson.CheckInStatus = !FoundPerson.CheckInStatus;
         }
 
         public void UpdateLog(string userName)

@@ -91,6 +91,8 @@ namespace KvalitetesLedelsesSystem.ViewModels
             UserName = user.UserName;
             Name = user.Name;
             Company = user.Company;
+            CheckInStatus = user.CheckInStatus;
+
 
             if (user is Admin)
             {

@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Data;
 using System.Windows.Input;
 using KvalitetesLedelsesSystem.Models;
 using KvalitetesLedelsesSystem.ViewModels.Commands;
@@ -18,7 +19,12 @@ namespace KvalitetesLedelsesSystem.ViewModels
 
         public static ObservableCollection<ColourViewModel> colourVMs { get; set; } = new ObservableCollection<ColourViewModel>();
         public static ObservableCollection<ImageViewModel> imageVMs { get; set; } = new ObservableCollection<ImageViewModel>();
-       
+
+        public ICollectionView CheckedInUsers { get; set; }
+
+
+
+
 
 
         public ICommand AddUserCommand {  get; } = new AddUserCommand();
@@ -127,11 +133,14 @@ namespace KvalitetesLedelsesSystem.ViewModels
 
             }
 
+            CheckedInUsers = CollectionViewSource.GetDefaultView(userVMs);
+            CheckedInUsers.Filter = checkedInUser => ((UserViewModel)checkedInUser).CheckInStatus;
+
         }
 
         public void AddUser()
         {
-            User user = userRepository.Add("User", "", "", UserType.User, "");
+            User user = userRepository.Add("User", "", "", UserType.User, false,"");
             UserViewModel vm = new UserViewModel(user);
             userVMs.Add(vm);
             SelectedUserVM = vm;
@@ -155,6 +164,7 @@ namespace KvalitetesLedelsesSystem.ViewModels
                 if (uvm.UserName == UserName)
                 {
                     uvm.ChangeCheck(userRepository, uvm.UserName);
+                    CheckedInUsers.Refresh();
                 }
             }
            
