@@ -143,14 +143,5 @@ namespace KvalitetesLedelsesSystem.ViewModels
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-
-        public void ChangeCheck(UserRepository userRepository, string username)
-        {
-            userRepository.ChangeCheck(username);
-            userRepository.UpdateLog(username);
-        }
-
-
-
     }
 }

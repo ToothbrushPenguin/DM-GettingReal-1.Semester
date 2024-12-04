@@ -14,10 +14,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Haley.WPF" Version="5.4.3.1" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Resource Include="Societate transparent.png" />
     <Resource Include="Views\Societate transparent.png" />
   </ItemGroup>

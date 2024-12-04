@@ -22,9 +22,9 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <Button FontSize="20" FontWeight="Bold" Content="⮐" Background="#3F3F3F" Foreground="#FFFFFFFF" Grid.Column="0" Click="Button_Click"/>
+            <Button FontSize="20" FontWeight="Bold" Content="⮐" Background="#3F3F3F" Foreground="#FFFFFFFF" Grid.Column="0"/>
             <TextBlock Text="List Of All Users" TextDecorations="Underline"  Foreground="#FFFFFFFF" FontSize="24" FontWeight="Bold"  Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-            <Image Source="{Binding imageVMs[0].SelectedImage}"  Grid.Column="2"/>
+            <Image Source="/Views/Societate transparent.png"  Grid.Column="2"/>
 
         </Grid>
 
@@ -83,7 +83,7 @@
                         <ColumnDefinition Width="10*"/>
                     </Grid.ColumnDefinitions>
                     <Button Command="{Binding AddUserCommand}" CommandParameter="{Binding}" FontSize="13" Content="Add User" Grid.Column="0"/>
-                    <Button Command="{Binding AdminCRUDCommand}" CommandParameter="{Binding}" FontSize="13" Content="Edit User" Grid.Column="2"/>
+                    <Button FontSize="13" Content="Edit User" Grid.Column="2"/>
                 </Grid>
 
             </Grid>

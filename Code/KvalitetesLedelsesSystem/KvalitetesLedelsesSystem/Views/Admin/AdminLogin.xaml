@@ -8,7 +8,7 @@
       
       Title="AdminLogin" d:DesignHeight="720" d:DesignWidth="1280" >
 
-    <Grid Background="{Binding Path=colourVMs[0].SelectedColour}">
+    <Grid Background="#3F3F3F">
         <Grid.RowDefinitions >
             <RowDefinition Height="*"/>
             <RowDefinition Height="12*"/>
@@ -22,13 +22,13 @@
                 <ColumnDefinition Width="10*"/>
             </Grid.ColumnDefinitions>
 
-            <Button FontSize="20" FontWeight="Bold" Content="⮐" Background="{Binding Path=colourVMs[1].SelectedColour}" Foreground="#FFFFFFFF" Grid.Column="0" Click="Button_Click"/>
-            <Button FontSize="16" FontWeight="Bold" Content="Check In/Ud" Command="{Binding Path= CheckCommand}" CommandParameter="{Binding}" Background="{Binding Path=colourVMs[1].SelectedColour}" Foreground="#FFFFFFFF" Grid.Column="1"/>
-            <Button FontSize="16" FontWeight="Bold" Command="{Binding PlanCommand}" CommandParameter="{Binding}" Content="Contingency Plan" Background="{Binding Path=colourVMs[1].SelectedColour}" Foreground="#FFFFFFFF" Grid.Column="2"/>
+            <Button FontSize="20" FontWeight="Bold" Content="⮐" Background="#3F3F3F" Foreground="#FFFFFFFF" Grid.Column="0"/>
+            <Button FontSize="16" FontWeight="Bold" Content="Check In/Ud" Background="#3F3F3F" Foreground="#FFFFFFFF" Grid.Column="1"/>
+            <Button FontSize="16" FontWeight="Bold" Content="Contingency Plan" Background="#3F3F3F" Foreground="#FFFFFFFF" Grid.Column="2"/>
 
         </Grid>
 
-        <Grid Background="{Binding Path=colourVMs[0].SelectedColour}" Grid.Row="1">
+        <Grid Background="#FF1E1E1E" Grid.Row="1">
 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="2*"/>
@@ -50,7 +50,7 @@
                     <RowDefinition Height="2*"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <Grid Height="309" Margin="0,154,0,0" Grid.RowSpan="3" VerticalAlignment="Top">
+                <Grid Grid.Row="1">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="4*"/>
                         <RowDefinition Height="2*"/>
@@ -62,20 +62,19 @@
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
 
-                    <Image Grid.Row="0" Source="{Binding imageVMs[0].SelectedImage}"/>
+                    <Image Grid.Row="0" Source="/Views/Societate transparent.png"/>
                     <TextBlock FontSize="29"  Text="Societate ApS" Foreground="#FFFFFFFF" FontWeight="Bold" TextAlignment="Center" Grid.Row="1"/>
                     <PasswordBox Password="Password" FontSize="13" BorderBrush="#FF333131" Grid.Row="5"/>
                     <TextBox Grid.Row="3" FontSize="13" TextWrapping="Wrap" Text="Username" BorderBrush="#FF333131"/>
 
                     <Grid Grid.Row="7">
                         <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="10*"/>
                             <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="2*"/>
-                            <ColumnDefinition Width="*"/>
-
-
+                            <ColumnDefinition Width="10*"/>
                         </Grid.ColumnDefinitions>
-                        <Button FontSize="13" Command="{Binding Path = AdminMenuCommand}"  CommandParameter="{Binding}" Content="Login" Grid.Column="1"/>
+                        <Button FontSize="13" Content="Check In/Out" Grid.Column="0"/>
+                        <Button FontSize="13" Content="Register" Grid.Column="2"/>
                     </Grid>
                 </Grid>
             </Grid>

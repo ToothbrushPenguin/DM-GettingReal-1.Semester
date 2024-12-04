@@ -1,5 +1,4 @@
-﻿using KvalitetesLedelsesSystem.ViewModels;
-using Microsoft.Win32;
+﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,11 +21,9 @@ namespace KvalitetesLedelsesSystem.Views
     /// </summary>
     public partial class AdminMenu : Page
     {
-        MainViewModel mvm = new MainViewModel();
         public AdminMenu()
         {
             InitializeComponent();
-            DataContext = mvm;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -43,13 +40,5 @@ namespace KvalitetesLedelsesSystem.Views
                 filePath = openFileDialog.FileName;
             }
         }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            var mainWindow = Application.Current.MainWindow as MainWindow;
-            mainWindow?.NavigateTo_Check();
-        }
-
-        
     }
 }

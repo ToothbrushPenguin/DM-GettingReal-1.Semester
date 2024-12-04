@@ -1,5 +1,4 @@
-﻿using KvalitetesLedelsesSystem.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,7 +12,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using KvalitetesLedelsesSystem.Views;
 
 namespace KvalitetesLedelsesSystem.Views
 {
@@ -22,24 +20,29 @@ namespace KvalitetesLedelsesSystem.Views
     /// </summary>
     public partial class Plan : Page
     {
-        MainViewModel mvm = new MainViewModel();
         public Plan()
         {
             InitializeComponent();
-            DataContext = mvm;
             pdfWebViewer.Navigate(new Uri("about:blank"));
-            
+        
+
+            string relativePath = @"..\..\..\Test.pdf"; //Hopper 3 steps ud af bin
+            string absolutePath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, relativePath);//combiner path til bin med relative path
 
             // Navigate to the PDF file
-            pdfWebViewer.Navigate(MainViewModel.imageVMs[2].SelectedImage);
-
-           
-           
+            pdfWebViewer.Navigate(absolutePath);
         }
 
         private void GoBack_click(object sender, RoutedEventArgs e)
         {
             NavigationService.GoBack();
+        }
+
+        private void CheckinUd_Click(object sender, RoutedEventArgs e)
+        {
+
+            NavigationService.GoBack();  
+            
         }
     }
 }

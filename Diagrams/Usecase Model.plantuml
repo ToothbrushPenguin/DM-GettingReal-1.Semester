@@ -26,10 +26,6 @@ rectangle "Societate System" {
         Precondition:
         User must be registered
     end note
-    note right of UC1
-        Postcondition:
-        Log file is updated
-    end note
     
     usecase "View People\nin Building" as UC4
     note left of UC4
