@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KvalitetesLedelsesSystem.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,10 +21,20 @@ namespace KvalitetesLedelsesSystem.Views
     /// </summary>
     public partial class AdminLogin : Page
     {
-        
+        MainViewModel mvm = new MainViewModel();
         public AdminLogin()
         {
             InitializeComponent();
+            DataContext = mvm;
+        }
+       
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            
+            {
+                NavigationService.GoBack();
+            }
+
         }
     }
 }

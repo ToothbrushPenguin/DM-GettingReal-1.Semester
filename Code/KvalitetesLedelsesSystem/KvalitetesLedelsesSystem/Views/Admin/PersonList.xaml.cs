@@ -27,5 +27,10 @@ namespace KvalitetesLedelsesSystem.Views
             InitializeComponent();
             DataContext = mvm;
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
+        }
     }
 }

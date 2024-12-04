@@ -1,4 +1,5 @@
 ﻿using KvalitetesLedelsesSystem.ViewModels;
+using KvalitetesLedelsesSystem.ViewModels.Commands;
 using KvalitetesLedelsesSystem.Views;
 using System.Text;
 using System.Windows;
@@ -27,6 +28,12 @@ namespace KvalitetesLedelsesSystem
 
         private PersonList _personList;
 
+        private AdminMenu _adminMenu;
+
+        private AdminCRUD _adminCRUD;
+
+        private CreateGuest _createGuest;
+
         
 
         
@@ -41,6 +48,9 @@ namespace KvalitetesLedelsesSystem
             _plan = new Plan();
             _adminLogin = new AdminLogin();
             _personList = new PersonList();
+            _adminMenu = new AdminMenu();
+            _adminCRUD = new AdminCRUD();
+            _createGuest = new CreateGuest();
             
 
             MainFrame.NavigationService.Navigate(_check);
@@ -64,6 +74,21 @@ namespace KvalitetesLedelsesSystem
         public void NavigateTo_PersonList()
         {
             MainFrame.Navigate(_personList);
+        }
+
+        public void NavigateTo_AdminMenu()
+        {
+            MainFrame.Navigate(_adminMenu);
+        }
+
+        public void NavigateTo_AdminCRUD()
+        {
+            MainFrame.Navigate(_adminCRUD);
+        }
+
+        public void NavigateTo_CreateGuest()
+        {
+            MainFrame.Navigate(_createGuest);
         }
 
     }
