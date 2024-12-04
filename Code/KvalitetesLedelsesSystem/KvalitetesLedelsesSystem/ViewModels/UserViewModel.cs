@@ -16,6 +16,7 @@ namespace KvalitetesLedelsesSystem.ViewModels
         private string company;
         private string password;
         private UserType userType;
+        public bool CheckInStatus { get; set; }
 
         public string UserName
         {

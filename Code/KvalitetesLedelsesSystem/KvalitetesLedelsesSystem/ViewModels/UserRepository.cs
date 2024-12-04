@@ -24,7 +24,7 @@ namespace KvalitetesLedelsesSystem.ViewModels
         private List<User> users = new List<User>();
 
         private bool CheckStatus = false;
-        private static string LogPath = Path.GetFullPath(@"Log.txt");
+        private static string LogPath = Path.GetFullPath("Log.txt");
 
 
         //HUSK - implement constructor to load from file and methoth to save to file
@@ -72,7 +72,7 @@ namespace KvalitetesLedelsesSystem.ViewModels
             return result;
         }
 
-        public User Add(string userName, string name, string company, UserType userType, bool checkInStatus, string password)
+        public User Add(string userName, string name, string company, UserType userType, string password)
         {
             
             User result = null;
@@ -85,13 +85,13 @@ namespace KvalitetesLedelsesSystem.ViewModels
                     switch (userType)
                     {
                         case UserType.User:
-                            result = new User(userName, name, company, checkInStatus);
+                            result = new User(userName, name, company);
                             break;
                         case UserType.Admin:
-                            result = new Admin(userName, name, company, checkInStatus, password);
+                            result = new Admin(userName, name, company, password);
                             break;
                         case UserType.Contingency_Responsible:
-                            result = new Contingency_Responsible(userName, name, company, checkInStatus, password);
+                            result = new Contingency_Responsible(userName, name, company, password);
                             break;
                     }
 
@@ -251,13 +251,27 @@ namespace KvalitetesLedelsesSystem.ViewModels
         public void UpdateLog(string userName)
         {
             User foundPerson = Get(userName);
+            DateTime logTime = DateTime.Now;
+            string checkMessage = null;
 
             if (foundPerson != null)
             {
-                using (StreamWriter SR = new StreamWriter(LogPath))
+                
+                if (foundPerson.CheckInStatus == true)
                 {
-                    SR.WriteLine(foundPerson);
+                    MessageBox.Show("You have been checked in!");
+                    checkMessage = "Checked In";
                 }
+                else if (foundPerson.CheckInStatus == false)
+                {
+                    MessageBox.Show("You have been checked out!");
+                    checkMessage = "Checked Out";
+                }
+                using (StreamWriter SR = new StreamWriter(LogPath, true))
+                {
+                    SR.WriteLine($"{foundPerson.ToString()} {checkMessage} {logTime}");
+                }
+                
             }
             else
             {

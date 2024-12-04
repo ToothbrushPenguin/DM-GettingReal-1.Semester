@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Data;
 using System.Windows.Input;
 using KvalitetesLedelsesSystem.Models;
@@ -140,7 +141,7 @@ namespace KvalitetesLedelsesSystem.ViewModels
 
         public void AddUser()
         {
-            User user = userRepository.Add("User", "", "", UserType.User, false,"");
+            User user = userRepository.Add("User", "", "", UserType.User,"");
             UserViewModel vm = new UserViewModel(user);
             userVMs.Add(vm);
             SelectedUserVM = vm;
@@ -166,7 +167,9 @@ namespace KvalitetesLedelsesSystem.ViewModels
                     uvm.ChangeCheck(userRepository, uvm.UserName);
                     CheckedInUsers.Refresh();
                 }
+                
             }
+
            
         }
         public void UpdateUser()

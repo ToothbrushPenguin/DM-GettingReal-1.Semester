@@ -18,13 +18,13 @@ namespace KvalitetesLedelsesSystem.Models
 
         public bool CheckInStatus { get; set; }
 
-        public User(string username, string name, string company, bool checkInStatus)
+        public User(string username, string name, string company)
         {
 
             UserName = $"{username}";
             Name = name;
             Company = company;
-            CheckInStatus = checkInStatus;
+            CheckInStatus = false;
         }
 
         public virtual string ToString() 
