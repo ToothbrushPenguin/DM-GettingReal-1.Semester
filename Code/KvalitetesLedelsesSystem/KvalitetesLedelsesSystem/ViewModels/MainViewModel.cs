@@ -13,8 +13,8 @@ namespace KvalitetesLedelsesSystem.ViewModels
 {
     public class MainViewModel : INotifyPropertyChanged
     {
-        private static UserRepository userRepository = new UserRepository();
-        public static ObservableCollection<UserViewModel> userVMs { get; set; } = new ObservableCollection<UserViewModel>();
+        private UserRepository userRepository = new UserRepository();
+        public ObservableCollection<UserViewModel> userVMs { get; set; } = new ObservableCollection<UserViewModel>();
 
         public static ObservableCollection<ColourViewModel> colourVMs { get; set; } = new ObservableCollection<ColourViewModel>();
         public static ObservableCollection<ImageViewModel> imageVMs { get; set; } = new ObservableCollection<ImageViewModel>();
