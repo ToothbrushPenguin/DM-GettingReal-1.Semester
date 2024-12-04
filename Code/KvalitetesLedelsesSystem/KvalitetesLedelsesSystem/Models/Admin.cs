@@ -15,6 +15,11 @@ namespace KvalitetesLedelsesSystem.Models
         {
             Password = password;
         }
+
+        public override string ToString()
+        {
+            return $"{UserName};{Name};{Company};{Password}";
+        }
     }
 
     

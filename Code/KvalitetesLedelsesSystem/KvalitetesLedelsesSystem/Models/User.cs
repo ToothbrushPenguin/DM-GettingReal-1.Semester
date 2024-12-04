@@ -9,7 +9,7 @@ namespace KvalitetesLedelsesSystem.Models
 {
     public class User
     {
-        private static int idCount = 0;
+        
 
         
         public string UserName { get; set; }
@@ -19,9 +19,14 @@ namespace KvalitetesLedelsesSystem.Models
         public User(string username, string name, string company)
         {
 
-            UserName = $"{username}{idCount++}";
+            UserName = $"{username}";
             Name = name;
             Company = company;
+        }
+
+        public virtual string ToString() 
+        {
+            return $"{UserName};{Name};{Company}";
         }
 
         

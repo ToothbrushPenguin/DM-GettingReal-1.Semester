@@ -1,6 +1,7 @@
 ﻿using KvalitetesLedelsesSystem.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -25,6 +26,7 @@ namespace KvalitetesLedelsesSystem.ViewModels
         //HUSK - implement constructor to load from file and methoth to save to file
         public UserRepository() 
         { 
+            LoadUsersToList();
             //using(StreamReader reader = new StreamReader("Users.txt"))
             //{
                 
@@ -90,6 +92,7 @@ namespace KvalitetesLedelsesSystem.ViewModels
                     }
 
                     users.Add(result);
+                    SaveUsersFromList();
 
                 }
                 else
@@ -112,11 +115,71 @@ namespace KvalitetesLedelsesSystem.ViewModels
             User foundPerson = Get(userName);
 
             if (foundPerson != null)
+            {
                 users.Remove(foundPerson);
+                SaveUsersFromList();
+            }   
             else
                 throw (new ArgumentException("Person with userName = " + userName + " not found"));
         }
 
+        public User Update(string oldUserName, string newName, string newUserName, string newCompany, string newPassword, UserType userType)
+        {
+            User foundPerson = Get(oldUserName);
+            User updatedUser = null;
+
+            if (foundPerson != null)
+            {
+                users.Remove(foundPerson);
+
+                switch (userType)
+                {
+                    case UserType.Admin:
+                        updatedUser = new Admin(newUserName, newName, newCompany, newPassword);
+                        break;
+                    case UserType.Contingency_Responsible:
+                        updatedUser = new Contingency_Responsible(newUserName, newName, newCompany, newPassword);
+                        break;
+                    case UserType.User:
+                        updatedUser = new User(newUserName, newName, newCompany);
+                        break;
+                }
+
+                users.Add(updatedUser);
+                SaveUsersFromList();
+
+
+            }
+            else
+            {
+                throw new ArgumentException($"User with username {oldUserName} not found");
+            }
+
+            return updatedUser;
+        }
+
+        private User ConvertUserType(User user, UserType userType)
+        {
+            User output = user;
+            switch (userType)
+            {
+                case UserType.Admin:
+                    if (!(user is Admin))
+                    {
+                        output = new Admin(user.Name,user.UserName,user.Company,"1234");
+                        
+                    }
+                    
+                    break;
+                case UserType.Contingency_Responsible:
+                    break;
+                case UserType.User:
+                    break;
+                default:
+                    break;
+            }
+            return output;
+        }
 
         private bool CheckStatus = false;
 
@@ -147,6 +210,60 @@ namespace KvalitetesLedelsesSystem.ViewModels
             }
             
         }
+    }
+
+        private void LoadUsersToList()
+        {
+            if (File.Exists("Users.txt"))
+            {
+                users.Clear(); // Clear existing users before loading
+
+                using (StreamReader reader = new StreamReader("Users.txt"))
+                {
+                    string line;
+                    while ((line = reader.ReadLine()) != null)
+                    {
+                        if (!string.IsNullOrWhiteSpace(line))
+                        {
+                            string[] parts = line.Split(';');
+
+                            // Check number of parts to determine user type
+                            // If 4 parts, it's an Admin or Contingency_Responsible (has password)
+                            // If 3 parts, it's a regular User
+                            if (parts.Length == 4)
+                            {
+                                // Determine if it's an Admin or Contingency_Responsible based on the username prefix
+                                if (parts[0].StartsWith("admin", StringComparison.OrdinalIgnoreCase))
+                                {
+                                    users.Add(new Admin(parts[0], parts[1], parts[2], parts[3]));
+                                }
+                                else
+                                {
+                                    users.Add(new Contingency_Responsible(parts[0], parts[1], parts[2], parts[3]));
+                                }
+                            }
+                            else if (parts.Length == 3)
+                            {
+                                users.Add(new User(parts[0], parts[1], parts[2]));
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        private void SaveUsersFromList()
+        {
+            using (TextWriter tw = new StreamWriter("Users.txt"))
+            {
+                foreach (User user in users) 
+                {
+                    tw.WriteLine(user.ToString());
+                }
+            }
+        }
+
+
     }
 
     
