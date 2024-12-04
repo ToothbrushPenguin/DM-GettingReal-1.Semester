@@ -24,7 +24,7 @@ namespace KvalitetesLedelsesSystem.ViewModels
 
         public ICommand AddUserCommand {  get; } = new AddUserCommand();
         public ICommand DeleteUserCommand { get; } = new DeleteUserCommand();
-        public ICommand AdminCrudCommand { get; } = new AdminCRUDCommand();
+        public ICommand AdminCRUDCommand { get; } = new AdminCRUDCommand();
         public ICommand AdminLogInCommand {  get; } = new AdminLogInCommand();
         public ICommand AdminMenuCommand { get; } = new AdminMenuCommand();
         public ICommand CheckCommand { get; } = new CheckCommand();

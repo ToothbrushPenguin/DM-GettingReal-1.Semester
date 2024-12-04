@@ -83,7 +83,7 @@
                         <ColumnDefinition Width="10*"/>
                     </Grid.ColumnDefinitions>
                     <Button Command="{Binding AddUserCommand}" CommandParameter="{Binding}" FontSize="13" Content="Add User" Grid.Column="0"/>
-                    <Button FontSize="13" Content="Edit User" Grid.Column="2"/>
+                    <Button Command="{Binding AdminCRUDCommand}" CommandParameter="{Binding}" FontSize="13" Content="Edit User" Grid.Column="2"/>
                 </Grid>
 
             </Grid>

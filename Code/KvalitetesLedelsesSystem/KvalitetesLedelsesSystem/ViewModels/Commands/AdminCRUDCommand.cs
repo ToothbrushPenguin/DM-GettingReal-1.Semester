@@ -20,12 +20,12 @@ namespace KvalitetesLedelsesSystem.ViewModels.Commands
 
         public void Execute(object? parameter)
         {
-            /*if (parameter is MainViewModel mvm)
+            if (parameter is MainViewModel mvm)
             {
                 AdminCRUD dialog = new AdminCRUD() { DataContext = mvm };
                 dialog.ShowDialog();
 
-            }*/
+            }
         }
 
     }
