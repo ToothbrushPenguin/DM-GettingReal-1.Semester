@@ -15,7 +15,6 @@ namespace KvalitetesLedelsesSystem.ViewModels
     {
         private UserRepository userRepository = new UserRepository();
         public ObservableCollection<UserViewModel> userVMs { get; set; } = new ObservableCollection<UserViewModel>();
-
         public static ObservableCollection<ColourViewModel> colourVMs { get; set; } = new ObservableCollection<ColourViewModel>();
         public static ObservableCollection<ImageViewModel> imageVMs { get; set; } = new ObservableCollection<ImageViewModel>();
        
@@ -32,9 +31,7 @@ namespace KvalitetesLedelsesSystem.ViewModels
         public ICommand PlanCommand { get; } = new PlanCommand();
         public ICommand UpdatePath { get; } = new UpdatePath();
         public ICommand UpdateColor {  get; } = new UpdateColor();
-
         public ICommand CheckInOutCommand { get; } = new CheckInOutCommand();
-
         public ICommand DefautSettingsCommand { get; }  = new DefaultSettingsCommand();
 
         private static string username = "Username";
