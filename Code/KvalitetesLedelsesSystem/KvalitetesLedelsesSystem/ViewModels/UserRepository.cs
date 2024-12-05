@@ -242,29 +242,65 @@ namespace KvalitetesLedelsesSystem.ViewModels
             }
         }
 
-         public void ChangeCheck(string username)
+        // public void ChangeCheck(string username)
+        //{
+        //    CheckStatus = !CheckStatus;
+        //}
+
+        //public void UpdateLog(string userName)
+        //{
+        //    User foundPerson = Get(userName);
+
+        //    if (foundPerson != null)
+        //    {
+        //        using (StreamWriter SR = new StreamWriter(LogPath))
+        //        {
+        //            SR.WriteLine(foundPerson);
+        //        }
+        //    }
+        //    else
+        //    {
+        //        throw (new ArgumentException("No person with this username was found"));
+        //    }
+
+        //}
+        public void ChangeCheck(string username)
         {
-            CheckStatus = !CheckStatus;
+            User FoundPerson = Get(username);
+            FoundPerson.CheckInStatus = !FoundPerson.CheckInStatus;
         }
 
         public void UpdateLog(string userName)
         {
             User foundPerson = Get(userName);
+            DateTime logTime = DateTime.Now;
+            string checkMessage = null;
 
             if (foundPerson != null)
             {
-                using (StreamWriter SR = new StreamWriter(LogPath))
+
+                if (foundPerson.CheckInStatus == true)
                 {
-                    SR.WriteLine(foundPerson);
+                    MessageBox.Show("You have been checked in!");
+                    checkMessage = "Checked In";
                 }
+                else if (foundPerson.CheckInStatus == false)
+                {
+                    MessageBox.Show("You have been checked out!");
+                    checkMessage = "Checked Out";
+                }
+                using (StreamWriter SR = new StreamWriter(LogPath, true))
+                {
+                    SR.WriteLine($"{foundPerson.ToString()} {checkMessage} {logTime}");
+                }
+
             }
             else
             {
                 throw (new ArgumentException("No person with this username was found"));
             }
-            
-        }
 
+        }
     }
 
     
