@@ -54,53 +54,39 @@ namespace KvalitetesLedelsesSystem.ViewModels
         public List<ImageTod> GetAll()
         { return images; }
 
-        public void Update(string ID)
+        public void UpdateImage(string ID, string newPath)
         {
             // Commandparameters er en string hvor at, argumentet Logo tilgår MainViewModel.imageVMs[0].SelectedImage
             // Argumentet ContingencyDrawing tilgår MainViewModel.imageVMs[1].SelectedImage
             // Argumentet ContingencyPlan tilgår MainViewModel.imageVMs[2].SelectedImage
-            string newpath;
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            bool? result = openFileDialog.ShowDialog();
-            if (result == true)
+          
             {
-
 
                 if (ID == "Logo")
                 {
-                    newpath = openFileDialog.FileName;
-                    //newpath.Replace(@"\", "/"); 
-                    MainViewModel.imageVMs[0].SelectedImage = newpath;
+
+
+                    images[0].selectedPath = newPath;
                 }
                 else if (ID == "ContingencyDrawing")
                 {
-                    newpath = openFileDialog.FileName;
-                    //newpath.Replace(@"\", "/"); 
-                    MainViewModel.imageVMs[1].SelectedImage = newpath;
+                    images[1].selectedPath = newPath;
                 }
                 else if (ID == "ContingencyPlan")
                 {
-                    newpath = openFileDialog.FileName;
-                    string[] check = newpath.Split('.');
-                    if (check[1] != "pdf")
+
+                    images[2].selectedPath = newPath;
+
+
+
+                    using (StreamWriter writer = new StreamWriter("Images.txt", false))
                     {
-                        MessageBox.Show("Please only select pdf files", "Error: Wrong file type", MessageBoxButton.OK, MessageBoxImage.Error);
+                        writer.WriteLine(images[0].selectedPath);
+                        writer.WriteLine(images[1].selectedPath);
+                        writer.WriteLine(images[2].selectedPath);
                     }
-                    if (check[1] == "pdf")
-                    {
-                        //newpath.Replace(@"\", "/"); 
-                        MainViewModel.imageVMs[2].SelectedImage = newpath;
-                    }
+
                 }
-
-                using (StreamWriter writer = new StreamWriter("Images.txt", false))
-                {
-                    writer.WriteLine(MainViewModel.imageVMs[0].SelectedImage);
-                    writer.WriteLine(MainViewModel.imageVMs[1].SelectedImage);
-                    writer.WriteLine(MainViewModel.imageVMs[2].SelectedImage);
-                }
-
-
             }
 
         }

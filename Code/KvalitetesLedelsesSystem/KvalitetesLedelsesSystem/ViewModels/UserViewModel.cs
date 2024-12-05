@@ -48,7 +48,7 @@ namespace KvalitetesLedelsesSystem.ViewModels
             userRepository.ChangeCheck(username);
             userRepository.UpdateLog(username);
         }
-
+        
 
 
     }

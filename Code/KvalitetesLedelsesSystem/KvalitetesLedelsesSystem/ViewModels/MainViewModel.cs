@@ -103,7 +103,7 @@ namespace KvalitetesLedelsesSystem.ViewModels
                 }
             }
 
-        }//UserViewModelCommands
+        }
 
         public void AddColours() //add all colours to Colour VM's
         {
@@ -125,32 +125,24 @@ namespace KvalitetesLedelsesSystem.ViewModels
 
         public void AddImages()//adds all images
         {
-            if (imageVMs.Count < 3)
-            { 
-                foreach (ImageTod image in imageRepository.GetAll())
-                {
-                    imageVMs.Add(new ImageViewModel(image));
-                }
-            }
-            else
+            imageVMs.Clear();
+            foreach (ImageTod image in imageRepository.GetAll())
             {
-                int i = 0;
-                foreach(ImageTod image in imageRepository.GetAll())
-                {
-                    imageVMs[i].SelectedImage = image.selectedPath;
-                    i++;
-                }
+                imageVMs.Add(new ImageViewModel(image));
             }
+            
+            
         }
 
-        public void Deafault()
+        public void Default()
         {
-            imageRepository.Default();
-            colourRepository.Default(); 
+            ImageViewModel.Default(imageRepository);
+            ColourViewModel.Default(colourRepository); 
         }
-        public void UpdateImage(string ID )
+        public void UpdateImage(string ID, string newPath )
         {
-            imageRepository.Update(ID);
+            imageRepository.UpdateImage(ID, newPath);
+            AddImages();
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;

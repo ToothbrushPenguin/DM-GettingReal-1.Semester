@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using KvalitetesLedelsesSystem.Models;
+using KvalitetesLedelsesSystem.ViewModels.Commands;
 
 namespace KvalitetesLedelsesSystem.ViewModels
 {
@@ -32,7 +33,14 @@ namespace KvalitetesLedelsesSystem.ViewModels
          }
       
 
-
+        public static void Update(ImageRepository imageRepository, string ID, string newPath)
+        {
+            imageRepository.UpdateImage(ID, newPath);
+        }
+        public static void Default(ImageRepository imageRepository)
+        {
+            imageRepository.Default();
+        }
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected void OnPropertyChanged(string propertyName)

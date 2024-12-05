@@ -41,7 +41,10 @@ namespace KvalitetesLedelsesSystem.ViewModels
             colourRepository.Update(ID, newColor);
         }
         public event PropertyChangedEventHandler PropertyChanged;
-        
+        public static void Default(ColourRepository colourRepository)
+        {
+            colourRepository.Default();
+        }
         protected void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

@@ -27,11 +27,30 @@ namespace KvalitetesLedelsesSystem.ViewModels.Commands
         public void Execute(object? parameter)
         {
             MainViewModel mvm = new MainViewModel();
-            if(parameter is string ID)
+            if (parameter is string ID)
             {
-                mvm.UpdateImage(ID);    
-            }
+                OpenFileDialog openFileDialog = new OpenFileDialog();
+                bool? result = openFileDialog.ShowDialog();
+                if (result == true)
+                {
+                    if(ID == "ContingencyPlan")
+                    {
+                        string newPath = openFileDialog.FileName;
+                        string[] check = newPath.Split('.');
+                        if (check[1] != "pdf")
+                        {
+                            MessageBox.Show("Please only select pdf files", "Error: Wrong file type", MessageBoxButton.OK, MessageBoxImage.Error);
+                        }
+                        if (check[1] == "pdf")
+                        {
+                            //newpath.Replace(@"\", "/"); 
+                            MainViewModel.imageVMs[2].SelectedImage = newPath;
+                        }
+                    }
+                    mvm.UpdateImage(ID,openFileDialog.FileName);
 
+                }
+            }
         }
     }
 }
