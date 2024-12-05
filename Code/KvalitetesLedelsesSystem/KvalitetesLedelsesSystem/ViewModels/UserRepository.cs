@@ -28,9 +28,9 @@ namespace KvalitetesLedelsesSystem.ViewModels
 
 
         //HUSK - implement constructor to load from file and methoth to save to file
-        public UserRepository() 
-        { 
-            LoadUsersToList();
+        //public UserRepository() 
+        //{ 
+            //LoadUsersToList();
             //using(StreamReader reader = new StreamReader("Users.txt"))
             //{
                 
@@ -53,7 +53,7 @@ namespace KvalitetesLedelsesSystem.ViewModels
                     
             //    }
             //}
-        }
+        //}
 
         public User Get(string userName)
         {
