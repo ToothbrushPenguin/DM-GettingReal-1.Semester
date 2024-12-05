@@ -11,24 +11,37 @@ namespace KvalitetesLedelsesSystem.ViewModels
 {
     public class ColourViewModel : INotifyPropertyChanged
     {
+
+        public Colour colour { get; set; }
+
         private string _selectedColour;
 
+     
         public string SelectedColour
         {
             get => _selectedColour;
             set
             {
-                _selectedColour = value;
-                OnPropertyChanged(nameof(SelectedColour));
+                if (_selectedColour != value)
+                {
+                    _selectedColour = value;
+                    OnPropertyChanged(nameof(SelectedColour));
+                }
             }
         }
 
-        public ColourViewModel(Colour color)
+        public ColourViewModel(Colour colour)
         {
-            _selectedColour = color.selectedColour;
+            this.colour = colour;
+            _selectedColour = colour.selectedColour;
+        }
+
+        public static void Update(ColourRepository colourRepository,string ID , string newColor)
+        {
+            colourRepository.Update(ID, newColor);
         }
         public event PropertyChangedEventHandler PropertyChanged;
-
+        
         protected void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

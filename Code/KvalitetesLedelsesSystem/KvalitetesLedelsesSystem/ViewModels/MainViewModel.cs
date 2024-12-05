@@ -107,23 +107,42 @@ namespace KvalitetesLedelsesSystem.ViewModels
 
         public void AddColours() //add all colours to Colour VM's
         {
+            colourVMs.Clear();
             foreach (Colour colour in colourRepository.GetAll())
             {
                 colourVMs.Add(new ColourViewModel(colour));
             }
         }
-        public void UpdateColour(string ID)
+
+
+        public void UpdateColour(string ID, string newColor)
         {
-            colourRepository.Update(ID);
+            ColourViewModel.Update(colourRepository, ID, newColor);
+            AddColours();
+
+           
         }
 
         public void AddImages()//adds all images
         {
-            foreach (ImageTod image in imageRepository.GetAll())
+            if (imageVMs.Count < 3)
+            { 
+                foreach (ImageTod image in imageRepository.GetAll())
+                {
+                    imageVMs.Add(new ImageViewModel(image));
+                }
+            }
+            else
             {
-                imageVMs.Add(new ImageViewModel(image));
+                int i = 0;
+                foreach(ImageTod image in imageRepository.GetAll())
+                {
+                    imageVMs[i].SelectedImage = image.selectedPath;
+                    i++;
+                }
             }
         }
+
         public void Deafault()
         {
             imageRepository.Default();

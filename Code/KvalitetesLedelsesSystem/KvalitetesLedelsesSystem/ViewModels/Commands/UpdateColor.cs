@@ -32,8 +32,14 @@ namespace KvalitetesLedelsesSystem.ViewModels.Commands
             MainViewModel mainViewModel = new MainViewModel();
             if (parameter is string ID)
             {
-                mainViewModel.UpdateColour(ID);
+                var colorPicker = new ColorPickerDialog();
+                string? newColor;
+                if(colorPicker.ShowDialog() == true)
+                {
+                    mainViewModel.UpdateColour(ID,colorPicker.SelectedColor.ToString());
+                }
+
             }
-            }
+        }
     }
 }

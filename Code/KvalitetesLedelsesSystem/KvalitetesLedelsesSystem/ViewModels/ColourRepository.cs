@@ -51,45 +51,53 @@ namespace KvalitetesLedelsesSystem.ViewModels
                 
         }
 
-        public void Update(string ID)
+        public void Update(string ID,string newColor)
+        
         {
            
-            var colorPicker = new ColorPickerDialog();
-            string? newColor;
+            
 
-            // Shows a colorpicker dialog wich returns true when a color is picked
-            if (colorPicker.ShowDialog() == true)
-            {
-                newColor = colorPicker.SelectedColor.ToString();
+         
+          
 
                 if (ID == "Background")
                 {
-                    MainViewModel.colourVMs[0].SelectedColour = newColor;
+                    colours[0].selectedColour = newColor;
+                    //MainViewModel.colourVMs[0].SelectedColour = newColor;
                 }
                 else if (ID == "Foreground")
                 {
-                    MainViewModel.colourVMs[1].SelectedColour = newColor;
+                    colours[1].selectedColour = newColor;
+                    //MainViewModel.colourVMs[1].SelectedColour = newColor;
                 }
                 else if (ID == "Accent")
                 {
-                    MainViewModel.colourVMs[2].SelectedColour = newColor;
+                    colours[2].selectedColour = newColor;
+                    //MainViewModel.colourVMs[2].SelectedColour = newColor;
                 }
                 
-            }
+            
             // updates log file
             using (StreamWriter writer = new StreamWriter("Colours.txt"))
             {
-                writer.WriteLine(MainViewModel.colourVMs[0].SelectedColour);
-                writer.WriteLine(MainViewModel.colourVMs[1].SelectedColour);
-                writer.WriteLine(MainViewModel.colourVMs[2].SelectedColour);
+                //writer.WriteLine(MainViewModel.colourVMs[0].SelectedColour);
+                //writer.WriteLine(MainViewModel.colourVMs[1].SelectedColour);
+                //writer.WriteLine(MainViewModel.colourVMs[2].SelectedColour);
+                
+                writer.WriteLine(colours[0].selectedColour);
+                writer.WriteLine(colours[1].selectedColour);
+                writer.WriteLine(colours[2].selectedColour);
             }
         }
 
         public void Default() 
         {
-            MainViewModel.colourVMs[0].SelectedColour = "#3F3F3F";
-            MainViewModel.colourVMs[1].SelectedColour = "#FF1E1E1E";
-            MainViewModel.colourVMs[2].SelectedColour = "#FF373232";
+            colours[0].selectedColour = "#3F3F3F";
+            colours[1].selectedColour = "#FF1E1E1E";
+            colours[2].selectedColour = "#FF373232";
+            //MainViewModel.colourVMs[0].SelectedColour = "#3F3F3F";
+            //MainViewModel.colourVMs[1].SelectedColour = "#FF1E1E1E";
+            //MainViewModel.colourVMs[2].SelectedColour = "#FF373232";
             using (StreamWriter writer = new StreamWriter("Colours.txt"))
             {
                 //First add is Background Color

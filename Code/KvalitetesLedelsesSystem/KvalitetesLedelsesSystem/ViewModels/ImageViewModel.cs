@@ -11,15 +11,8 @@ namespace KvalitetesLedelsesSystem.ViewModels
 {
     public class ImageViewModel : INotifyPropertyChanged
     {
-        
 
-
-         public ImageViewModel(ImageTod image)
-         {
-            
-             _selectedImage = image.selectedPath;
-         }
-      
+        ImageTod image {  get; set; }
         private string _selectedImage;
 
         public string SelectedImage
@@ -31,6 +24,14 @@ namespace KvalitetesLedelsesSystem.ViewModels
                 OnPropertyChanged(nameof(SelectedImage));
             }
         }
+
+        public ImageViewModel(ImageTod image)
+         {
+            this.image = image;
+             _selectedImage = image.selectedPath;
+         }
+      
+
 
         public event PropertyChangedEventHandler PropertyChanged;
 
