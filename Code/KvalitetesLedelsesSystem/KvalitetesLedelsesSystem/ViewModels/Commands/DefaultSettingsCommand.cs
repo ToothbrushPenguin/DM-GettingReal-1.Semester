@@ -23,7 +23,7 @@ namespace KvalitetesLedelsesSystem.ViewModels.Commands
             MainViewModel mvm = new MainViewModel();
 
 
-            mvm.Deafault();
+            mvm.Default();
                
             
         }
