@@ -2,6 +2,7 @@
 ﻿using KvalitetesLedelsesSystem.Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data;
 using System.IO;
 using System.Linq;
@@ -22,7 +23,7 @@ namespace KvalitetesLedelsesSystem.ViewModels
     {
 
         private List<User> users = new List<User>();
-
+        public ObservableCollection<User> CheckedInUsers { get; set; }
         private bool CheckStatus = false;
         private static string LogPath = Path.GetFullPath(@"Log.txt");
 
@@ -264,6 +265,14 @@ namespace KvalitetesLedelsesSystem.ViewModels
         //    }
 
         //}
+
+        public List<User> CheckedInUsers()
+        {
+            List<User> users = GetAll();
+
+            return users.Where(user => user.CheckInStatus).ToList();
+        }
+
         public void ChangeCheck(string username)
         {
             User FoundPerson = Get(username);
@@ -301,6 +310,8 @@ namespace KvalitetesLedelsesSystem.ViewModels
             }
 
         }
+
+       
     }
 
     

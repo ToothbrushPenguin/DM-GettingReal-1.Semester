@@ -15,6 +15,8 @@ namespace KvalitetesLedelsesSystem.ViewModels
     {
         private UserRepository userRepository = new UserRepository();
         public ObservableCollection<UserViewModel> userVMs { get; set; } = new ObservableCollection<UserViewModel>();
+
+        
         public static ObservableCollection<ColourViewModel> colourVMs { get; set; } = new ObservableCollection<ColourViewModel>();
         public static ObservableCollection<ImageViewModel> imageVMs { get; set; } = new ObservableCollection<ImageViewModel>();
        
@@ -55,6 +57,8 @@ namespace KvalitetesLedelsesSystem.ViewModels
                 OnPropertyChanged(nameof(SelectedUserVM));
             }
         }
+
+        
 
         public MainViewModel()
         {
@@ -126,6 +130,11 @@ namespace KvalitetesLedelsesSystem.ViewModels
 
         }
 
+        public void CallCheckedInUsers()
+        {
+            userRepository.CheckedInUsers();
+        }
+
         public void AddUser()
         {
             User user = userRepository.Add("User", "", "", UserType.User, "");
@@ -145,8 +154,6 @@ namespace KvalitetesLedelsesSystem.ViewModels
 
         public void Check()
         {
-           
-
             foreach (UserViewModel uvm in userVMs)
             {
                 if (uvm.UserName == UserName)
@@ -154,7 +161,6 @@ namespace KvalitetesLedelsesSystem.ViewModels
                     uvm.ChangeCheck(userRepository, uvm.UserName);
                 }
             }
-           
         }
         public void UpdateUser()
         {

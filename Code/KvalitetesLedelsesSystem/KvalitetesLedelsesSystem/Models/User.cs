@@ -28,6 +28,7 @@ namespace KvalitetesLedelsesSystem.Models
             {
                 checkInStatus = value;
                 OnPropertyChanged(nameof(CheckInStatus));
+
             }
         }
 
