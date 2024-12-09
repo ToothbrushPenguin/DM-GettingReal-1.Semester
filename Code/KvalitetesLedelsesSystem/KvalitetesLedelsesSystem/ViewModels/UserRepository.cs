@@ -77,21 +77,30 @@ namespace KvalitetesLedelsesSystem.ViewModels
             
             User result = null;
 
-            if(Get(userName)==null)
+            int num = 0;
+            string newUserName = userName;
+            while (Get(newUserName) != null) 
             {
-                if (userName != null && name != null && company != null)
+                num++;
+                newUserName = userName + num;
+            }
+
+
+            if(Get(newUserName)==null)
+            {
+                if (newUserName != null && name != null && company != null)
                 {
 
                     switch (userType)
                     {
                         case UserType.User:
-                            result = new User(userName, name, company);
+                            result = new User(newUserName, name, company);
                             break;
                         case UserType.Admin:
-                            result = new Admin(userName, name, company, password);
+                            result = new Admin(newUserName, name, company, password);
                             break;
                         case UserType.Contingency_Responsible:
-                            result = new Contingency_Responsible(userName, name, company, password);
+                            result = new Contingency_Responsible(newUserName, name, company, password);
                             break;
                     }
 
@@ -132,32 +141,40 @@ namespace KvalitetesLedelsesSystem.ViewModels
             User foundPerson = Get(oldUserName);
             User updatedUser = null;
 
-            if (foundPerson != null)
-            {
-                users.Remove(foundPerson);
 
-                switch (userType)
+            if (Get(newUserName) == null)
+            {
+                if (foundPerson != null)
                 {
-                    case UserType.Admin:
-                        updatedUser = new Admin(newUserName, newName, newCompany, newPassword);
-                        break;
-                    case UserType.Contingency_Responsible:
-                        updatedUser = new Contingency_Responsible(newUserName, newName, newCompany, newPassword);
-                        break;
-                    case UserType.User:
-                        updatedUser = new User(newUserName, newName, newCompany);
-                        break;
+                    users.Remove(foundPerson);
+
+                    switch (userType)
+                    {
+                        case UserType.Admin:
+                            updatedUser = new Admin(newUserName, newName, newCompany, newPassword);
+                            break;
+                        case UserType.Contingency_Responsible:
+                            updatedUser = new Contingency_Responsible(newUserName, newName, newCompany, newPassword);
+                            break;
+                        case UserType.User:
+                            updatedUser = new User(newUserName, newName, newCompany);
+                            break;
+                    }
+
+                    users.Add(updatedUser);
+                    SaveUsersFromList();
+
+
                 }
-
-                users.Add(updatedUser);
-                SaveUsersFromList();
-
-
-            }
-            else
+                else
+                {
+                    throw new ArgumentException($"User with username {oldUserName} not found");
+                }
+            }else
             {
-                throw new ArgumentException($"User with username {oldUserName} not found");
+                updatedUser = foundPerson;
             }
+                
 
             return updatedUser;
         }

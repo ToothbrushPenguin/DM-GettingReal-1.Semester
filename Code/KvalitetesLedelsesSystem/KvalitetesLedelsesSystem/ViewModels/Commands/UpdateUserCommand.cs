@@ -38,9 +38,16 @@ namespace KvalitetesLedelsesSystem.ViewModels.Commands
             {
                 try
                 {
-                    mvm.UpdateUser();
-                    MessageBox.Show("User updated successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
-                    window.Close();
+                    if(mvm.UpdateUser())
+                    {
+                        MessageBox.Show("User updated successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                        window.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("User updated Failed!", "a user with that username exists", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
+                    
                 }
                 catch (Exception ex)
                 {
