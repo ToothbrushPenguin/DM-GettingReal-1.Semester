@@ -119,8 +119,6 @@ namespace KvalitetesLedelsesSystem.ViewModels
         {
             ColourViewModel.Update(colourRepository, ID, newColor);
             AddColours();
-
-           
         }
 
         public void AddImages()//adds all images

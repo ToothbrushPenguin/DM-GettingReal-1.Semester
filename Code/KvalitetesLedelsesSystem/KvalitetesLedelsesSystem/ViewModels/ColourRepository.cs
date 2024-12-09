@@ -52,38 +52,23 @@ namespace KvalitetesLedelsesSystem.ViewModels
         }
 
         public void Update(string ID,string newColor)
-        
-        {
-           
-            
-
-         
-          
-
-                if (ID == "Background")
-                {
-                    colours[0].selectedColour = newColor;
-                    //MainViewModel.colourVMs[0].SelectedColour = newColor;
-                }
-                else if (ID == "Foreground")
-                {
-                    colours[1].selectedColour = newColor;
-                    //MainViewModel.colourVMs[1].SelectedColour = newColor;
-                }
-                else if (ID == "Accent")
-                {
-                    colours[2].selectedColour = newColor;
-                    //MainViewModel.colourVMs[2].SelectedColour = newColor;
-                }
-                
+        { 
+            if (ID == "Background")
+            {
+                colours[0].selectedColour = newColor;
+            }
+            else if (ID == "Foreground")
+            {
+                colours[1].selectedColour = newColor;
+            }
+            else if (ID == "Accent")
+            {
+                colours[2].selectedColour = newColor;
+            }
             
             // updates log file
             using (StreamWriter writer = new StreamWriter("Colours.txt"))
             {
-                //writer.WriteLine(MainViewModel.colourVMs[0].SelectedColour);
-                //writer.WriteLine(MainViewModel.colourVMs[1].SelectedColour);
-                //writer.WriteLine(MainViewModel.colourVMs[2].SelectedColour);
-                
                 writer.WriteLine(colours[0].selectedColour);
                 writer.WriteLine(colours[1].selectedColour);
                 writer.WriteLine(colours[2].selectedColour);

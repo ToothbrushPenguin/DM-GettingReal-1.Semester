@@ -43,11 +43,14 @@ namespace KvalitetesLedelsesSystem.ViewModels.Commands
                         }
                         if (check[1] == "pdf")
                         {
-                            //newpath.Replace(@"\", "/"); 
-                            MainViewModel.imageVMs[2].SelectedImage = newPath;
+                            mvm.UpdateImage(ID, openFileDialog.FileName);
                         }
                     }
-                    mvm.UpdateImage(ID,openFileDialog.FileName);
+                    else
+                    {
+                        mvm.UpdateImage(ID, openFileDialog.FileName);
+                    }
+                    
 
                 }
             }
