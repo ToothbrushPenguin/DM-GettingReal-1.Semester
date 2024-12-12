@@ -1,0 +1,13 @@
+@startuml test
+skinparam style strictuml
+skinparam sequenceMessageAlign center
+title UpdateColour
+
+
+participant "user" as user
+participant ":System" as UCC
+
+user -> UCC ++: Execute(string : ID)
+UCC -> user : Choose colour
+user --> UCC : Return selected colour as string
+return Display new colour
