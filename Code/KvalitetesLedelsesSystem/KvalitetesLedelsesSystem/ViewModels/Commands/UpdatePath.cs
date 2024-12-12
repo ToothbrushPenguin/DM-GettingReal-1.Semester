@@ -36,12 +36,12 @@ namespace KvalitetesLedelsesSystem.ViewModels.Commands
                     if(ID == "ContingencyPlan")
                     {
                         string newPath = openFileDialog.FileName;
-                        string[] check = newPath.Split('.');
-                        if (check[1] != "pdf")
+                        string filetype = newPath.Substring(newPath.Length - 3);
+                        if (filetype != "pdf")
                         {
                             MessageBox.Show("Please only select pdf files", "Error: Wrong file type", MessageBoxButton.OK, MessageBoxImage.Error);
                         }
-                        if (check[1] == "pdf")
+                        if (filetype == "pdf")
                         {
                             mvm.UpdateImage(ID, openFileDialog.FileName);
                         }

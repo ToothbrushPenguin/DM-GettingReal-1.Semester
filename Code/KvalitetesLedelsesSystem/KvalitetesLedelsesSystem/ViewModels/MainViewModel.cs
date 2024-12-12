@@ -32,7 +32,6 @@ namespace KvalitetesLedelsesSystem.ViewModels
         public ICommand AdminCRUDCommand { get; } = new AdminCRUDCommand();
         public ICommand AdminLogInCommand {  get; } = new AdminLogInCommand();
         public ICommand AdminCrudCommand { get; } = new AdminCRUDCommand();
-        public ICommand AdminLogInCommand { get; } = new AdminLogInCommand();
         public ICommand AdminMenuCommand { get; } = new AdminMenuCommand();
         public ICommand CheckCommand { get; } = new CheckCommand();
         public ICommand CreateGuestCommand { get; } = new CreateGuestCommand();
