@@ -1,0 +1,194 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="KvalitetesLedelsesSystem.Models.Admin">
+    <Position X="13.75" Y="10" Width="1.5" />
+    <InheritanceLine Type="KvalitetesLedelsesSystem.Models.User" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="15.938" Y="6.92" />
+        <Point X="15.938" Y="10.625" />
+        <Point X="15.25" Y="10.625" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Admin.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KvalitetesLedelsesSystem.Models.Contingency_Responsible">
+    <Position X="13.75" Y="7.75" Width="1.5" />
+    <InheritanceLine Type="KvalitetesLedelsesSystem.Models.User" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="15.938" Y="6.92" />
+        <Point X="15.938" Y="8.562" />
+        <Point X="15.25" Y="8.562" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Contingency_Responsible.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KvalitetesLedelsesSystem.Models.User">
+    <Position X="14.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEIAAAAAQAgAAAAABAAQAARAAAAAA=</HashCode>
+      <FileName>Models\User.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="KvalitetesLedelsesSystem.ViewModels.ColourViewModel" BaseTypeListCollapsed="true">
+    <Position X="8.5" Y="3.25" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAAAAAgAAAAAAAAACAAAAEAAA=</HashCode>
+      <FileName>ViewModels\ColourViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="KvalitetesLedelsesSystem.ViewModels.ImageViewModel" BaseTypeListCollapsed="true">
+    <Position X="5" Y="1.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAAAQAgAAAAAAQAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\ImageViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="KvalitetesLedelsesSystem.ViewModels.MainViewModel" BaseTypeListCollapsed="true">
+    <Position X="7" Y="8" Width="2.5" />
+    <AssociationLine Name="userRepository" Type="KvalitetesLedelsesSystem.ViewModels.UserRepository" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="9.5" Y="8.25" />
+        <Point X="9.875" Y="8.25" />
+        <Point X="9.875" Y="6.756" />
+        <Point X="13.062" Y="6.756" />
+        <Point X="13.062" Y="5.42" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAEAAA4AABgAAAIAIAAAAgEAgQIEAoAggSAgAYAgABI=</HashCode>
+      <FileName>ViewModels\MainViewModel.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="userRepository" />
+      <Field Name="_selectedUserVM" />
+      <Property Name="SelectedUserVM" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="imageVMs" />
+      <Property Name="colourVMs" />
+      <Property Name="userVMs" />
+    </ShowAsCollectionAssociation>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="KvalitetesLedelsesSystem.ViewModels.UserRepository">
+    <Position X="12.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAYgACAAAQAAAABAAAAABAABAAAABAABCgAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\UserRepository.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Field Name="users" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="KvalitetesLedelsesSystem.ViewModels.UserViewModel" BaseTypeListCollapsed="true">
+    <Position X="12" Y="7.75" Width="1.5" />
+    <AssociationLine Name="user" Type="KvalitetesLedelsesSystem.Models.User" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="12.75" Y="7.75" />
+        <Point X="12.75" Y="7.295" />
+        <Point X="15.125" Y="7.295" />
+        <Point X="15.125" Y="6.92" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AQQgAAIAAAECAAgAIgAIAAQAgAEECAACAQgABgEAAQY=</HashCode>
+      <FileName>ViewModels\UserViewModel.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="userType" />
+      <Field Name="user" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="KvalitetesLedelsesSystem.Views.AdminCRUD" BaseTypeListCollapsed="true">
+    <Position X="1.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\Admin\AdminCRUD.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="KvalitetesLedelsesSystem.Views.AdminLogin" BaseTypeListCollapsed="true">
+    <Position X="1.75" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>Views\Admin\AdminLogin.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="KvalitetesLedelsesSystem.Views.AdminMenu" BaseTypeListCollapsed="true">
+    <Position X="1.75" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>Views\Admin\AdminMenu.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="KvalitetesLedelsesSystem.Views.PersonList" BaseTypeListCollapsed="true">
+    <Position X="1.75" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>Views\Admin\PersonList.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="KvalitetesLedelsesSystem.Views.CreateGuest" BaseTypeListCollapsed="true">
+    <Position X="1.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\CreateGuest.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="KvalitetesLedelsesSystem.Views.Plan" BaseTypeListCollapsed="true">
+    <Position X="1.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>Views\Plan.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="KvalitetesLedelsesSystem.Check" BaseTypeListCollapsed="true">
+    <Position X="1.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAEAAABAAAAAAAAAAAAEAAAAAAAgAAI=</HashCode>
+      <FileName>Views\Check.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="KvalitetesLedelsesSystem.MainWindow" BaseTypeListCollapsed="true">
+    <Position X="4.25" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>JCDEAAQAAAAAAAAAAAAAAAAIIABAAAABAAAAAwAAgAI=</HashCode>
+      <FileName>Views\MainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="mvm" />
+      <Field Name="_plan" />
+      <Field Name="_personList" />
+      <Field Name="_createGuest" />
+      <Field Name="_check" />
+      <Field Name="_adminMenu" />
+      <Field Name="_adminLogin" />
+      <Field Name="_adminCRUD" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Enum Name="KvalitetesLedelsesSystem.ViewModels.UserType">
+    <Position X="10.25" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>ViewModels\UserRepository.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
