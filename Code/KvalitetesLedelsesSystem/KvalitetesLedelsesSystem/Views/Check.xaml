@@ -63,7 +63,7 @@
 
 
                     <TextBlock FontSize="29"  Text="Societate ApS" Foreground="#FFFFFFFF" FontWeight="Bold" TextAlignment="Center" Grid.Row="2"/>
-                    <TextBox x:Name="UserNameBox" Text="{Binding MainviewModel.UserName}" FontSize="13" Background="White" TextChanged="UserNameTextBox_TextChanged" GotFocus="UserNameTextBox_GotFocus" LostFocus="UserNameTextBox_LostFocus" Grid.Row="3"/>
+                    <TextBox x:Name="UserNameBox" Text="{Binding UserName, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" FontSize="13" Background="White" TextChanged="UserNameTextBox_TextChanged" GotFocus="UserNameTextBox_GotFocus" LostFocus="UserNameTextBox_LostFocus" Grid.Row="3"/>
                     <Image x:Name="Logo"  Grid.Row="0" Source= "{Binding imageVMs[0].SelectedImage}"/>
                     <Grid Grid.Row="5">
                         <Grid.ColumnDefinitions>
@@ -72,7 +72,7 @@
                             <ColumnDefinition Width="10*"/>
                         </Grid.ColumnDefinitions>
                         <Button FontSize="13" Command="{Binding Path=CreateGuestCommand}" CommandParameter="{Binding}" Content="Register" Grid.Column="2"/>
-                        <Button FontSize="13" Content="Check In/Out" Grid.Column="0" Command="{Binding CheckInOutCommand}" CommandParameter="{Binding}"/>
+                        <Button FontSize="13" Content="Check In/Out" Grid.Column="0" Command="{Binding Path=CheckInOutCommand}" CommandParameter="{Binding}"/>
                     </Grid>
                 </Grid>
             </Grid>

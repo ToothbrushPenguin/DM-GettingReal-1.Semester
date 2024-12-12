@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
@@ -30,6 +29,8 @@ namespace KvalitetesLedelsesSystem.ViewModels
 
         public ICommand AddUserCommand { get; } = new AddUserCommand();
         public ICommand DeleteUserCommand { get; } = new DeleteUserCommand();
+        public ICommand AdminCRUDCommand { get; } = new AdminCRUDCommand();
+        public ICommand AdminLogInCommand {  get; } = new AdminLogInCommand();
         public ICommand AdminCrudCommand { get; } = new AdminCRUDCommand();
         public ICommand AdminLogInCommand { get; } = new AdminLogInCommand();
         public ICommand AdminMenuCommand { get; } = new AdminMenuCommand();
@@ -52,8 +53,7 @@ namespace KvalitetesLedelsesSystem.ViewModels
                 OnPropertyChanged(nameof(UserName));
             }
         }
-
-
+        public ICommand UpdateUserCommand { get; } = new UpdateUserCommand();
 
         private UserViewModel _selectedUserVM;
         public UserViewModel SelectedUserVM
@@ -62,13 +62,17 @@ namespace KvalitetesLedelsesSystem.ViewModels
             set
             {
                 _selectedUserVM = value;
-                // OnPropertyChanged(nameof(SelectedUserVM));
+                OnPropertyChanged(nameof(SelectedUserVM));
             }
         }
 
 
         public MainViewModel()
         {
+            foreach (User user in userRepository.GetAll())
+            {
+                userVMs.Add(new UserViewModel(user));
+            }
             AddColours();
             AddImages();
         }
@@ -142,15 +146,23 @@ namespace KvalitetesLedelsesSystem.ViewModels
             imageRepository.UpdateImage(ID, newPath);
             AddImages();
         }
+        public void UpdateUser()
+        {
+            if (SelectedUserVM != null)
+            {
+                // The Update method in UserViewModel now handles getting all the values
+                // from its own properties
+                SelectedUserVM.Update(userRepository);
+
+                // Notify UI that the selected user might have changed
+                OnPropertyChanged(nameof(SelectedUserVM));
+            }
+        }
 
         public event PropertyChangedEventHandler? PropertyChanged;
         public void OnPropertyChanged(string propertyName)
         {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-            }
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-
     }
 }
