@@ -26,58 +26,34 @@ namespace KvalitetesLedelsesSystem.ViewModels.Commands
 
         public void Execute(object? parameter)
         {
-
-            // Commandparameters er en string hvor at, argumentet Logo tilgår MainViewModel.imageVMs[0].SelectedImage
-            // Argumentet ContingencyDrawing tilgår MainViewModel.imageVMs[1].SelectedImage
-            // Argumentet ContingencyPlan tilgår MainViewModel.imageVMs[2].SelectedImage
-            string newpath;
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            bool? result = openFileDialog.ShowDialog();
-            if (result == true)
+            MainViewModel mvm = new MainViewModel();
+            if (parameter is string ID)
             {
-                if (parameter is string ID)
+                OpenFileDialog openFileDialog = new OpenFileDialog();
+                bool? result = openFileDialog.ShowDialog();
+                if (result == true)
                 {
-                    if(ID == "Logo")
+                    if(ID == "ContingencyPlan")
                     {
-                        newpath = openFileDialog.FileName;
-                        //newpath.Replace(@"\", "/"); 
-                        MainViewModel.imageVMs[0].SelectedImage = newpath;
-                    }
-                    else if (ID =="ContingencyDrawing")
-                    {
-                      newpath = openFileDialog.FileName;
-                      //newpath.Replace(@"\", "/"); 
-                      MainViewModel.imageVMs[1].SelectedImage = newpath;
-                    }
-                    else if (ID =="ContingencyPlan")
-                    {
-                        newpath = openFileDialog.FileName;
-                        string[] check = newpath.Split('.');
-                        if (check[1] !="pdf")
+                        string newPath = openFileDialog.FileName;
+                        string filetype = newPath.Substring(newPath.Length - 3);
+                        if (filetype != "pdf")
                         {
-                          MessageBox.Show("Please only select pdf files","Error: Wrong file type",MessageBoxButton.OK, MessageBoxImage.Error);  
+                            MessageBox.Show("Please only select pdf files", "Error: Wrong file type", MessageBoxButton.OK, MessageBoxImage.Error);
                         }
-                        if(check[1] == "pdf") 
+                        if (filetype == "pdf")
                         {
-                            //newpath.Replace(@"\", "/"); 
-                            MainViewModel.imageVMs[2].SelectedImage = newpath;
+                            mvm.UpdateImage(ID, openFileDialog.FileName);
                         }
+                    }
+                    else
+                    {
+                        mvm.UpdateImage(ID, openFileDialog.FileName);
                     }
                     
-                    using(StreamWriter writer = new StreamWriter("Images.txt",false))
-                    {
-                        writer.WriteLine(MainViewModel.imageVMs[0].SelectedImage);
-                        writer.WriteLine(MainViewModel.imageVMs[1].SelectedImage);
-                        writer.WriteLine(MainViewModel.imageVMs[2].SelectedImage);
-                    }
-
-
-
 
                 }
             }
-                          
-            
         }
     }
 }

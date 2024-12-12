@@ -1,0 +1,28 @@
+@startuml test
+skinparam style strictuml
+skinparam sequenceMessageAlign center
+title UpdateColour
+
+
+   
+participant ":UpdateColourCommand" as UCC
+participant ":MainViewModel" as MVM
+participant ":ColourViewModel" as CVM
+participant ":ColourRepository" as CRP
+
+
+
+[-> UCC ++: Execute(string : ID)
+[<- UCC: Choose colour
+[--> UCC : Return selected colour as string
+UCC -> MVM ++: UpdateColour(string : ID , string newColor)
+MVM -> CVM ++: UpdateColour(string ID, string newColor)
+CVM -> CRP ++: Update(ID,newColor)
+CRP -> CRP : Update Colour List
+return 
+return
+MVM -> MVM : Update ColourVMs
+return
+return Display new colour
+
+

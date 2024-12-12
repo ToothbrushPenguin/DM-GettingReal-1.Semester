@@ -42,40 +42,27 @@ package "User Interface" {
 package "Application" <<Rectangle>> {
     together {
 
-        class MainViewModel {
+        class MainViewModel{
             - userRepository: UserRepository
-            - imageRepository : ImageRepository
-            - colourRepository : ColourRepository
-            + usersVMs : ObservableCollection<UserviewModel>
-            + colourVMs : ObservableCollection<ColourViewModel>
-            + imageVMs : ObservableCollection<ImageViewModel>
-           
-            + DefaultSettingsCommand : Icommand
-            + AddUserCommand : Icommand
-            + DeleteUser : Icommand
-            + AdminCrudCommand : Icommand
-            + AdminLogInCommand : Icommand
-            + AdminMenuCommand : Icommand
-            + CheckCommand : Icommand
-            + CreateGuestCommand : Icommand
-            + PersonListCommand : Icommand
-            + PlanCommand : Icommand
-            + UdatePath : Icommand
-            + updateColour : Icommand
-            + CheckInOut : Icommand
+            + userVMs : ObservableCollection<UserviewModel>
+            -_selectedUserVM : UserViewModel
+            +<<static>> colourVMs : ObservableCollection<ColourViewModel>
+            +<<static>> imageVMs : ObservableCollection<ImageViewModel>
 
-            + Username <get> : string
+            + NavigationCommand {get;}: ICommand
+            + UpdateColourCommand {get;}: ICommand
+            + UpdatePathCommand {get;}: ICommand
+            + DefaultSettingsCommand {get;}: ICommand
+            + CheckInCheckoutCommand {get;}: ICommand
+            + DeleteUserCommand {get;} : ICommand
+            + AddUserCommand {get;} : ICommand
+            
+            +MainViewModel()
+            + GetContingencyPdf(): Image
+            + UpdateContingencyPdf(path:string): void
+            + GetContingencyMap(): Image
+            + UpdateContingencyMap(path:string): void
 
-            + SelectedUserVM <get> : UserVievModel
-
-           
-           
-            + MainViewModel() 
-            + AddColours() 
-            + UpdateColour() 
-            + AddImages() 
-            + Default()
-            + UpdateImage(ID : string)
             + CreateUser(userName:string, name:string, company:string, type:UserType): void
             + DeleteUser(username: String): void
             + FindIndexById(username: String):int
@@ -83,7 +70,19 @@ package "Application" <<Rectangle>> {
             
             
         }
+        Class ImageViewModel{
+        +SelectedImage : string
 
+        +ImageViewModel(imageTod:image)
+        }
+       
+        Class ColourViewModel{
+        +SelectedColour : string
+
+        +ColourViewModel(colour : Colour)
+        }
+
+       
 
     }
 
@@ -99,41 +98,22 @@ package "Application" <<Rectangle>> {
             + UpdateUser(userIndex, userName:string, name:string, company:string, type:UserType): void
             + DeleteUser(username: String): void
         }
-        class ImageRepository{
-        - images : List<ImageTod>
-
-        +ImageRepository()
-        +Update(ID:string)
-        +GetAll() : List<ImageTod>
-        +Default()
-
-        }
-        class ColourRepository{
-           
-            - Colours : List<Colours>
-
-            + ColourRepository()
-            + Default()
-            + Update(ID : string)
-            + GetAll() : List<Colour>
-        }
-        class ColourViewModel{
-        + SelectedColour <get> : string
-        
-        + ColourViewModel(colour : Colour) 
-        }
-        class ImageViewModel{
-        + selectedPath <get> : string
-        
-        +ImageViewModel(image : ImageTod)
-
-        }
     }
 }
 
 ' Domain Layer
 package "Domain" <<Rectangle>> {
     together {
+        class ImageTod{
+         + SelectedPath : string
+
+         + ImageTod(selectedPath : string)
+        }
+
+        class Colour{
+         + SelectedColour : string
+        }
+
         class User {
             - userName: String
             - name: String
@@ -142,7 +122,7 @@ package "Domain" <<Rectangle>> {
        
         class Admin {
             - password: String
-        } 
+        }
        
         class Contingency_Responsible {
             - password: String
@@ -155,17 +135,6 @@ package "Domain" <<Rectangle>> {
         - map: Image
         - pdf: Image
     }
-    class ImageTod{
-        +selectedPath: string
-
-        + ImageTod()
-    }
-    class Colour{
-        +selectedColour
-
-        +Colour()
-    }
-
 }
 
 ' UI to Contoller
@@ -173,17 +142,19 @@ MainWindow "1" -down- "1" MainViewModel
 
 ' MainViewModel to x
 MainViewModel "1" -down- "1" UserRepository
+MainViewModel "1" -right- "1" FileHandler
 MainViewModel "1" -down- "1" Contingency
-MainViewModel "1" -down- "1" ColourRepository
-MainViewModel "1" -down- "1" ImageRepository
-MainViewModel "1" -down- "3" ImageViewModel
 MainViewModel "1" -down- "3" ColourViewModel
+MainViewModel "1" -down- "3" ImageViewModel
 
+'ColorViewModel to Colour
+ColourViewModel "1"-down-"1" Colour
+
+'ImageViewModel to ImageTod
+ImageViewModel"1" -down-"1" ImageTod
 
 ' Repository to Domain
 UserRepository "1" -down- "0..*" User
-ColourRepository "1" -down- "0..*"Colour
-ImageRepository "1" -down- "0..*"ImageTod
 
 ' Inheritance
 Admin -up-|> User : inherents <

@@ -6,20 +6,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using KvalitetesLedelsesSystem.Models;
+using KvalitetesLedelsesSystem.ViewModels.Commands;
 
 namespace KvalitetesLedelsesSystem.ViewModels
 {
     public class ImageViewModel : INotifyPropertyChanged
     {
-        
 
-
-         public ImageViewModel(ImageTod image)
-         {
-            
-             _selectedImage = image.selectedPath;
-         }
-      
+        ImageTod image {  get; set; }
         private string _selectedImage;
 
         public string SelectedImage
@@ -32,6 +26,21 @@ namespace KvalitetesLedelsesSystem.ViewModels
             }
         }
 
+        public ImageViewModel(ImageTod image)
+         {
+            this.image = image;
+             _selectedImage = image.selectedPath;
+         }
+      
+
+        public static void Update(ImageRepository imageRepository, string ID, string newPath)
+        {
+            imageRepository.UpdateImage(ID, newPath);
+        }
+        public static void Default(ImageRepository imageRepository)
+        {
+            imageRepository.Default();
+        }
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected void OnPropertyChanged(string propertyName)

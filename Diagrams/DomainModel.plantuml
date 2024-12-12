@@ -8,6 +8,8 @@ skinparam linetype ortho
 class Log {
     checkin_outFilePath
     contingencyFilePath
+    colourFilePath
+    imageFilePath
 }
 
 ' Group the user classes
@@ -31,9 +33,12 @@ together {
 }
 
 ' Place Contingency at the bottom
-class Contingency {
+class ImagesTod {
     filePath
-    image
+    
+}
+class Colour{
+colour
 }
 
 ' Connect to Log at top
@@ -42,8 +47,13 @@ Admin "0..*" -up- "1" Log
 Contingency_Responsible "0..*" -up- "1" Log
 
 ' Connect to Contingency at bottom
-User "0..*" -down- "1" Contingency
-Admin "0..*" -down- "1" Contingency
-Contingency_Responsible "0..*" -down- "1" Contingency
+Contingency_Responsible "0..*" -down- "3" ImagesTod
+Admin "0..*" -down- "3" ImagesTod
+
+
+Admin "0..*" -down- "3" Colour
+Contingency_Responsible "0..*" -down- "3" Colour
+
+
 
 @enduml

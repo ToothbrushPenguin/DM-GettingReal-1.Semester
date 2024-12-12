@@ -21,7 +21,7 @@
         </Grid.ColumnDefinitions>
 
         <Button x:Name="CheckIn_ud_Button" Command="{Binding CheckCommand}" CommandParameter="{Binding}" FontSize="16" FontWeight="Bold" Content="Check In/Ud" Background="{Binding Path=colourVMs[1].SelectedColour}" Foreground="#FFFFFFFF" Grid.Column="0"/>
-        <Button x:Name="ContingencyPlan_Button" FontSize="16" FontWeight="Bold" Content="Contingency Plan" Background="{Binding Path=colourVMs[1].SelectedColour}" Foreground="#FFFFFFFF" Grid.Column="1"/>
+        <Button x:Name="ContingencyPlan_Button" FontSize="16" FontWeight="Bold" Content="Contingency Plan" Background="{Binding Path=colourVMs[1].SelectedColour, Mode=TwoWay}" Foreground="#FFFFFFFF" Grid.Column="1"/>
         <Button FontSize="20"  Content="⚙" Command="{Binding Path = AdminLogInCommand}" CommandParameter="{Binding}" Background="{Binding Path=colourVMs[1].SelectedColour}" Foreground="#FFFFFFFF" Grid.Column="2"/>
         <Border Grid.Row="2" Grid.ColumnSpan ="3" Background="{Binding Path=colourVMs[1].SelectedColour}" />
        

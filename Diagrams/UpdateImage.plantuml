@@ -1,0 +1,21 @@
+@startuml test
+skinparam style strictuml
+skinparam sequenceMessageAlign center
+title UpdateImage
+
+Actor "User/AdminMenu" as user
+
+participant ":UpdateColourCommand" as UCC
+participant ":MainViewModel" as MVM
+participant ":ImageRepository" as CRP
+participant ":ImageViewModel" as IVM
+
+
+user -> UCC ++: Execute(string : ID)
+UCC -> MVM ++: Execute(string : ID)
+MVM -> CRP ++: Update(ID)
+CRP ---> user: Display FileExplorer
+user ---> CRP : SelectedFile as path : string
+return Update ImageViewModel
+return
+return Display new Image

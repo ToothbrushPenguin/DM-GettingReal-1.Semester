@@ -1,0 +1,20 @@
+@startuml test
+skinparam style strictuml
+skinparam sequenceMessageAlign center
+title DefaultSetting
+
+Actor "User/AdminMenu" as user
+
+participant ":UpdateColourCommand" as UCC
+participant ":MainViewModel" as MVM
+participant ":ColourRepository" as CRP
+participant ":ImageRepository" as IRP
+
+user -> UCC ++: Execute()
+UCC -> MVM ++: Default()
+MVM -> CRP ++: Default()
+return Revert to default ColourViewModel
+MVM -> IRP ++: Default()
+return Revert to default ImageViewModel
+return Display default colours and ImageRepository
+return
