@@ -126,12 +126,23 @@ namespace KvalitetesLedelsesSystem.ViewModels
 
         public void AddImages()//adds all images
         {
-            imageVMs.Clear();
-            foreach (ImageTod image in imageRepository.GetAll())
+            if (imageVMs.Count == 3)
             {
-                imageVMs.Add(new ImageViewModel(image));
+                int i = 0;
+                foreach (ImageTod image in imageRepository.GetAll())
+                {
+                    imageVMs[i] = new ImageViewModel(image);
+                    i++;
+                }
             }
-            
+            else
+            {
+                foreach (ImageTod image in imageRepository.GetAll())
+                {
+                    imageVMs.Add(new ImageViewModel(image));
+                    
+                }
+            }
             
         }
 

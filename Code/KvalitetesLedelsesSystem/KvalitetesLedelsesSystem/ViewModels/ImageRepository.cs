@@ -63,9 +63,7 @@ namespace KvalitetesLedelsesSystem.ViewModels
             {
 
                 if (ID == "Logo")
-                {
-
-
+                { 
                     images[0].selectedPath = newPath;
                 }
                 else if (ID == "ContingencyDrawing")
@@ -77,16 +75,15 @@ namespace KvalitetesLedelsesSystem.ViewModels
 
                     images[2].selectedPath = newPath;
 
-
-
-                    using (StreamWriter writer = new StreamWriter("Images.txt", false))
-                    {
-                        writer.WriteLine(images[0].selectedPath);
-                        writer.WriteLine(images[1].selectedPath);
-                        writer.WriteLine(images[2].selectedPath);
-                    }
-
                 }
+
+                using (StreamWriter writer = new StreamWriter("Images.txt", false))
+                {
+                    writer.WriteLine(images[0].selectedPath);
+                    writer.WriteLine(images[1].selectedPath);
+                    writer.WriteLine(images[2].selectedPath);
+                }
+
             }
 
         }
