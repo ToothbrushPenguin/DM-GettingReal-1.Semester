@@ -1,4 +1,4 @@
-﻿using KvalitetesLedelsesSystem.Models;
+using KvalitetesLedelsesSystem.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,20 +12,54 @@ namespace KvalitetesLedelsesSystem.ViewModels
     {
         private User user;
         private string userName;
+        private string pendingUserName;
         private string name;
         private string company;
         private string password;
         private UserType userType;
+        private string asString;
+
+        public string AsString
+        {
+            get => asString;
+            private set
+            {
+                if (asString != value)
+                {
+                    asString = value;
+                    OnPropertyChanged(nameof(AsString));
+                }
+            }
+        }
+
+        private void UpdateDisplayString()
+        {
+            AsString = $"{UserName} - {Name} - {Company} - {UserType}";
+        }
 
         public string UserName
         {
             get => userName;
-            set
+            private set
             {
                 if (userName != value)
                 {
                     userName = value;
                     OnPropertyChanged(nameof(UserName));
+                    UpdateDisplayString();
+                }
+            }
+        }
+
+        public string PendingUserName
+        {
+            get => pendingUserName;
+            set
+            {
+                if (pendingUserName != value)
+                {
+                    pendingUserName = value;
+                    OnPropertyChanged(nameof(PendingUserName));
                 }
             }
         }
@@ -39,6 +73,7 @@ namespace KvalitetesLedelsesSystem.ViewModels
                 {
                     name = value;
                     OnPropertyChanged(nameof(Name));
+                    UpdateDisplayString();
                 }
             }
         }
@@ -52,6 +87,7 @@ namespace KvalitetesLedelsesSystem.ViewModels
                 {
                     company = value;
                     OnPropertyChanged(nameof(Company));
+                    UpdateDisplayString();
                 }
             }
         }
@@ -79,6 +115,46 @@ namespace KvalitetesLedelsesSystem.ViewModels
                     userType = value;
                     OnPropertyChanged(nameof(UserType));
                     OnPropertyChanged(nameof(IsPasswordEnabled));
+                    OnPropertyChanged(nameof(IsUserType));
+                    OnPropertyChanged(nameof(IsAdminType));
+                    OnPropertyChanged(nameof(IsContingencyType));
+                    UpdateDisplayString();
+                }
+            }
+        }
+
+        public bool IsUserType
+        {
+            get => UserType == UserType.User;
+            set
+            {
+                if (value)
+                {
+                    UserType = UserType.User;
+                }
+            }
+        }
+
+        public bool IsAdminType
+        {
+            get => UserType == UserType.Admin;
+            set
+            {
+                if (value)
+                {
+                    UserType = UserType.Admin;
+                }
+            }
+        }
+
+        public bool IsContingencyType
+        {
+            get => UserType == UserType.Contingency_Responsible;
+            set
+            {
+                if (value)
+                {
+                    UserType = UserType.Contingency_Responsible;
                 }
             }
         }
@@ -89,6 +165,7 @@ namespace KvalitetesLedelsesSystem.ViewModels
         {
             this.user = user;
             UserName = user.UserName;
+            PendingUserName = user.UserName;
             Name = user.Name;
             Company = user.Company;
 
@@ -107,6 +184,8 @@ namespace KvalitetesLedelsesSystem.ViewModels
                 Password = "";
                 UserType = UserType.User;
             }
+
+            UpdateDisplayString();
         }
 
         public void Delete(UserRepository userRepository)
@@ -114,27 +193,42 @@ namespace KvalitetesLedelsesSystem.ViewModels
             userRepository.Remove(user.UserName);
         }
 
-        public void Update(UserRepository userRepository)
+        public bool Update(UserRepository userRepository)
         {
-            user = userRepository.Update(user.UserName, Name, UserName, Company, Password, UserType);
-
-            // Update local properties to reflect the changes
-            UserName = user.UserName;
-            Name = user.Name;
-            Company = user.Company;
-
-            if (user is Admin a)
+            User newUser = userRepository.Update(user.UserName, Name, PendingUserName, Company, Password, UserType);
+            if (newUser != user)
             {
-                Password = a.Password;
-            }
-            else if (user is Contingency_Responsible c)
-            {
-                Password = c.Password;
+                user = newUser;
+
+                UserName = user.UserName;
+                PendingUserName = user.UserName;
+                Name = user.Name;
+                Company = user.Company;
+
+                if (user is Admin a)
+                {
+                    Password = a.Password;
+                }
+                else if (user is Contingency_Responsible c)
+                {
+                    Password = c.Password;
+                }
+                else
+                {
+                    Password = "";
+                }
+                return true;
             }
             else
             {
-                Password = "";
+                return false;
             }
+        }
+
+        public void ChangeCheck(UserRepository userRepository, string username)
+        {
+            userRepository.ChangeCheck(username);
+            userRepository.UpdateLog(username);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -143,14 +237,5 @@ namespace KvalitetesLedelsesSystem.ViewModels
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-
-        public void ChangeCheck(UserRepository userRepository, string username)
-        {
-            userRepository.ChangeCheck(username);
-            userRepository.UpdateLog(username);
-        }
-        
-
-
     }
 }

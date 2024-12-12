@@ -61,7 +61,7 @@ namespace KvalitetesLedelsesSystem.ViewModels
             set
             {
                 _selectedUserVM = value;
-                OnPropertyChanged(nameof(SelectedUserVM));
+                //OnPropertyChanged(nameof(SelectedUserVM));
             }
         }
 
@@ -145,17 +145,20 @@ namespace KvalitetesLedelsesSystem.ViewModels
             imageRepository.UpdateImage(ID, newPath);
             AddImages();
         }
-        public void UpdateUser()
+        public bool UpdateUser()
         {
             if (SelectedUserVM != null)
             {
                 // The Update method in UserViewModel now handles getting all the values
                 // from its own properties
-                SelectedUserVM.Update(userRepository);
+                bool output = SelectedUserVM.Update(userRepository);
 
                 // Notify UI that the selected user might have changed
-                OnPropertyChanged(nameof(SelectedUserVM));
+                //OnPropertyChanged(nameof(SelectedUserVM));
+
+                return output;
             }
+            return false;
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;

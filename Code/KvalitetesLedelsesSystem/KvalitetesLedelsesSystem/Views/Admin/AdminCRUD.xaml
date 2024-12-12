@@ -42,7 +42,7 @@
                 </Grid.RowDefinitions>
 
                 <Label Grid.Row="1" FontWeight="Bold" Foreground="#FFFFFFFF" Content="Username:" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
-                <TextBox Grid.Row="2" Text="{Binding SelectedUserVM.UserName, UpdateSourceTrigger=PropertyChanged}" />
+                <TextBox Grid.Row="2" Text="{Binding SelectedUserVM.PendingUserName, UpdateSourceTrigger=PropertyChanged}" />
 
                 <Label Grid.Row="3" FontWeight="Bold" Foreground="#FFFFFFFF" Content="Name:" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
                 <TextBox Grid.Row="4" Text="{Binding SelectedUserVM.Name, UpdateSourceTrigger=PropertyChanged}" />
@@ -51,7 +51,7 @@
                 <TextBox Grid.Row="6" Text="{Binding SelectedUserVM.Company, UpdateSourceTrigger=PropertyChanged}" />
 
                 <Label Grid.Row="7" FontWeight="Bold" Foreground="#FFFFFFFF" Content="Password:" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
-                <TextBox Grid.Row="8" Text="{Binding SelectedUserVM.Password, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding IsPasswordEnabled}" />
+                <TextBox Grid.Row="8" Text="{Binding SelectedUserVM.Password, UpdateSourceTrigger=PropertyChanged}" />
 
                 <Grid Grid.Row="10">
                     <Grid.ColumnDefinitions>
@@ -68,9 +68,9 @@
                     <Label Grid.Column="1" Grid.Row="0" FontWeight="Bold" Foreground="#FFFFFFFF" Content="Contingency Responsible" HorizontalAlignment="Center"/>
                     <Label Grid.Column="2" Grid.Row="0" FontWeight="Bold" Foreground="#FFFFFFFF" Content="Admin" HorizontalAlignment="Center"/>
 
-                    <RadioButton Grid.Column="0" Grid.Row="1" IsChecked="{Binding IsUserType}" GroupName="userType" HorizontalAlignment="Center" VerticalAlignment="Center" />
-                    <RadioButton Grid.Column="1" Grid.Row="1" IsChecked="{Binding IsContingencyType}" GroupName="userType" HorizontalAlignment="Center" VerticalAlignment="Center" />
-                    <RadioButton Grid.Column="2" Grid.Row="1" IsChecked="{Binding IsAdminType}" GroupName="userType" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    <RadioButton Grid.Column="0" Grid.Row="1" IsChecked="{Binding SelectedUserVM.IsUserType}" GroupName="userType" HorizontalAlignment="Center"               VerticalAlignment="Center" />
+                    <RadioButton Grid.Column="1" Grid.Row="1" IsChecked="{Binding SelectedUserVM.IsContingencyType}" GroupName="userType" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    <RadioButton Grid.Column="2" Grid.Row="1" IsChecked="{Binding SelectedUserVM.IsAdminType}" GroupName="userType" HorizontalAlignment="Center"              VerticalAlignment="Center" />
                 </Grid>
 
                 <Grid Grid.Row="12">

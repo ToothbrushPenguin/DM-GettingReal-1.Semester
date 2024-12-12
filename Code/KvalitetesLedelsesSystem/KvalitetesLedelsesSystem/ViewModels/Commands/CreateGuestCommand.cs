@@ -1,9 +1,5 @@
 ﻿using KvalitetesLedelsesSystem.Views;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 
@@ -22,9 +18,15 @@ namespace KvalitetesLedelsesSystem.ViewModels.Commands
         {
             if (parameter is MainViewModel mvm)
             {
+                // Add new user and auto-number will happen in UserRepository
+                mvm.AddUser();
+
+                // Set as guest (normal user)
+                mvm.SelectedUserVM.UserType = UserType.User;
+
+                // Show dialog
                 CreateGuest dialog = new CreateGuest() { DataContext = mvm };
                 dialog.ShowDialog();
-
             }
         }
     }
