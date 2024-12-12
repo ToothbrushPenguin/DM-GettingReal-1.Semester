@@ -44,13 +44,13 @@ namespace KvalitetesLedelsesSystem
             InitializeComponent();
             DataContext = mvm;
 
-            _check = new Check();
-            _plan = new Plan();
-            _adminLogin = new AdminLogin();
-            _personList = new PersonList();
-            _adminMenu = new AdminMenu();
-            _adminCRUD = new AdminCRUD();
-            _createGuest = new CreateGuest();
+            _check = new Check() { DataContext = mvm };
+            _plan = new Plan() { DataContext = mvm };
+            _adminLogin = new AdminLogin() { DataContext = mvm };
+            _personList = new PersonList() { DataContext = mvm };
+            _adminMenu = new AdminMenu() { DataContext = mvm };
+            _adminCRUD = new AdminCRUD() { DataContext = mvm };
+            _createGuest = new CreateGuest() { DataContext = mvm };
             
 
             MainFrame.NavigationService.Navigate(_check);

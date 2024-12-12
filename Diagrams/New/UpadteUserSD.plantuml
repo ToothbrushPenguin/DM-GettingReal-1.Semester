@@ -1,0 +1,28 @@
+@startuml UpdateUser
+skinparam style strictuml
+skinparam sequenceMessageAlign center
+title UpdateUser SD
+
+Actor Actor as user
+participant ":UpdateUserCommand" as UC
+participant ":MainWindow" as MW
+participant ":MainViewModel" as MVM
+participant ":UserViewModel" as UV
+participant ":UserRepository" as UR
+
+user -> UC ++: Execute(parameter)
+alt SelectedUserVM != null
+    UC -> MVM ++: UpdateUser()
+        MVM -> UV ++: Update(userRepository)
+            UV -> UR ++: Update(oldUserName:string, \nnewName:string, \nnewUserName:string, \nnewCompany:string, \nnewPassword:string, \nuserType:UserType)
+            return
+        return
+        MVM -> MVM: OnPropertyChanged("SelectedUserVM")
+    return
+    UC --> user: Show success message
+else SelectedUserVM == null
+    UC --> user: Show error message
+end
+deactivate UC
+
+@enduml

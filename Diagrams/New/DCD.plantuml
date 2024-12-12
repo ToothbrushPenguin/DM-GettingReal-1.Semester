@@ -1,0 +1,254 @@
+@startuml
+left to right direction
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+skinparam groupInheritance 3
+skinparam nodesep 100
+skinparam ranksep 100
+
+skinparam class {
+    BackgroundColor White
+    BorderColor Black
+    ArrowColor Black
+    FontName Arial
+    FontSize 12
+}
+skinparam package {
+    BackgroundColor White
+    BorderColor Black
+    FontName Arial
+    FontSize 14
+}
+
+package "Views" {
+    together {
+    class Check {
+        -mvm: MainViewModel
+        +Check()
+        -ContingencyPlan()
+        -UserNameTextBox_TextChanged()
+        -UserNameTextBox_GotFocus()
+        -UserNameTextBox_LostFocus()
+    }
+    class Plan {
+        +Plan()
+        -GoBack_click()
+    }
+    class CreateGuest {
+        +CreateGuest()
+    }
+    class AdminCRUD {
+        +AdminCRUD()
+    }
+    class AdminMenu {
+        +AdminMenu()
+        -Button_Click()
+        -Button_Click_1()
+    }
+    class PersonList {
+        +PersonList()
+        -Button_Click()
+    }
+    class AdminLogin {
+        +AdminLogin()
+        -Button_Click()
+    }
+    class MainWindow {
+        -_check: Check
+        -_plan: Plan
+        -_adminLogin: AdminLogin
+        -_personList: PersonList
+        -_adminMenu: AdminMenu
+        -_adminCRUD: AdminCRUD
+        -_createGuest: CreateGuest
+        -mvm: MainViewModel
+        +MainWindow()
+        +NavigateTo_Admin()
+        +NavigateTo_Plan()
+        +NavigateTo_Check()
+        +NavigateTo_PersonList()
+        +NavigateTo_AdminMenu()
+        +NavigateTo_AdminCRUD()
+        +NavigateTo_CreateGuest()
+    }
+    
+    MainWindow -up- Check
+    MainWindow -up- Plan
+    MainWindow -up- CreateGuest
+    MainWindow -up- AdminCRUD
+    MainWindow -up- AdminMenu
+    MainWindow -up- PersonList
+    MainWindow -up- AdminLogin
+    }
+}
+
+package "ViewModels" {
+    together {
+    class MainViewModel {
+        -userRepository: UserRepository
+        -colourRepository: ColourRepository
+        -imageRepository: ImageRepository
+        +userVMs: ObservableCollection<UserViewModel>
+        +colourVMs: ObservableCollection<ColourViewModel>
+        +imageVMs: ObservableCollection<ImageViewModel>
+        +AddUserCommand: ICommand
+        +DeleteUserCommand: ICommand
+        +AdminCRUDCommand: ICommand
+        +AdminLogInCommand: ICommand
+        +AdminMenuCommand: ICommand
+        +CheckCommand: ICommand
+        +CreateGuestCommand: ICommand
+        +PersonListCommand: ICommand
+        +PlanCommand: ICommand
+        +UpdatePath: ICommand
+        +UpdateColor: ICommand
+        +CheckInOutCommand: ICommand
+        +DefautSettingsCommand: ICommand
+        +UpdateUserCommand: ICommand
+        +UserName: string
+        -_selectedUserVM: UserViewModel
+        +SelectedUserVM: UserViewModel
+        +MainViewModel()
+        +AddUser()
+        +RemoveUser()
+        +Check()
+        +AddColours()
+        +UpdateColour()
+        +AddImages()
+        +Default()
+        +UpdateImage()
+        +UpdateUser()
+        +OnPropertyChanged()
+    }
+    
+    together {
+    class UserRepository {
+        -users: List<User>
+        -CheckStatus: bool
+        -LogPath: string
+        +UserRepository()
+        +Get(userName: string): User
+        +Add(userName: string, name: string, company: string, userType: UserType, password: string): User
+        +Remove(userName: string)
+        +Update(oldUserName: string, newName: string, newUserName: string, newCompany: string, newPassword: string, userType: UserType): User
+        +GetAll(): List<User>
+        +ChangeCheck(username: string)
+        +UpdateLog(userName: string)
+    }
+    class ColourRepository {
+        -colours: List<Colour>
+        +ColourRepository()
+        +Update(ID: string, newColor: string)
+        +Default()
+        +GetAll(): List<Colour>
+    }
+    class ImageRepository {
+        -images: List<ImageTod>
+        +ImageRepository()
+        +GetAll(): List<ImageTod>
+        +UpdateImage(ID: string, newPath: string)
+        +Default()
+    }
+   
+    class UserViewModel {
+        -user: User
+        +UserName: string
+        +PendingUserName: string
+        +Name: string
+        +Company: string
+        +Password: string
+        +UserType: UserType
+        +IsUserType: bool
+        +IsAdminType: bool
+        +IsContingencyType: bool
+        +IsPasswordEnabled: bool
+        +AsString: string
+        +UserViewModel(user: User)
+        +Delete(userRepository: UserRepository)
+        +Update(userRepository: UserRepository): bool
+        +ChangeCheck(userRepository: UserRepository, username: string)
+    }
+    class ColourViewModel {
+        +colour: Colour
+        -_selectedColour: string
+        +SelectedColour: string
+        +ColourViewModel(colour: Colour)
+        {static} +Update(colourRepository: ColourRepository, ID: string, newColor: string)
+        {static} +Default(colourRepository: ColourRepository)
+    }
+    class ImageViewModel {
+        +image: ImageTod
+        -_selectedImage: string
+        +SelectedImage: string
+        +ImageViewModel(image: ImageTod)
+        {static} +Update(imageRepository: ImageRepository, ID: string, newPath: string)
+        {static} +Default(imageRepository: ImageRepository)
+    }
+    }
+    
+    MainViewModel -- UserViewModel
+    MainViewModel -- UserRepository
+    MainViewModel -- ColourViewModel
+    MainViewModel -- ColourRepository
+    MainViewModel -- ImageViewModel
+    MainViewModel -- ImageRepository
+    }
+}
+
+package "Models" {
+    together {
+    Admin -[hidden]left- User
+    Contingency_Responsible -[hidden]right- User
+    Colour -[hidden]right- ImageTod
+
+    class User {
+        +UserName: string
+        +Name: string
+        +Company: string
+        -checkInStatus: bool
+        +CheckInStatus: bool
+        +User(username: string, name: string, company: string)
+        +ToString(): string
+    }
+    
+    class Admin {
+        +Password: string
+        +Admin(username: string, name: string, company: string, password: string)
+        +ToString(): string
+    }
+    
+    class Contingency_Responsible {
+        +Password: string
+        +Contingency_Responsible(username: string, name: string, company: string, password: string)
+        +ToString(): string
+    }
+    
+    class Colour {
+        +selectedColour: string
+        +Colour(BaseColour: string)
+    }
+    
+    class ImageTod {
+        +selectedPath: string
+        +ImageTod(basePath: string)
+    }
+    
+    Admin --|> User
+    Contingency_Responsible --|> User
+    }
+}
+
+' Cross-package relationships
+MainWindow -- MainViewModel
+Check -- MainViewModel
+
+' Model relationships
+UserRepository -- User
+UserViewModel -- User
+ColourRepository -- Colour
+ColourViewModel -- Colour
+ImageRepository -- ImageTod
+ImageViewModel -- ImageTod
+
+hide circle
+@enduml

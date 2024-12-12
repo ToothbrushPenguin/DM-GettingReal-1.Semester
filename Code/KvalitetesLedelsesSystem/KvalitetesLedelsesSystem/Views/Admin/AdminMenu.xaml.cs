@@ -22,11 +22,11 @@ namespace KvalitetesLedelsesSystem.Views
     /// </summary>
     public partial class AdminMenu : Page
     {
-        MainViewModel mvm = new MainViewModel();
+        
         public AdminMenu()
         {
             InitializeComponent();
-            DataContext = mvm;
+            
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
