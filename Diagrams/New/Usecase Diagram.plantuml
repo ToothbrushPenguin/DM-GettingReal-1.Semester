@@ -1,0 +1,74 @@
+@startuml
+skinparam packageStyle rectangle
+skinparam usecase {
+    BackgroundColor WhiteSmoke
+    BorderColor Black
+    ArrowColor Black
+}
+skinparam actor {
+    BorderColor Black
+    BackgroundColor White
+}
+skinparam note {
+    BackgroundColor LightYellow
+    BorderColor Black
+}
+
+left to right direction
+
+actor "User" as user
+actor "Admin" as admin
+actor "Contingensy\nResponsible" as em
+
+rectangle "Societate System" {
+    usecase "Check In/Out" as UC1
+    note right of UC1
+        Precondition:
+        User must be registered
+    end note
+    note right of UC1
+        Postcondition:
+        Log file is updated
+    end note
+    
+    usecase "View People\nin Building" as UC4
+    note left of UC4
+        Used for emergency
+        roll call
+    end note
+    
+    usecase "View Contingensy\nPlan" as UC5
+    
+    package "Edit Company Content" {
+        usecase "Edit Image" as UC8
+        usecase "Add New User" as UC2
+        usecase "Delete User" as UC3
+        usecase "Edit Colour" as UC6
+        usecase "Update User" as UC7
+       
+    }
+}
+
+' Admin relationships
+admin -- UC2 #blue
+admin -- UC3 #blue
+admin -- UC4 #blue
+admin -- UC6 #blue
+admin -- UC7 #blue
+admin -- UC8 #blue
+admin -- UC1 #blue
+admin -- UC5 #blue
+
+' User relationships
+user -- UC1
+user -- UC4
+user -- UC5 
+
+' Emergency Manager relationships
+em -- UC1 #red
+em -- UC4 #red
+em -- UC5 #red
+em -- UC8 #red
+
+
+@enduml
