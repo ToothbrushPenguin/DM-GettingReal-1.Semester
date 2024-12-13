@@ -50,6 +50,6 @@ namespace KvalitetesLedelsesSystem.Views
             mainWindow?.NavigateTo_Check();
         }
 
-        
+      
     }
 }

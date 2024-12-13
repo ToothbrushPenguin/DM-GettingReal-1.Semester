@@ -91,11 +91,11 @@ namespace KvalitetesLedelsesSystem.ViewModels
         public void Default()
         {
 
-            MainViewModel.imageVMs[0].SelectedImage = "/ Views / Societate transparent.png";
-            MainViewModel.imageVMs[1].SelectedImage = "/ Views / Societate transparent.png";
-            MainViewModel.imageVMs[2].SelectedImage = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\Test.pdf");
+            MainViewModel.imageVMs[0].SelectedImage = "/Views/Societate transparent.png";
+            MainViewModel.imageVMs[1].SelectedImage = "/Views/Societate transparent.png";
+            MainViewModel.imageVMs[2].SelectedImage = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\Test.pdf");
 
-            using (StreamWriter writer = new StreamWriter("Images.txt", false))
+            using (StreamWriter writer = new StreamWriter("Images.txt"))
             {
                 writer.WriteLine(MainViewModel.imageVMs[0].SelectedImage);
                 writer.WriteLine(MainViewModel.imageVMs[1].SelectedImage);
