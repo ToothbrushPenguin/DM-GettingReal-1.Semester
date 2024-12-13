@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection.Metadata;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -28,8 +29,8 @@ namespace KvalitetesLedelsesSystem.ViewModels
                     //Second add is ContingencyDrawing
                     //Third add is ContingencyPlan
                     writer.WriteLine("/Views/Societate transparent.png");
-                    writer.WriteLine("/Views/Societate transparent.png");
-                    writer.WriteLine(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\Test.pdf"));
+                    writer.WriteLine("UCL_Evakueringsplan.png");
+                    writer.WriteLine(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\Evakueringsplan UCL.pdf"));
                 }
             }
             if (File.Exists("Images.txt"))
@@ -77,7 +78,7 @@ namespace KvalitetesLedelsesSystem.ViewModels
 
                 }
 
-                using (StreamWriter writer = new StreamWriter("Images.txt", false))
+                using (StreamWriter writer = new StreamWriter("Images.txt"))
                 {
                     writer.WriteLine(images[0].selectedPath);
                     writer.WriteLine(images[1].selectedPath);
@@ -92,8 +93,8 @@ namespace KvalitetesLedelsesSystem.ViewModels
         {
 
             MainViewModel.imageVMs[0].SelectedImage = "/Views/Societate transparent.png";
-            MainViewModel.imageVMs[1].SelectedImage = "/Views/Societate transparent.png";
-            MainViewModel.imageVMs[2].SelectedImage = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\Test.pdf");
+            MainViewModel.imageVMs[1].SelectedImage = "UCL_Evakueringsplan.png";
+            MainViewModel.imageVMs[2].SelectedImage = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\Evakueringsplan UCL.pdf");
 
             using (StreamWriter writer = new StreamWriter("Images.txt"))
             {
