@@ -4,54 +4,43 @@ skinparam classAttributeIconSize 0
 skinparam style strictuml
 skinparam linetype ortho
 
-' Place Log at the top
-class Log {
-    checkin_outFilePath
-    contingencyFilePath
-    colourFilePath
-    imageFilePath
-}
+
 
 ' Group the user classes
-together {
-    class User {
-        name
-        company
+class User {
+        UserName
+        Name
+        Company
+        checkInStatus
+       
     }
-
-    class Admin {
-        name
-        company
-        password
-    }
-
-    class Contingency_Responsible {
-        name
-        company
-        password
-    }
-}
-
-' Place Contingency at the bottom
-class ImagesTod {
-    filePath
     
-}
-class Colour{
-colour
-}
+    class Admin {
+        Password
+    }
+    
+    class Contingency_Responsible {
+        Password
+    }
+    
+    class Colour {
+        selectedColour
+    }
+    
+    class ImageTod {
+        selectedPath
+    }
+    
+    Admin --|> User
+    Contingency_Responsible --|> User
 
-' Connect to Log at top
-User "0..*" -up- "1" Log
-Admin "0..*" -up- "1" Log
-Contingency_Responsible "0..*" -up- "1" Log
+    ImageTod "3"--"1" Contingency_Responsible
+    ImageTod "3"--"1" Admin
 
-' Connect to Contingency at bottom
-Contingency_Responsible "0..*" -down- "3" ImagesTod
-Admin "0..*" -down- "3" ImagesTod
+    Colour "3" -- "1" Admin
+    
 
 
-Admin "0..*" -down- "3" Colour
 
 
 
