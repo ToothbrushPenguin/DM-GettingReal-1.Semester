@@ -21,11 +21,11 @@ namespace KvalitetesLedelsesSystem.Views
     /// </summary>
     public partial class PersonList : Page
     {
-        private MainViewModel mvm = new MainViewModel();
+        
         public PersonList()
         {
             InitializeComponent();
-            DataContext = mvm;
+            
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

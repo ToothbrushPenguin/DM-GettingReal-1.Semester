@@ -22,11 +22,11 @@ namespace KvalitetesLedelsesSystem.Views
     /// </summary>
     public partial class Plan : Page
     {
-        MainViewModel mvm = new MainViewModel();
+        
         public Plan()
         {
             InitializeComponent();
-            DataContext = mvm;
+            
             pdfWebViewer.Navigate(new Uri("about:blank"));
             
 

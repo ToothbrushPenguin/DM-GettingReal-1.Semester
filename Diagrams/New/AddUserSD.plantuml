@@ -1,0 +1,28 @@
+@startuml AddUser
+skinparam style strictuml
+skinparam sequenceMessageAlign center
+title AddUser SD
+
+Actor Actor as user
+participant ":AddUserCommand" as AC
+participant ":MainViewModel" as MVM
+participant ":UserRepository" as UR
+participant ":UserViewModel" as UV
+participant ":AdminCRUD" as ACRUD
+
+user -> AC ++: Execute(parameter)
+    AC -> MVM ++: AddUser()
+        MVM -> UR ++: Add("User", " ", " ", UserType.User, " ")
+        return user
+        
+        MVM -> UV **: Create new UserViewModel(user)
+        MVM -> MVM: userVMs.Add(vm)
+        MVM -> MVM: SelectedUserVM = vm
+    return 
+    
+    AC -> ACRUD **: Create new AdminCRUD()
+    AC -> ACRUD: ShowDialog()
+return Displays dialog for user input
+
+@enduml
+
