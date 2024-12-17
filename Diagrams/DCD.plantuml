@@ -5,7 +5,7 @@ skinparam style strictuml
 skinparam linetype ortho
 skinparam nodesep 100
 skinparam ranksep 100
-skinparam padding 10
+skinparam padding 2
 
 ' Custom styling
 skinparam class {
